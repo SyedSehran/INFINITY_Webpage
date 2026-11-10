@@ -87,8 +87,8 @@
         </div>
       </a>
 
-      <!-- Desktop Links (Hidden below lg to prevent collision at tablet 768px) -->
-      <nav class="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-medium text-secondary">
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium text-secondary">
         <a href="#about" class="hover:text-white transition">About</a>
         <a href="#techtonics" class="hover:text-white transition flex items-center gap-1.5">
           <span>TechTonics '26</span>
@@ -103,8 +103,7 @@
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-        <!-- Primary Prompt (Strictly hidden below xl, accessible in mobile drawer) -->
-        <button id="open-prompt-modal-nav-btn" class="btn-secondary text-xs font-mono hidden xl:inline-flex border-cyan-500/30 text-cyan-300 hover:border-cyan-400">
+        <button id="open-prompt-modal-nav-btn" class="btn-secondary text-xs font-mono hidden sm:inline-flex border-cyan-500/30 text-cyan-300 hover:border-cyan-400">
           Primary Prompt
         </button>
 
@@ -113,8 +112,8 @@
           <span class="hidden sm:inline">Pass &rarr;</span>
         </button>
 
-        <!-- Accessible Mobile Menu Toggle Button (Shows on mobile & tablet: lg:hidden) -->
-        <button id="mobile-menu-toggle-btn" class="lg:hidden p-2 rounded-lg bg-zinc-900 border border-subtle text-secondary hover:text-white hover:border-active transition shrink-0" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+        <!-- Accessible Mobile Menu Toggle Button -->
+        <button id="mobile-menu-toggle-btn" class="md:hidden p-2 rounded-lg bg-zinc-900 border border-subtle text-secondary hover:text-white hover:border-active transition shrink-0" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
           <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -126,8 +125,8 @@
 
     </div>
 
-    <!-- Mobile & Tablet Slide-Down Navigation Drawer (Shows on screens < lg) -->
-    <div id="mobile-nav-drawer" class="lg:hidden hidden bg-[#080b14]/98 border-b border-cyan-500/30 backdrop-blur-xl px-4 py-5 space-y-3 shadow-2xl transition-all" aria-hidden="true">
+    <!-- Mobile Slide-Down Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="md:hidden hidden bg-[#080b14]/98 border-b border-cyan-500/30 backdrop-blur-xl px-4 py-5 space-y-3 shadow-2xl transition-all" aria-hidden="true">
       <nav class="flex flex-col space-y-2.5 font-medium text-sm">
         <a href="#about" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
           <span>About Society</span>
@@ -140,39 +139,6 @@
           </span>
           <span class="text-xs text-muted font-mono">&rarr;</span>
         </a>
-        <a href="#ai-studio" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
-          <span>AI Prompt Studio</span>
-          <span class="text-xs text-muted font-mono">&rarr;</span>
-        </a>
-        <a href="#projects" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
-          <span>Past Projects</span>
-          <span class="text-xs text-muted font-mono">&rarr;</span>
-        </a>
-        <a href="#domains" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
-          <span>Society Wings</span>
-          <span class="text-xs text-muted font-mono">&rarr;</span>
-        </a>
-        <a href="#social-feed" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
-          <span>Social Feedwall</span>
-          <span class="text-xs text-muted font-mono">&rarr;</span>
-        </a>
-        <a href="#council" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
-          <span>Council &amp; Advisory</span>
-          <span class="text-xs text-muted font-mono">&rarr;</span>
-        </a>
-      </nav>
-
-      <div class="pt-2 flex flex-col gap-2">
-        <button class="open-prompt-trigger btn-secondary text-xs font-mono w-full justify-center py-2.5 border-cyan-500/40 text-cyan-300 hover:bg-cyan-950/40">
-          ⚡ View Primary Prompt Spec
-        </button>
-        <button id="mobile-open-terminal-btn" class="w-full justify-center flex items-center gap-2 px-3 py-2.5 rounded-lg bg-zinc-900/90 border border-subtle text-secondary hover:text-white text-xs font-mono transition">
-          <span>&gt;_ Launch Developer Terminal</span>
-          <span class="badge text-[9px]">Ctrl+~</span>
-        </button>
-      </div>
-    </div>
-  </header>
         <a href="#ai-studio" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
           <span>AI Prompt Studio</span>
           <span class="text-xs text-muted font-mono">&rarr;</span>
