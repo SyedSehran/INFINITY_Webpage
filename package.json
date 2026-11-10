@@ -5,6 +5,8 @@
   "type": "module",
   "main": "index.html",
   "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./style.css --minify",
+    "css": "tailwindcss -i ./src/input.css -o ./style.css --minify",
     "start": "npx serve .",
     "serve": "python -m http.server 3000",
     "test": "node --test test/app.test.js"
@@ -20,5 +22,8 @@
     "frontend"
   ],
   "author": "Cognition Hackathon Submission Team",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
 }
