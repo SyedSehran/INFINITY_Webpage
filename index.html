@@ -30,12 +30,12 @@
        TOP HUD ANNOUNCEMENT BAR (Vibrant Interactive Telemetry)
        ========================================================== -->
   <div class="border-b border-cyan-500/30 bg-[#060812] text-xs font-mono py-2 px-3 sm:px-4 relative z-40 shadow-[0_2px_15px_rgba(0,0,0,0.7)]">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-3">
       
-      <div class="flex items-center gap-2 min-w-0">
+      <div class="flex items-center gap-2 min-w-0 shrink">
         <span class="badge badge-emerald shrink-0 text-[10px] animate-pulse shadow-[0_0_12px_rgba(16,185,129,0.4)]">LIVE</span>
         <span class="text-secondary truncate text-[11px] sm:text-xs">
-          <strong class="text-white">TechTonics '26</strong> &bull; Cognition 90-Min AI Hackathon Registrations Open
+          <strong class="text-white">TechTonics '26</strong><span class="hidden sm:inline"> &bull; Cognition 90-Min AI Hackathon Registrations Open</span>
         </span>
       </div>
 
@@ -46,9 +46,9 @@
           <span id="sound-status-label" class="font-bold text-[10px] text-emerald-400 font-mono tracking-wider">FX OFF</span>
         </button>
 
-        <!-- Vibrant Theme Options Box -->
-        <div class="hidden sm:inline-flex hud-control-box items-center gap-2 border-cyan-500/35">
-          <span class="text-[9px] text-cyan-400 font-bold uppercase tracking-wider">THEME</span>
+        <!-- Vibrant Theme Options Box (Hidden on mobile) -->
+        <div class="hidden sm:inline-flex hud-control-box hud-theme-box items-center gap-2">
+          <span class="text-[9px] text-purple-300 font-bold uppercase tracking-wider">THEME</span>
           <div class="flex items-center gap-1.5">
             <button data-theme-btn="black" class="theme-pill-option bg-black border border-cyan-400/80 shadow-[0_0_8px_rgba(56,189,248,0.4)]" title="Obsidian Black"></button>
             <button data-theme-btn="silver" class="theme-pill-option bg-slate-200 border border-white shadow-[0_0_8px_rgba(255,255,255,0.4)]" title="Monochrome Silver"></button>
@@ -57,7 +57,7 @@
           </div>
         </div>
 
-        <!-- Terminal Launcher Box -->
+        <!-- Terminal Launcher Box (Hidden on mobile) -->
         <button id="open-terminal-btn" class="hidden sm:inline-flex hud-control-box hud-cli-box cursor-pointer group" title="Launch Developer Terminal (Ctrl+~)">
           <span class="text-cyan-400 font-bold font-mono text-[11px] group-hover:text-white">&gt;_ CLI</span>
           <span class="text-[9px] px-1 py-0.2 rounded bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 font-mono">Ctrl+~</span>
@@ -74,7 +74,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
       
       <!-- Logo Branding -->
-      <a href="#" class="flex items-center gap-2.5 text-decoration-none group min-w-0">
+      <a href="#" class="flex items-center gap-2.5 text-decoration-none group min-w-0 shrink">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-cyan-950 to-zinc-900 border border-cyan-500/40 flex items-center justify-center text-cyan-400 font-mono text-xl font-bold group-hover:border-cyan-300 transition shadow-[0_0_15px_rgba(56,189,248,0.2)] shrink-0">
           &infin;
         </div>
@@ -87,8 +87,8 @@
         </div>
       </a>
 
-      <!-- Desktop Links -->
-      <nav class="hidden md:flex items-center gap-5 lg:gap-6 text-sm font-medium text-secondary">
+      <!-- Desktop Links (Hidden below lg to prevent collision at tablet 768px) -->
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-medium text-secondary">
         <a href="#about" class="hover:text-white transition">About</a>
         <a href="#techtonics" class="hover:text-white transition flex items-center gap-1.5">
           <span>TechTonics '26</span>
@@ -103,17 +103,18 @@
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Primary Prompt (Strictly hidden below xl, accessible in mobile drawer) -->
         <button id="open-prompt-modal-nav-btn" class="btn-secondary text-xs font-mono hidden xl:inline-flex border-cyan-500/30 text-cyan-300 hover:border-cyan-400">
           Primary Prompt
         </button>
 
-        <button id="open-register-modal-nav-btn" class="btn-primary text-xs font-mono px-3 sm:px-4 py-2">
+        <button id="open-register-modal-nav-btn" class="btn-primary text-xs font-mono px-3 sm:px-4 py-2 shrink-0">
           <span>Register</span>
           <span class="hidden sm:inline">Pass &rarr;</span>
         </button>
 
-        <!-- Accessible Mobile Menu Toggle Button -->
-        <button id="mobile-menu-toggle-btn" class="md:hidden p-2 rounded-lg bg-zinc-900 border border-subtle text-secondary hover:text-white hover:border-active transition" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+        <!-- Accessible Mobile Menu Toggle Button (Shows on mobile & tablet: lg:hidden) -->
+        <button id="mobile-menu-toggle-btn" class="lg:hidden p-2 rounded-lg bg-zinc-900 border border-subtle text-secondary hover:text-white hover:border-active transition shrink-0" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
           <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -125,8 +126,8 @@
 
     </div>
 
-    <!-- Mobile Slide-Down Navigation Drawer -->
-    <div id="mobile-nav-drawer" class="md:hidden hidden bg-[#080b14]/98 border-b border-cyan-500/30 backdrop-blur-xl px-4 py-5 space-y-3 shadow-2xl transition-all" aria-hidden="true">
+    <!-- Mobile & Tablet Slide-Down Navigation Drawer (Shows on screens < lg) -->
+    <div id="mobile-nav-drawer" class="lg:hidden hidden bg-[#080b14]/98 border-b border-cyan-500/30 backdrop-blur-xl px-4 py-5 space-y-3 shadow-2xl transition-all" aria-hidden="true">
       <nav class="flex flex-col space-y-2.5 font-medium text-sm">
         <a href="#about" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
           <span>About Society</span>
@@ -139,6 +140,39 @@
           </span>
           <span class="text-xs text-muted font-mono">&rarr;</span>
         </a>
+        <a href="#ai-studio" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>AI Prompt Studio</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#projects" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Past Projects</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#domains" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Society Wings</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#social-feed" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Social Feedwall</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#council" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Council &amp; Advisory</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+      </nav>
+
+      <div class="pt-2 flex flex-col gap-2">
+        <button class="open-prompt-trigger btn-secondary text-xs font-mono w-full justify-center py-2.5 border-cyan-500/40 text-cyan-300 hover:bg-cyan-950/40">
+          ⚡ View Primary Prompt Spec
+        </button>
+        <button id="mobile-open-terminal-btn" class="w-full justify-center flex items-center gap-2 px-3 py-2.5 rounded-lg bg-zinc-900/90 border border-subtle text-secondary hover:text-white text-xs font-mono transition">
+          <span>&gt;_ Launch Developer Terminal</span>
+          <span class="badge text-[9px]">Ctrl+~</span>
+        </button>
+      </div>
+    </div>
+  </header>
         <a href="#ai-studio" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
           <span>AI Prompt Studio</span>
           <span class="text-xs text-muted font-mono">&rarr;</span>
@@ -697,9 +731,9 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <span class="badge badge-emerald">LOCAL DATABASE PERSISTENCE</span>
-            <h2 class="text-3xl font-extrabold text-white mt-1">VERIFIED ATTENDEE REGISTRY</h2>
+            <h2 class="text-3xl font-extrabold text-white mt-1"><span class="heading-punchy-cyan">COMMUNITY ATTENDEE REGISTRY</span></h2>
             <p class="text-secondary text-sm mt-1">
-              Real-time records saved to browser storage via asynchronous registration API calls.
+              Real-time records saved to browser storage via asynchronous registration API calls (including demo seed delegates).
             </p>
           </div>
 

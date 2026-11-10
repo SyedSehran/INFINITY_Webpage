@@ -6,7 +6,6 @@
 
 import { TECHTONICS_TARGET_DATE, DATA_PROVENANCE, getSavedTheme, saveTheme } from './state.js';
 import { initAudio, toggleAudio, isSoundActive, playClick, playChime } from './audio.js';
-import { init3DHeroScene } from './three-scene.js';
 import { initModals, openModal, closeModal } from './modal.js';
 import { initTerminal } from './terminal.js';
 import { initPromptStudio } from './prompt-studio.js';
@@ -19,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Audio Engine
   initAudioControls();
 
-  // 3. 3D WebGL Torus Knot Scene
-  init3DHeroScene('three-canvas-container');
+  // 3. Lazy-Loaded 3D WebGL Torus Knot Scene (Skips under prefers-reduced-motion)
+  initLazy3DHeroScene('three-canvas-container');
 
   // 4. Accessible Modal System
   initModals();
@@ -136,6 +135,53 @@ function initMobileMenu() {
       toggleDrawer(true);
     }
   });
+}
+
+/* ==========================================================
+   0.2 LAZY-LOADED 3D HERO SCENE (Three.js WebGL Torus Knot)
+   - Dynamic import avoids 650KB/2.1MB payload on the critical rendering path.
+   - Respects user accessibility preference: skips if prefers-reduced-motion is true.
+   ========================================================== */
+function initLazy3DHeroScene(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  // Honor prefers-reduced-motion
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  const loadScene = () => {
+    import('./three-scene.js')
+      .then((m) => {
+        if (m && typeof m.init3DHeroScene === 'function') {
+          m.init3DHeroScene(containerId);
+        }
+      })
+      .catch((err) => {
+        console.warn('[INFINITY] Optional 3D scene dynamic import deferred:', err);
+      });
+  };
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          observer.disconnect();
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadScene);
+          } else {
+            setTimeout(loadScene, 100);
+          }
+        }
+      });
+    }, { rootMargin: '100px' });
+    observer.observe(container);
+  } else if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadScene);
+  } else {
+    setTimeout(loadScene, 200);
+  }
 }
 
 /* ==========================================================

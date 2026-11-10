@@ -6,6 +6,13 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const ROOT_DIR = path.resolve(__dirname, '..');
 
 import { validateEmail } from '../js/registration.js';
 import { classifyPromptIntent, PROMPT_PRESETS } from '../js/prompt-studio.js';
@@ -82,4 +89,82 @@ test('Prompt Studio Presets Completeness', () => {
     assert.ok(PROMPT_PRESETS[key].prompt.length > 0);
     assert.ok(PROMPT_PRESETS[key].model.length > 0);
   });
+});
+
+test('CI Asset Integrity & 404 Smoke Test', () => {
+  // 1. Verify index.html local references
+  const htmlPath = path.join(ROOT_DIR, 'index.html');
+  assert.ok(fs.existsSync(htmlPath), 'index.html must exist');
+  const htmlContent = fs.readFileSync(htmlPath, 'utf8');
+
+  // Match href="..." and src="..."
+  const assetRegex = /(?:src|href)=["']([^"']+)["']/g;
+  let match;
+  const localAssets = new Set();
+  while ((match = assetRegex.exec(htmlContent)) !== null) {
+    const uri = match[1].trim();
+    // Exclude anchors, external protocols, inline data URIs
+    if (!uri || uri.startsWith('#') || uri.startsWith('http://') || uri.startsWith('https://') || uri.startsWith('mailto:') || uri.startsWith('tel:') || uri.startsWith('data:')) {
+      continue;
+    }
+    const cleanUri = uri.split('?')[0].split('#')[0];
+    if (cleanUri) {
+      localAssets.add(cleanUri);
+    }
+  }
+
+  assert.ok(localAssets.size > 0, 'index.html should have local asset references');
+  for (const asset of localAssets) {
+    const fullPath = path.resolve(ROOT_DIR, asset);
+    assert.ok(
+      fs.existsSync(fullPath),
+      `404 Error: Local asset referenced in index.html does not exist on disk: ${asset}`
+    );
+    const stat = fs.statSync(fullPath);
+    assert.ok(stat.size > 0, `Empty asset file: ${asset}`);
+  }
+
+  // 2. Verify all local font url(...) references in style.css
+  const cssPath = path.join(ROOT_DIR, 'style.css');
+  assert.ok(fs.existsSync(cssPath), 'style.css must exist');
+  const cssContent = fs.readFileSync(cssPath, 'utf8');
+
+  const fontUrlRegex = /url\(["']?([^"')]+)["']?\)/g;
+  const localFonts = new Set();
+  while ((match = fontUrlRegex.exec(cssContent)) !== null) {
+    const fontUri = match[1].trim();
+    if (!fontUri.startsWith('http://') && !fontUri.startsWith('https://') && !fontUri.startsWith('data:')) {
+      const cleanFontUri = fontUri.split('?')[0].split('#')[0];
+      localFonts.add(cleanFontUri);
+    }
+  }
+
+  assert.ok(localFonts.size > 0, 'style.css should reference local self-hosted fonts');
+  for (const font of localFonts) {
+    const fullFontPath = path.resolve(ROOT_DIR, font);
+    assert.ok(
+      fs.existsSync(fullFontPath),
+      `404 Error: Font referenced in style.css does not exist on disk: ${font}`
+    );
+    assert.ok(fs.statSync(fullFontPath).size > 0, `Empty font file: ${font}`);
+  }
+
+  // 3. Verify all local JS module imports exist
+  const jsDir = path.join(ROOT_DIR, 'js');
+  const jsFiles = fs.readdirSync(jsDir).filter((f) => f.endsWith('.js'));
+  assert.ok(jsFiles.length >= 7, 'All core JS modules must be present');
+
+  const importRegex = /(?:import|export)\s+(?:.*?from\s+)?['"](\.\/[^'"]+)['"]/g;
+  for (const jsFile of jsFiles) {
+    const filePath = path.join(jsDir, jsFile);
+    const content = fs.readFileSync(filePath, 'utf8');
+    while ((match = importRegex.exec(content)) !== null) {
+      const importPath = match[1];
+      const resolvedImport = path.resolve(jsDir, importPath);
+      assert.ok(
+        fs.existsSync(resolvedImport),
+        `404 Error: Import "${importPath}" in ${jsFile} does not resolve to an existing file.`
+      );
+    }
+  }
 });
