@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.html",
   "scripts": {
-    "build": "tailwindcss -i ./src/input.css -o ./style.css --minify",
+    "build": "node scripts/build.js",
     "css": "tailwindcss -i ./src/input.css -o ./style.css --minify",
     "start": "npx serve .",
     "serve": "python -m http.server 3000",
