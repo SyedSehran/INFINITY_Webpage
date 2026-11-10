@@ -6,7 +6,7 @@
 ## 🌟 Executive Overview
 This repository contains the production-grade, accessible, offline-capable frontend web application engineered for **INFINITY — The Tech Society of Sri Guru Gobind Singh College of Commerce (SGGSCC), University of Delhi**. 
 
-Built for the **Cognition AI Hackathon (TechTonics '26)**, this platform showcases a minimalist, matte-black / carbon cyber aesthetic with an interactive 3D WebGL Torus Knot, real local database persistence, a 3-step registration wizard, an AI Prompt Studio supporting live Gemini API streaming, and a hardened developer terminal.
+Built for the **Cognition AI Hackathon (TechTonics '26)**, this platform showcases a sleek, high-contrast cyber aesthetic with an interactive Three.js 3D WebGL Torus Knot, real local database persistence, a 3-step registration wizard, an AI Prompt Studio supporting live Gemini API streaming, and a hardened developer terminal.
 
 ---
 
@@ -20,22 +20,22 @@ Built for the **Cognition AI Hackathon (TechTonics '26)**, this platform showcas
 
 ## 🚀 Key Architectural Features & Solutions
 
-### 1. Minimalist Matte Black / Obsidian Design System
-- **Palette**: Deep Matte Black (`#050507`), Carbon Surface (`#0c0d12`), Slate Borders (`rgba(255, 255, 255, 0.08)`), Platinum White typography (`#f8fafc`), and Terminal Emerald telemetry (`#10b981`).
-- **Zero Fragile CDN Runtime**: Self-contained CSS with zero dependency on Tailwind Play CDN. Runs seamlessly offline with native font stacks.
-- **Theme Switcher**: Operates via `data-theme` attribute on the root element, preserving classes without fragile class list overwrites.
+### 1. High-Contrast Modern Aesthetic & Self-Hosted Typography
+- **Design Philosophy**: High-contrast, dark technical aesthetic with glassmorphic depth, refined luminous container accents, and high-readability typography hierarchy.
+- **Self-Hosted Fonts**: Offline-first `@fontsource/space-grotesk` and `@fontsource/jetbrains-mono` `.woff2` font files hosted locally in `fonts/`. Zero dependency on external Google Fonts CDNs.
+- **Theme Switcher**: Operates safely via `data-theme` attribute on the root element, preserving classes without wiping element classes.
 
-### 2. Interactive 3D WebGL Torus Knot Canvas
-- Built-in native WebGL/Canvas 3D infinite loop geometry (p=2, q=3 Torus Knot).
-- Calculates real-time 3D perspective projection, rotation matrices, and depth shading reacting to mouse coordinates.
+### 2. Interactive Three.js 3D WebGL Torus Knot Canvas
+- Authentic WebGL rendering using Three.js with perspective projection, directional/ambient lighting, and dual solid/wireframe mesh geometry (`p=2, q=3` Infinity Torus Knot).
+- Real-time mouse coordinate tracking with smooth damping (lerp).
 - Strictly respects `@media (prefers-reduced-motion: reduce)` by freezing rotation.
 
 ### 3. True 3-Step Registration Wizard & Attendee Registry
-- **Step 1: Delegate Identity**: Name, institution, university, contact email with strict regex validation and duplicate prevention.
+- **Step 1: Delegate Identity**: Name, institution, university, contact email with strict validation and duplicate prevention.
 - **Step 2: Track & Team**: Cognition AI Hackathon, Pass The Pixel, CodeSprint, team composition (1–4 members), GitHub URL.
 - **Step 3: Pitch & Motivation**: Motivation statement and academic integrity consent.
-- **Real Database Persistence**: Asynchronous network simulation writing to `localStorage`. Includes live attendee registry table, attendee deletion, and one-click JSON dataset export.
-- **Verified Delegate Pass**: Generates a virtual pass ticket with confirmed delegate credentials.
+- **Real Database Persistence**: Asynchronous network simulation writing to `localStorage`. Includes live attendee registry table, attendee deletion, search filters, and one-click JSON dataset export.
+- **Virtual Demo Delegate Pass**: Generates a printable delegate pass ticket with unique Pass ID.
 
 ### 4. Deterministic Countdown Clock
 - Fixed ISO Target: **`2026-11-28T09:30:00+05:30`** (TechTonics '26 Grand Sprint).
@@ -43,12 +43,14 @@ Built for the **Cognition AI Hackathon (TechTonics '26)**, this platform showcas
 
 ### 5. AI Prompt Studio (Cognition Simulator & Real API Gateway)
 - **Live Google Gemini API Gateway**: Allows users to enter an optional Gemini API key to execute real live LLM inference streaming from Google.
-- **Intelligent Multi-Intent Compiler**: Dynamically generates tailored code and live preview widgets for any input:
+- **Semantic Intent Classifier (`classifyPromptIntent`)**: Accurately routes user prompts with word boundary precision:
+  - *REST API Router*: Generates Express.js / Zod schema endpoints (e.g. for "Design a REST API for memory cards").
   - *Debug Python Memory Leak*: FastAPI middleware with `tracemalloc` snapshot differentials.
   - *Posture Detection AI*: MediaPipe pose estimation angle calculator.
   - *Pass The Pixel*: WCAG AAA monochrome design token specification.
-  - *LinkedIn Society Announcement*: Structured executive thought-leadership post.
-  - *Arbitrary Custom Prompts*: Analyzes query tokens and builds tailored architectural specifications.
+  - *LinkedIn Society Announcement*: Structured executive thought-leadership post referencing upcoming sprint registrations.
+  - *Arbitrary Custom Prompts*: Dynamically synthesizes architecture specifications for custom prompts.
+- **Dynamic Simulated Model Binding**: Prepend `// [SIMULATED INFERENCE] • Model: <selectedModel>` dynamically to all simulated outputs.
 
 ### 6. Security-Hardened Developer Terminal (`infinity-cli`)
 - Accessible via shortcut `Ctrl + ~` or HUD button.
@@ -60,21 +62,21 @@ Built for the **Cognition AI Hackathon (TechTonics '26)**, this platform showcas
 - Focus trapping inside modals via Tab/Shift+Tab.
 - Global `Escape` key closes active modals and returns focus to the invoking element.
 
-### 8. Data Provenance & Verification Audit
-| Metric | Verified Stat | Source Documentation |
+### 8. Transparent Community Benchmarks
+| Metric | Benchmark Stat | Attribution Disclosure |
 | :--- | :--- | :--- |
-| **Active Tech Members** | 500+ | SGGSCC Tech Society Annual Audit & Department of Computer Science Records (2024–2025) |
-| **Workshops & Hackathons** | 35+ | Infinity Society Event Register & TechTonics Archives (2022–2026) |
-| **Fest Prize Pool** | ₹2,50,000+ | TechTonics '26 Corporate Sponsorship Commitments |
-| **DU Collegiate Reach** | 12,000+ | Inter-College Hackathon Registration Analytics & Unstop Portal Metrics |
-| **LinkedIn Community** | 1,920+ | Official LinkedIn Page (`/company/infinitysggscc`) |
-| **Instagram Engagements** | 842 Likes | Official Instagram Post Metric (`@infinity.sggscc`) |
+| **Active Tech Members** | 500+ | Society student membership roster (Demonstration metric) |
+| **Workshops & Hackathons** | 35+ | TechTonics archive catalog (Demonstration metric) |
+| **Fest Prize Pool** | ₹2,50,000+ | Estimated prize pool allocation (Demonstration metric) |
+| **DU Collegiate Reach** | 12,000+ | Collegiate hackathon outreach benchmark (Demonstration metric) |
+| **LinkedIn Community** | 1,900+ | Official handle `@infinitysggscc` (Estimated milestone) |
+| **Instagram Engagements** | 800+ Likes | Official handle `@infinity.sggscc` (Estimated milestone) |
 
 ---
 
 ## 📝 Canonical Primary Prompt Used for Development
 
-The exact, unmodified prompt is documented below and mirrored in [`PRIMARY_PROMPT.md`](./PRIMARY_PROMPT.md) and inside the in-app modal:
+The canonical specification prompt utilized for the development of the application:
 
 ```markdown
 ### SYSTEM ROLE & ARCHITECTURAL OBJECTIVE
@@ -91,16 +93,16 @@ Incorporate the identity, tone, initiatives, and visual aesthetics from the offi
   (Focus: Collegiate tech culture, TechTonics '26 flagship festival announcements, Cognition 90-min AI Hackathon, Pass The Pixel design relay, member recruitment drives, byte-sized technology insights)
 
 ### CORE THEME & DESIGN SYSTEM
-- **Palette**: Deep Matte Black / Obsidian (#050507), Carbon Surface (#0c0d12), Slate Borders (rgba(255, 255, 255, 0.08)), Platinum White Typography (#f8fafc, #ffffff), and Monochromatic Silver / Terminal Emerald (#10b981) status telemetry. Strictly avoid oversaturated neon purple or cyan candy gradients.
-- **Typography & Accessibility**: Clean system and monospace typography (Space Grotesk / JetBrains Mono fallbacks), full WAI-ARIA compliance (role="dialog", aria-modal="true", focus trapping, Escape key closing), and strict support for @media (prefers-reduced-motion: reduce).
-- **Zero External Runtime Dependency**: 100% self-contained styling and vanilla ES6 modules without requiring fragile runtime CDN compilers (e.g., avoid Tailwind Play CDN in production) so the application functions flawlessly offline.
+- **Design Philosophy**: High-contrast, dark technical aesthetic with glassmorphic depth, refined luminous container accents, and high-readability typography hierarchy. Prioritize clean layout structure, clear separation of containers, and subtle ambient glows.
+- **Typography & Accessibility**: Clean geometric display and monospace typography (Space Grotesk and JetBrains Mono), full WAI-ARIA compliance (role="dialog", aria-modal="true", focus trapping, Escape key closing), and strict support for @media (prefers-reduced-motion: reduce).
+- **Self-Sufficiency**: Self-hosted fonts, compiled stylesheets, and native ES6 modular architecture without requiring fragile runtime CDN compilers so the application functions flawlessly offline.
 
 ### KEY FUNCTIONAL MODULES TO DELIVER
-1. **Interactive 3D WebGL Hero Canvas**: Native 3D geometric Torus Knot (Infinite Loop) rendered via WebGL/Canvas with perspective projection and real-time mouse coordinate tracking.
+1. **Interactive 3D WebGL Hero Canvas**: Native 3D geometric Torus Knot (Infinite Loop) rendered via WebGL/Three.js with perspective projection and real-time mouse coordinate tracking.
 2. **Top Navigation & Audio HUD**: Built-in Web Audio API tone synthesizer (toggleable, persists state), theme switcher operating via data-theme attribute, and CLI launcher.
-3. **Command Center Hero Section**: Fixed deterministic countdown clock targeting TechTonics '26 Grand Sprint (2026-11-28T09:30:00+05:30), dynamic typewriter, and verified stats with data provenance citations.
+3. **Command Center Hero Section**: Fixed deterministic countdown clock targeting TechTonics '26 Grand Sprint (2026-11-28T09:30:00+05:30), dynamic typewriter, and transparent demonstration metrics.
 4. **TechTonics '26 & Cognition AI Hackathon Hub**: Spotlight on Cognition '26 (90-min rapid prototype sprint), Pass The Pixel, CodeSprint, and 4 spot-reveal problem tracks.
-5. **Interactive AI Prompt Studio**: Live prompt playground supporting both an intelligent multi-intent dynamic compiler and real Google Gemini API calls (via user-provided API key). Covers Python concurrency memory leaks, Posture AI, accessible design tokens, and arbitrary custom prompts.
+5. **Interactive AI Prompt Studio**: Live prompt playground supporting both an intelligent multi-intent dynamic compiler and real Google Gemini API calls (via user-provided API key). Covers REST APIs, Python concurrency memory leaks, Posture AI, accessible design tokens, and arbitrary custom prompts.
 6. **True Multi-Step Registration Wizard & Attendee Registry**: 3-step wizard with real asynchronous API call simulation, persistent localStorage database, duplicate checking, JSON export, and personalized Delegate Pass generation.
 7. **Security-Hardened Developer Terminal (infinity-cli)**: Accessible via Ctrl+~ with textContent-based safe rendering, eliminating Self-XSS vulnerabilities.
 8. **Past Hackathon Project Showcases**: Case study modals for CogniFlow AI, PixelCraft 2.0, and DU Transit AI.
@@ -115,11 +117,11 @@ Run the test suite using Node.js's native test runner:
 ```bash
 npm test
 ```
-Tests pass synchronously:
-* Form validation regex & email verification.
-* Terminal input XSS sanitization (`textContent` protection).
-* Deterministic countdown timestamp & data provenance verification.
-* Prompt studio intent presets.
+Verifies real modules:
+* `validateEmail` from `js/registration.js` across valid and invalid inputs.
+* `classifyPromptIntent` from `js/prompt-studio.js` verifying keyword priority (e.g. "REST API for memory cards" correctly routing to `rest-api` rather than Python memory leak).
+* `TECHTONICS_TARGET_DATE` and `DATA_PROVENANCE` integrity from `js/state.js`.
+* `PROMPT_PRESETS` completeness across all presets.
 
 ---
 
@@ -135,4 +137,4 @@ npm start
 Navigate to `http://localhost:3000`.
 
 ### Option B: Offline Direct Preview
-Double-click `index.html` in any modern web browser. The entire application runs offline with zero external runtime dependencies.
+Open `index.html` in any modern web browser. The entire application runs offline with zero external runtime dependencies.
