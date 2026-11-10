@@ -1,6 +1,7 @@
 {
   "name": "fronted_infinity",
   "version": "2.0.0",
+  "homepage": "https://infinityfronted.netlify.app/",
   "description": "Production-Grade Frontend for INFINITY — The Tech Society of SGGSCC, DU with Cognition AI Hackathon Hub and Primary Prompt Documentation",
   "type": "module",
   "main": "index.html",

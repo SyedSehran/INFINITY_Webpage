@@ -1,6 +1,15 @@
 # ⚡ INFINITY // The Tech Society of SGGSCC (University of Delhi)
 ### Production-Grade Frontend Submission & Primary Prompt Specification for **Cognition – AI Hackathon**
 
+[![Live Demo](https://img.shields.io/badge/Live_Deployment-infinityfronted.netlify.app-00DC82?style=for-the-badge&logo=netlify&logoColor=white)](https://infinityfronted.netlify.app/)
+[![Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SyedSehran/INFINITY_Webpage)
+
+---
+
+## 🌐 Live Production Deployment
+- **Official Live Website**: [**https://infinityfronted.netlify.app/**](https://infinityfronted.netlify.app/)
+- **Repository**: [https://github.com/SyedSehran/INFINITY_Webpage](https://github.com/SyedSehran/INFINITY_Webpage)
+
 ---
 
 ## 🌟 Executive Overview
