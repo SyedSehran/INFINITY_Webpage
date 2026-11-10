@@ -27,38 +27,40 @@
 <body class="bg-[#050507] text-white min-h-screen bg-carbon-grid" style="background-color: #050507; color: #f8fafc;">
 
   <!-- ==========================================================
-       TOP HUD ANNOUNCEMENT BAR (Vibrant Telemetry)
+       TOP HUD ANNOUNCEMENT BAR (Vibrant Interactive Telemetry)
        ========================================================== -->
-  <div class="border-b border-cyan-500/25 bg-[#070913] text-xs font-mono py-2 px-3 sm:px-4 relative z-40">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+  <div class="border-b border-cyan-500/30 bg-[#060812] text-xs font-mono py-2 px-3 sm:px-4 relative z-40 shadow-[0_2px_15px_rgba(0,0,0,0.7)]">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
       
       <div class="flex items-center gap-2 min-w-0">
-        <span class="badge badge-emerald shrink-0 text-[10px] animate-pulse">LIVE</span>
+        <span class="badge badge-emerald shrink-0 text-[10px] animate-pulse shadow-[0_0_12px_rgba(16,185,129,0.4)]">LIVE</span>
         <span class="text-secondary truncate text-[11px] sm:text-xs">
-          <strong class="text-white">TechTonics '26</strong> &bull; Cognition 90-Min AI Hackathon Registrations Live
+          <strong class="text-white">TechTonics '26</strong> &bull; Cognition 90-Min AI Hackathon Registrations Open
         </span>
       </div>
 
       <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-        <!-- Audio Synth Toggle -->
-        <button id="sound-toggle-btn" class="flex items-center gap-1 text-secondary hover:text-cyan-300 transition cursor-pointer px-2 py-0.5 rounded bg-zinc-900/80 border border-subtle" aria-pressed="false" title="Toggle Synthesizer Audio Effects">
-          <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
-          <span id="sound-status-label" class="font-bold text-[10px] text-emerald-400">FX OFF</span>
+        <!-- Audio Synth Toggle Box -->
+        <button id="sound-toggle-btn" class="hud-control-box hud-sound-box cursor-pointer group" aria-pressed="false" title="Toggle Synthesizer Audio Effects">
+          <svg class="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          <span id="sound-status-label" class="font-bold text-[10px] text-emerald-400 font-mono tracking-wider">FX OFF</span>
         </button>
 
-        <!-- Minimalist Theme Switcher (data-theme) -->
-        <div class="hidden sm:flex items-center gap-1.5 pl-2 border-l border-subtle">
-          <span class="text-[9px] text-muted uppercase">THEME:</span>
-          <button data-theme-btn="black" class="w-2.5 h-2.5 rounded-full bg-black border border-white hover:scale-125 transition" title="Obsidian Black"></button>
-          <button data-theme-btn="silver" class="w-2.5 h-2.5 rounded-full bg-slate-300 hover:scale-125 transition" title="Monochrome Silver"></button>
-          <button data-theme-btn="emerald" class="w-2.5 h-2.5 rounded-full bg-emerald-500 hover:scale-125 transition" title="Terminal Emerald"></button>
-          <button data-theme-btn="amber" class="w-2.5 h-2.5 rounded-full bg-amber-500 hover:scale-125 transition" title="Solar Amber"></button>
+        <!-- Vibrant Theme Options Box -->
+        <div class="hidden sm:inline-flex hud-control-box items-center gap-2 border-cyan-500/35">
+          <span class="text-[9px] text-cyan-400 font-bold uppercase tracking-wider">THEME</span>
+          <div class="flex items-center gap-1.5">
+            <button data-theme-btn="black" class="theme-pill-option bg-black border border-cyan-400/80 shadow-[0_0_8px_rgba(56,189,248,0.4)]" title="Obsidian Black"></button>
+            <button data-theme-btn="silver" class="theme-pill-option bg-slate-200 border border-white shadow-[0_0_8px_rgba(255,255,255,0.4)]" title="Monochrome Silver"></button>
+            <button data-theme-btn="emerald" class="theme-pill-option bg-emerald-500 border border-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.6)]" title="Terminal Emerald"></button>
+            <button data-theme-btn="amber" class="theme-pill-option bg-amber-500 border border-amber-300 shadow-[0_0_10px_rgba(245,158,11,0.6)]" title="Solar Amber"></button>
+          </div>
         </div>
 
-        <!-- Terminal Launcher -->
-        <button id="open-terminal-btn" class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 hover:text-white hover:border-cyan-400 text-[10px] font-mono transition">
-          <span>&gt;_ CLI</span>
-          <span class="text-[9px] text-muted">Ctrl+~</span>
+        <!-- Terminal Launcher Box -->
+        <button id="open-terminal-btn" class="hidden sm:inline-flex hud-control-box hud-cli-box cursor-pointer group" title="Launch Developer Terminal (Ctrl+~)">
+          <span class="text-cyan-400 font-bold font-mono text-[11px] group-hover:text-white">&gt;_ CLI</span>
+          <span class="text-[9px] px-1 py-0.2 rounded bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 font-mono">Ctrl+~</span>
         </button>
       </div>
 
@@ -286,23 +288,23 @@
 
         </div>
 
-        <!-- Verified Key Metrics & Data Provenance -->
-        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 p-6 surface-card">
-          <div class="text-center p-2 border-r border-subtle">
-            <p class="text-3xl font-bold font-mono text-white">500+</p>
-            <p class="text-xs text-muted uppercase mt-1">Active Tech Members</p>
+        <!-- Verified Key Metrics & Data Provenance (Punchy Telemetry Boxes) -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="stat-box-card stat-box-cyan text-center">
+            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-cyan-400 drop-shadow-[0_0_12px_rgba(56,189,248,0.4)]">500+</p>
+            <p class="text-[11px] text-slate-300 uppercase tracking-wider font-semibold mt-2">Active Tech Members</p>
           </div>
-          <div class="text-center p-2 border-r border-subtle">
-            <p class="text-3xl font-bold font-mono text-white">35+</p>
-            <p class="text-xs text-muted uppercase mt-1">Workshops &amp; Hackathons</p>
+          <div class="stat-box-card stat-box-emerald text-center">
+            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-emerald-400 drop-shadow-[0_0_12px_rgba(16,185,129,0.4)]">35+</p>
+            <p class="text-[11px] text-slate-300 uppercase tracking-wider font-semibold mt-2">Workshops &amp; Sprints</p>
           </div>
-          <div class="text-center p-2 border-r border-subtle">
-            <p class="text-3xl font-bold font-mono text-white">₹2.5L+</p>
-            <p class="text-xs text-muted uppercase mt-1">Annual Fest Grants</p>
+          <div class="stat-box-card stat-box-amber text-center">
+            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-amber-400 drop-shadow-[0_0_12px_rgba(245,158,11,0.4)]">₹2.5L+</p>
+            <p class="text-[11px] text-slate-300 uppercase tracking-wider font-semibold mt-2">Annual Fest Grants</p>
           </div>
-          <div class="text-center p-2">
-            <p class="text-3xl font-bold font-mono text-white">12,000+</p>
-            <p class="text-xs text-muted uppercase mt-1">DU Student Outreach</p>
+          <div class="stat-box-card stat-box-violet text-center">
+            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.4)]">12,000+</p>
+            <p class="text-[11px] text-slate-300 uppercase tracking-wider font-semibold mt-2">DU Student Outreach</p>
           </div>
         </div>
 
