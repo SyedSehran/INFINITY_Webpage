@@ -873,12 +873,3 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(to bottom, #38bdf8, #10b981);
   }
 }
-
-/* ==========================================================
-   UTILITY SAFEGUARDS (Enforce hidden visibility)
-   ========================================================== */
-@layer utilities {
-  .hidden {
-    display: none !important;
-  }
-}

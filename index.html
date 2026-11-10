@@ -46,9 +46,9 @@
           <span id="sound-status-label" class="font-bold text-[10px] text-emerald-400 font-mono tracking-wider">FX OFF</span>
         </button>
 
-        <!-- Vibrant Theme Options Box (Hidden on mobile) -->
-        <div class="hidden sm:inline-flex hud-control-box hud-theme-box items-center gap-2">
-          <span class="text-[9px] text-purple-300 font-bold uppercase tracking-wider">THEME</span>
+        <!-- Vibrant Theme Options Box -->
+        <div class="hud-control-box hud-theme-box items-center gap-2 flex">
+          <span class="text-[9px] text-purple-300 font-bold uppercase tracking-wider hidden xs:inline">THEME</span>
           <div class="flex items-center gap-1.5">
             <button data-theme-btn="black" class="theme-pill-option bg-black border border-cyan-400/80 shadow-[0_0_8px_rgba(56,189,248,0.4)]" title="Obsidian Black"></button>
             <button data-theme-btn="silver" class="theme-pill-option bg-slate-200 border border-white shadow-[0_0_8px_rgba(255,255,255,0.4)]" title="Monochrome Silver"></button>
@@ -57,10 +57,10 @@
           </div>
         </div>
 
-        <!-- Terminal Launcher Box (Hidden on mobile) -->
-        <button id="open-terminal-btn" class="hidden sm:inline-flex hud-control-box hud-cli-box cursor-pointer group" title="Launch Developer Terminal (Ctrl+~)">
-          <span class="text-cyan-400 font-bold font-mono text-[11px] group-hover:text-white">&gt;_ CLI</span>
-          <span class="text-[9px] px-1 py-0.2 rounded bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 font-mono">Ctrl+~</span>
+        <!-- Terminal Launcher Box -->
+        <button id="open-terminal-btn" class="hud-control-box hud-cli-box cursor-pointer group flex items-center gap-1.5" title="Launch Developer Terminal (Ctrl+~)">
+          <span class="text-amber-400 font-bold font-mono text-[11px] group-hover:text-white">&gt;_ CLI</span>
+          <span class="text-[9px] px-1 py-0.2 rounded bg-amber-950/80 border border-amber-500/40 text-amber-300 font-mono hidden sm:inline">Ctrl+~</span>
         </button>
       </div>
 
@@ -103,7 +103,7 @@
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-        <button id="open-prompt-modal-nav-btn" class="btn-secondary text-xs font-mono hidden sm:inline-flex border-cyan-500/30 text-cyan-300 hover:border-cyan-400">
+        <button id="open-prompt-modal-nav-btn" class="btn-secondary text-xs font-mono inline-flex border-cyan-500/30 text-cyan-300 hover:border-cyan-400">
           Primary Prompt
         </button>
 
