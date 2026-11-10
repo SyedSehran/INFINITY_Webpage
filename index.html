@@ -1,146 +1,110 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="black" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INFINITY // The Tech Society of SGGSCC (University of Delhi)</title>
-  <meta name="description" content="Official portal of INFINITY — The Tech Society of Sri Guru Gobind Singh College of Commerce, University of Delhi. Host of TechTonics '26 and Cognition AI Hackathon." />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <title>INFINITY // The Tech Society of SGGSCC (University of Delhi)</title>
+  <meta name="description" content="Official platform of INFINITY — The Tech Society of Sri Guru Gobind Singh College of Commerce, University of Delhi. Host of TechTonics '26 and Cognition AI Hackathon." />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            cyberDark: '#070913',
-            cyberCard: 'rgba(13, 17, 39, 0.75)',
-            cyberCyan: '#00f2fe',
-            cyberBlue: '#4facfe',
-            cyberPurple: '#8a2be2',
-            cyberPink: '#ec4899',
-            cyberEmerald: '#10b981'
-          },
-          fontFamily: {
-            sans: ['Space Grotesk', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
-          }
-        }
-      }
-    };
-  </script>
+  <!-- Open Graph & Social Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://github.com/SyedSehran/INFINITY_Webpage" />
+  <meta property="og:title" content="INFINITY // The Tech Society of SGGSCC (University of Delhi)" />
+  <meta property="og:description" content="Collegiate tech nexus at SGGSCC, DU. Hosting TechTonics '26, Cognition 90-min AI Hackathon, Pass The Pixel, and AI Prompt Studio." />
+  <meta property="og:image" content="https://github.com/SyedSehran/INFINITY_Webpage/raw/main/favicon.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="INFINITY // The Tech Society of SGGSCC" />
+  <meta name="twitter:description" content="Official platform of Infinity SGGSCC. Engineering AI, web systems, and competitive design." />
 
-  <!-- Custom Stylesheet -->
+  <!-- Self-Contained Standalone Production Stylesheet (Zero CDN Dependencies) -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-[#070913] text-slate-100 min-h-screen relative selection:bg-cyan-500 selection:text-black">
-
-  <!-- Interactive Background Canvas for Particles -->
-  <canvas id="particles-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
-  <div class="fixed inset-0 cyber-grid opacity-30 pointer-events-none z-0"></div>
-
-  <!-- Ambient Glowing Radial Flares -->
-  <div class="fixed top-[-10%] left-[-10%] w-[55vw] h-[55vw] bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
-  <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-purple-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+<body class="bg-carbon-grid">
 
   <!-- ==========================================================
-       TOP ANNOUNCEMENT HUD BAR
+       TOP HUD ANNOUNCEMENT BAR
        ========================================================== -->
-  <div class="relative z-40 bg-gradient-to-r from-cyan-950/60 via-slate-900/90 to-purple-950/60 border-b border-cyan-500/20 px-4 py-2 text-xs font-mono">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-      <div class="flex items-center space-x-2">
-        <span class="flex h-2 w-2 relative">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-        </span>
-        <span class="text-cyan-400 font-semibold uppercase tracking-wider">LIVE EVENT:</span>
-        <span class="text-slate-300">TechTonics '26 &amp; Cognition AI Hackathon Registrations Open</span>
+  <div class="border-b border-subtle bg-black text-xs font-mono py-2 px-4 relative z-40">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      
+      <div class="flex items-center gap-2">
+        <span class="badge badge-emerald">ACTIVE</span>
+        <span class="text-secondary">TechTonics '26 &bull; Cognition 90-Min AI Hackathon Registrations Live</span>
       </div>
 
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center gap-4">
         <!-- Audio Synth Toggle -->
-        <button id="sound-toggle-btn" class="flex items-center space-x-1.5 text-slate-400 hover:text-cyan-400 transition" title="Toggle Cyber Audio FX">
-          <svg id="sound-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-          </svg>
-          <span id="sound-status" class="text-[11px] font-bold">FX OFF</span>
+        <button id="sound-toggle-btn" class="flex items-center gap-1.5 text-secondary hover:text-white transition cursor-pointer" aria-pressed="false" title="Toggle Synthesizer Audio Effects">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          <span id="sound-status-label" class="font-bold text-[11px]">FX OFF</span>
         </button>
 
-        <!-- Accent Theme Switcher -->
-        <div class="flex items-center space-x-1 pl-2 border-l border-slate-700">
-          <span class="text-[10px] text-slate-500 uppercase mr-1">THEME:</span>
-          <button data-theme="cyan" class="theme-btn w-3 h-3 rounded-full bg-cyan-400 hover:scale-125 transition" title="Cyber Cyan"></button>
-          <button data-theme="purple" class="theme-btn w-3 h-3 rounded-full bg-purple-500 hover:scale-125 transition" title="Ultraviolet"></button>
-          <button data-theme="emerald" class="theme-btn w-3 h-3 rounded-full bg-emerald-400 hover:scale-125 transition" title="Matrix Emerald"></button>
-          <button data-theme="solar" class="theme-btn w-3 h-3 rounded-full bg-amber-400 hover:scale-125 transition" title="Solar Orange"></button>
+        <!-- Minimalist Theme Switcher (data-theme) -->
+        <div class="flex items-center gap-1.5 pl-3 border-l border-subtle">
+          <span class="text-[10px] text-muted uppercase">THEME:</span>
+          <button data-theme-btn="black" class="w-3 h-3 rounded-full bg-black border border-white hover:scale-125 transition" title="Obsidian Black"></button>
+          <button data-theme-btn="silver" class="w-3 h-3 rounded-full bg-slate-300 hover:scale-125 transition" title="Monochrome Silver"></button>
+          <button data-theme-btn="emerald" class="w-3 h-3 rounded-full bg-emerald-500 hover:scale-125 transition" title="Terminal Emerald"></button>
+          <button data-theme-btn="amber" class="w-3 h-3 rounded-full bg-amber-500 hover:scale-125 transition" title="Solar Amber"></button>
         </div>
 
-        <!-- Terminal Launcher Pill -->
-        <button id="open-terminal-btn" class="hidden sm:inline-flex items-center space-x-1 px-2.5 py-0.5 rounded bg-slate-800 hover:bg-cyan-950 text-cyan-300 border border-cyan-500/30 text-[11px] transition">
+        <!-- Terminal Launcher -->
+        <button id="open-terminal-btn" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-zinc-900 border border-subtle text-secondary hover:text-white hover:border-active text-[11px] font-mono transition">
           <span>&gt;_ CLI</span>
-          <span class="text-[9px] text-slate-500">Ctrl+~</span>
+          <span class="text-[9px] text-muted">Ctrl+~</span>
         </button>
       </div>
+
     </div>
   </div>
 
   <!-- ==========================================================
        MAIN NAVIGATION BAR
        ========================================================== -->
-  <header class="sticky top-0 z-40 bg-[#070913]/85 backdrop-blur-md border-b border-white/5 transition-all">
+  <header class="sticky top-0 z-30 bg-black/90 backdrop-blur-md border-b border-subtle">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Logo Branding -->
-      <a href="#" class="flex items-center space-x-3 group">
-        <div class="relative w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-600/30 border border-cyan-400/40 group-hover:border-cyan-400 transition-all shadow-lg shadow-cyan-500/10">
-          <span class="text-2xl font-black text-cyan-400 font-mono transform group-hover:rotate-12 transition-transform">&infin;</span>
+      <a href="#" class="flex items-center gap-3 text-decoration-none group">
+        <div class="w-10 h-10 rounded-xl bg-zinc-900 border border-subtle flex items-center justify-center text-white font-mono text-xl font-bold group-hover:border-active transition">
+          &infin;
         </div>
         <div>
-          <div class="flex items-center space-x-1.5">
-            <span class="text-lg font-bold tracking-wider text-white">INFINITY</span>
-            <span class="text-xs px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-mono">SGGSCC</span>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-base tracking-wider text-white">INFINITY</span>
+            <span class="badge text-[10px]">SGGSCC</span>
           </div>
-          <p class="text-[10px] text-slate-400 tracking-tight">The Tech Society • University of Delhi</p>
+          <p class="text-[11px] text-muted">The Tech Society • University of Delhi</p>
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center space-x-7 text-sm font-medium">
-        <a href="#about" class="text-slate-300 hover:text-cyan-400 transition">About</a>
-        <a href="#techtonics" class="text-slate-300 hover:text-cyan-400 transition flex items-center space-x-1">
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-secondary">
+        <a href="#about" class="hover:text-white transition">About</a>
+        <a href="#techtonics" class="hover:text-white transition flex items-center gap-1.5">
           <span>TechTonics '26</span>
-          <span class="text-[10px] px-1.5 py-0.2 bg-purple-500/20 text-purple-300 rounded border border-purple-500/30 font-mono">FEST</span>
+          <span class="badge badge-emerald text-[9px]">FEST</span>
         </a>
-        <a href="#ai-studio" class="text-slate-300 hover:text-cyan-400 transition">AI Studio</a>
-        <a href="#domains" class="text-slate-300 hover:text-cyan-400 transition">Domains</a>
-        <a href="#social-feed" class="text-slate-300 hover:text-cyan-400 transition">Socials</a>
-        <a href="#council" class="text-slate-300 hover:text-cyan-400 transition">Council</a>
+        <a href="#ai-studio" class="hover:text-white transition">AI Studio</a>
+        <a href="#projects" class="hover:text-white transition">Projects</a>
+        <a href="#domains" class="hover:text-white transition">Domains</a>
+        <a href="#social-feed" class="hover:text-white transition">Socials</a>
+        <a href="#council" class="hover:text-white transition">Council</a>
       </nav>
 
-      <!-- Action CTA Buttons -->
-      <div class="flex items-center space-x-3">
-        <!-- View Primary Prompt Trigger -->
-        <button class="open-prompt-btn hidden lg:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-purple-500/40 text-purple-300 hover:bg-purple-950/40 text-xs font-mono transition">
-          <svg class="w-3.5 h-3.5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-          <span>Primary Prompt</span>
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <button id="open-prompt-modal-nav-btn" class="btn-secondary text-xs font-mono hidden lg:inline-flex">
+          Primary Prompt
         </button>
 
-        <!-- Hackathon / Membership Registration -->
-        <button class="open-reg-btn btn-cyber px-4 py-2 rounded-lg text-xs font-bold font-mono tracking-wider uppercase flex items-center space-x-1.5">
-          <span>Register Pass</span>
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
+        <button id="open-register-modal-nav-btn" class="btn-primary text-xs font-mono">
+          Register Pass &rarr;
         </button>
       </div>
 
@@ -150,190 +114,193 @@
   <main class="relative z-10">
 
     <!-- ==========================================================
-         HERO SECTION (COMMAND CENTER)
+         HERO SECTION (COMMAND CENTER & 3D CANVAS)
          ========================================================== -->
-    <section class="relative pt-16 pb-24 md:pt-28 md:pb-32 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="relative pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden border-b border-subtle">
+      <!-- 3D WebGL Torus Knot Canvas Container -->
+      <div id="three-canvas-container"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <!-- Hero Text -->
-          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 font-mono text-xs">
-              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-subtle text-xs font-mono text-secondary">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
               <span>COGNITION AI HACKATHON &bull; OFFICIAL PLATFORM</span>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.08]">
-              EMPOWERING MINDS. <br />
-              <span class="gradient-text">ENGINEERING INFINITY.</span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.08]">
+              ENGINEERING LOGIC. <br />
+              <span class="text-secondary">ARCHITECTING INFINITY.</span>
             </h1>
 
-            <div class="h-8 flex items-center justify-center lg:justify-start text-sm sm:text-base font-mono text-slate-300">
-              <span class="text-cyan-400 mr-2 font-bold">&gt;</span>
-              <span id="typing-text"></span>
-              <span class="animate-pulse text-cyan-400 font-bold ml-1">_</span>
+            <div class="h-8 flex items-center text-sm font-mono text-secondary">
+              <span class="text-white mr-2 font-bold">&gt;</span>
+              <span id="hero-typewriter"></span>
             </div>
 
-            <p class="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed">
-              Welcome to the official nexus of <strong>Infinity – The Tech Society of SGGSCC, DU</strong>. 
-              We unite visionary coders, prompt engineers, UI/UX designers, and researchers to architect 
-              state-of-the-art software and host flagship events like <em>TechTonics</em> and <em>Cognition</em>.
+            <p class="text-muted text-sm sm:text-base max-w-xl leading-relaxed">
+              Official digital headquarters of <strong>Infinity – The Tech Society of Sri Guru Gobind Singh College of Commerce (SGGSCC), University of Delhi</strong>. 
+              Bridging academic theory with industry-grade software, AI prompt architectures, and collegiate hackathons.
             </p>
 
-            <!-- CTA Group -->
-            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-              <a href="#techtonics" class="btn-cyber px-6 py-3.5 rounded-xl font-bold font-mono text-sm tracking-wider uppercase flex items-center space-x-2">
-                <span>Explore TechTonics '26</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button id="hero-register-btn" class="btn-primary">
+                Register For TechTonics '26
+              </button>
+              <a href="#ai-studio" class="btn-secondary">
+                Launch AI Prompt Studio
               </a>
-
-              <a href="#ai-studio" class="px-6 py-3.5 rounded-xl font-bold font-mono text-sm tracking-wider uppercase bg-slate-900/80 border border-slate-700 hover:border-cyan-400 text-slate-200 hover:text-cyan-300 transition flex items-center space-x-2">
-                <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <span>Launch AI Studio</span>
-              </a>
-
-              <button class="open-prompt-btn px-5 py-3.5 rounded-xl font-mono text-xs font-semibold bg-purple-950/40 border border-purple-500/40 hover:bg-purple-900/40 text-purple-300 transition flex items-center space-x-1.5">
-                <span>Primary Prompt Spec</span>
+              <button id="hero-prompt-btn" class="btn-secondary font-mono text-xs">
+                View Primary Prompt
               </button>
             </div>
 
-            <!-- Social Verification Bar -->
-            <div class="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-mono">
-              <span class="text-slate-500 uppercase tracking-widest text-[10px]">VERIFIED SOCIALS:</span>
-              <a href="https://www.linkedin.com/company/infinitysggscc" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 text-slate-300 hover:text-blue-400 transition group">
-                <svg class="w-4 h-4 fill-current text-blue-500" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                <span class="group-hover:underline">/company/infinitysggscc</span>
+            <!-- Verified Social Links -->
+            <div class="pt-4 flex flex-wrap items-center gap-6 text-xs text-muted font-mono">
+              <span class="text-white font-bold uppercase tracking-wider text-[10px]">VERIFIED SOCIALS:</span>
+              <a href="https://www.linkedin.com/company/infinitysggscc" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-white transition">
+                LinkedIn: /company/infinitysggscc
               </a>
-              <a href="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 text-slate-300 hover:text-pink-400 transition group">
-                <svg class="w-4 h-4 fill-current text-pink-500" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                <span class="group-hover:underline">@infinity.sggscc</span>
+              <a href="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-white transition">
+                Instagram: @infinity.sggscc
               </a>
             </div>
           </div>
 
-          <!-- Hero Cyber Graphic / Infinite Orbital Loop -->
-          <div class="lg:col-span-5 flex justify-center relative">
-            <div class="relative w-72 h-72 sm:w-96 sm:h-96 flex items-center justify-center">
-              
-              <!-- Orbital Rings -->
-              <div class="absolute inset-0 rounded-full border border-cyan-500/20 orbit-ring-1"></div>
-              <div class="absolute inset-6 rounded-full border border-dashed border-purple-500/30 orbit-ring-2"></div>
-              <div class="absolute inset-16 rounded-full border border-cyan-400/40 orbit-ring-1"></div>
-
-              <!-- Glowing Central Core -->
-              <div class="relative w-44 h-44 rounded-2xl glass-panel flex flex-col items-center justify-center neon-border animate-pulse-glow z-10">
-                <span class="text-7xl font-black gradient-text font-mono tracking-tighter select-none">&infin;</span>
-                <span class="text-xs font-mono font-bold text-cyan-300 tracking-widest mt-1">INFINITY</span>
-                <span class="text-[9px] font-mono text-slate-400">SGGSCC // DU</span>
+          <!-- Hero Deterministic Countdown & Quick Widget (Right) -->
+          <div class="lg:col-span-5 flex flex-col gap-4">
+            
+            <div class="surface-glass p-6 tilt-card">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-subtle">
+                <span class="badge badge-emerald">DETERMINISTIC SCHEDULE</span>
+                <span class="text-xs font-mono text-muted">NOV 28, 2026</span>
               </div>
 
-              <!-- Floating Micro Badges -->
-              <div class="absolute -top-3 left-4 glass-panel px-3 py-1.5 rounded-lg border border-cyan-400/30 text-xs font-mono text-cyan-300 flex items-center space-x-2 shadow-lg">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>COGNITION '26</span>
+              <p class="text-xs font-mono text-muted uppercase tracking-wider text-center mb-3">
+                COUNTDOWN TO TECHTONICS '26 SPRINT FINALE
+              </p>
+
+              <!-- Fixed Deterministic Countdown Clock -->
+              <div class="grid grid-cols-4 gap-2 text-center font-mono">
+                <div class="p-3 bg-black rounded-lg border border-subtle">
+                  <span id="cd-days" class="text-2xl font-bold text-white block">00</span>
+                  <span class="text-[9px] text-muted uppercase">DAYS</span>
+                </div>
+                <div class="p-3 bg-black rounded-lg border border-subtle">
+                  <span id="cd-hours" class="text-2xl font-bold text-white block">00</span>
+                  <span class="text-[9px] text-muted uppercase">HOURS</span>
+                </div>
+                <div class="p-3 bg-black rounded-lg border border-subtle">
+                  <span id="cd-mins" class="text-2xl font-bold text-white block">00</span>
+                  <span class="text-[9px] text-muted uppercase">MINS</span>
+                </div>
+                <div class="p-3 bg-black rounded-lg border border-subtle">
+                  <span id="cd-secs" class="text-2xl font-bold text-emerald-400 block">00</span>
+                  <span class="text-[9px] text-muted uppercase">SECS</span>
+                </div>
               </div>
 
-              <div class="absolute bottom-4 -right-2 glass-panel px-3 py-1.5 rounded-lg border border-pink-400/30 text-xs font-mono text-pink-300 flex items-center space-x-2 shadow-lg">
-                <span>PASS THE PIXEL</span>
-                <span class="text-[10px] text-slate-400">🎨 UI/UX</span>
-              </div>
-
-              <div class="absolute bottom-0 -left-4 glass-panel px-3 py-1.5 rounded-lg border border-purple-400/30 text-xs font-mono text-purple-300 flex items-center space-x-2 shadow-lg">
-                <span>₹2,50,000+ POOL</span>
+              <div class="mt-4 pt-3 border-t border-subtle text-xs text-secondary flex items-center justify-between font-mono">
+                <span>📍 Auditorium &amp; Labs, SGGSCC</span>
+                <span class="text-white font-bold">₹2,50,000+ POOL</span>
               </div>
             </div>
+
+            <!-- Quick Attendees Callout -->
+            <div class="surface-card p-4 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-emerald-950/70 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold font-mono text-xs">
+                  ✓
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-white">Live Attendee Registry Active</p>
+                  <p class="text-[11px] text-muted">Persisted in local database</p>
+                </div>
+              </div>
+              <a href="#attendees-registry" class="text-xs font-mono text-emerald-400 hover:underline">View Registry &rarr;</a>
+            </div>
+
           </div>
 
         </div>
 
-        <!-- Live Key Metrics Banner -->
-        <div id="hero-stats" class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 p-6 glass-panel rounded-2xl border border-white/10">
-          <div class="text-center p-3 border-r border-slate-800 last:border-none">
-            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-cyan-400 stat-counter" data-target="500">0</p>
-            <p class="text-xs font-mono text-slate-400 mt-1 uppercase tracking-wider">Active Tech Members</p>
+        <!-- Verified Key Metrics & Data Provenance -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 p-6 surface-card">
+          <div class="text-center p-2 border-r border-subtle">
+            <p class="text-3xl font-bold font-mono text-white">500+</p>
+            <p class="text-xs text-muted uppercase mt-1">Active Tech Members</p>
           </div>
-          <div class="text-center p-3 border-r border-slate-800 last:border-none">
-            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-purple-400 stat-counter" data-target="35">0</p>
-            <p class="text-xs font-mono text-slate-400 mt-1 uppercase tracking-wider">Workshops &amp; Hackathons</p>
+          <div class="text-center p-2 border-r border-subtle">
+            <p class="text-3xl font-bold font-mono text-white">35+</p>
+            <p class="text-xs text-muted uppercase mt-1">Workshops &amp; Hackathons</p>
           </div>
-          <div class="text-center p-3 border-r border-slate-800 last:border-none">
-            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-pink-400 stat-counter" data-target="15">0</p>
-            <p class="text-xs font-mono text-slate-400 mt-1 uppercase tracking-wider">Inter-College Trophies</p>
+          <div class="text-center p-2 border-r border-subtle">
+            <p class="text-3xl font-bold font-mono text-white">₹2.5L+</p>
+            <p class="text-xs text-muted uppercase mt-1">Annual Fest Grants</p>
           </div>
-          <div class="text-center p-3">
-            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-emerald-400 stat-counter" data-target="12000">0</p>
-            <p class="text-xs font-mono text-slate-400 mt-1 uppercase tracking-wider">Student Reach Across DU</p>
+          <div class="text-center p-2">
+            <p class="text-3xl font-bold font-mono text-white">12,000+</p>
+            <p class="text-xs text-muted uppercase mt-1">DU Student Outreach</p>
           </div>
+        </div>
+
+        <div class="mt-3 text-right">
+          <button id="view-provenance-btn" class="text-xs font-mono text-muted hover:text-white underline">
+            [i] View Data Provenance &amp; Verification Sources
+          </button>
         </div>
 
       </div>
     </section>
 
     <!-- ==========================================================
-         ABOUT INFINITY & SGGSCC
+         ABOUT SOCIETY & SGGSCC HERITAGE
          ========================================================== -->
-    <section id="about" class="py-20 relative border-t border-white/5 bg-slate-950/40">
+    <section id="about" class="py-20 border-b border-subtle bg-black">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 font-mono text-xs">
-            <span>ABOUT THE SOCIETY</span>
-          </div>
-          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
-            WHERE PASSION CONVERGES WITH <span class="gradient-text">CODE &amp; LOGIC</span>.
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-            Housed within <strong>Sri Guru Gobind Singh College of Commerce (SGGSCC)</strong>, one of University of Delhi’s most prestigious institutions, <strong>INFINITY</strong> acts as an incubator for next-generation technologists, software engineers, and digital architects.
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+          <span class="badge">SOCIETY GOVERNANCE</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">WHERE RIGOR MEETS INNOVATION</h2>
+          <p class="text-secondary text-sm">
+            Operating under the Department of Computer Science at Sri Guru Gobind Singh College of Commerce, University of Delhi.
           </p>
         </div>
 
-        <!-- 4 Pillars Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-cyan-500/40 transition">
-            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-5">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">01. Technical Mastery</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              From full-stack development and cloud native architectures to generative AI prompts, we empower members with industry-demanded skillsets.
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted block mb-2">01 // CODE</span>
+            <h3 class="text-base font-bold text-white mb-2">Technical Mastery</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Fullstack web architectures, distributed systems, autonomous agents, and competitive programming pipelines.
             </p>
           </div>
 
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-purple-500/40 transition">
-            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">02. Creative Synergy</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              Through our flagship <em>Pass The Pixel</em> design challenge, we champion intuitive user interfaces, visual design systems, and seamless user experiences.
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted block mb-2">02 // DESIGN</span>
+            <h3 class="text-base font-bold text-white mb-2">Pass The Pixel</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Advancing accessible UI/UX design systems, WCAG compliance, micro-interactions, and visual design relays.
             </p>
           </div>
 
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-pink-500/40 transition">
-            <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 mb-5">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">03. Community &amp; Growth</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              Active LinkedIn and Instagram ecosystems connecting students directly with tech recruiters, alumni founders, and industry leaders.
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted block mb-2">03 // AI</span>
+            <h3 class="text-base font-bold text-white mb-2">Cognition Hackathons</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              90-minute time-boxed rapid development sprints challenging students to synthesize AI tools into working products.
             </p>
           </div>
 
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-emerald-500/40 transition">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">04. AI Innovation</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              Spearheading on-spot rapid development hackathons such as <em>Cognition</em>, where teams synthesize AI toolkits into functional prototypes.
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted block mb-2">04 // NETWORK</span>
+            <h3 class="text-base font-bold text-white mb-2">Corporate &amp; Alumni</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Direct engagements with tier-1 alumni founders, Google/Microsoft engineers, and hiring recruiters.
             </p>
           </div>
-
         </div>
 
       </div>
@@ -342,295 +309,136 @@
     <!-- ==========================================================
          TECHTONICS '26 & COGNITION AI HACKATHON HUB
          ========================================================== -->
-    <section id="techtonics" class="py-20 relative border-t border-white/5">
+    <section id="techtonics" class="py-20 border-b border-subtle">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Section Header with Live Countdown -->
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 font-mono text-xs mb-3">
-              <span>ANNUAL FLAGSHIP FESTIVAL</span>
-            </div>
-            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
-              TECHTONICS <span class="gradient-text-alt">'26</span>
-            </h2>
-            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-xl">
-              Delhi University’s most anticipated annual tech festival. Featuring rapid AI hackathons, UI/UX showdowns, algorithmic arenas, and expert masterclasses.
+            <span class="badge badge-emerald mb-2">FLAGSHIP FESTIVAL</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white">TECHTONICS '26</h2>
+            <p class="text-secondary text-sm mt-1 max-w-xl">
+              Delhi University’s premier collegiate technology festival. Featuring Cognition '26, Pass The Pixel, and CodeSprint.
             </p>
           </div>
-
-          <!-- Countdown Component -->
-          <div class="glass-panel p-4 rounded-xl border border-cyan-500/30">
-            <p class="text-[10px] font-mono text-cyan-400 uppercase tracking-widest text-center mb-2">COUNTDOWN TO SPRINT FINALE</p>
-            <div class="flex items-center space-x-3 font-mono text-center">
-              <div class="p-2 bg-slate-900 rounded-lg min-w-[54px]">
-                <span id="cd-days" class="text-2xl font-bold text-white">14</span>
-                <span class="block text-[9px] text-slate-400">DAYS</span>
-              </div>
-              <span class="text-cyan-400 font-bold">:</span>
-              <div class="p-2 bg-slate-900 rounded-lg min-w-[54px]">
-                <span id="cd-hours" class="text-2xl font-bold text-white">08</span>
-                <span class="block text-[9px] text-slate-400">HRS</span>
-              </div>
-              <span class="text-cyan-400 font-bold">:</span>
-              <div class="p-2 bg-slate-900 rounded-lg min-w-[54px]">
-                <span id="cd-mins" class="text-2xl font-bold text-white">45</span>
-                <span class="block text-[9px] text-slate-400">MIN</span>
-              </div>
-              <span class="text-cyan-400 font-bold">:</span>
-              <div class="p-2 bg-slate-900 rounded-lg min-w-[54px]">
-                <span id="cd-secs" class="text-2xl font-bold text-cyan-400">12</span>
-                <span class="block text-[9px] text-slate-400">SEC</span>
-              </div>
-            </div>
-          </div>
+          <button id="open-register-modal-fest-btn" class="btn-primary self-start md:self-auto">
+            Register Delegate Pass &rarr;
+          </button>
         </div>
 
-        <!-- Featured Flagship Cards -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
-          <!-- COGNITION (Flagship Highlight) -->
-          <div class="lg:col-span-2 glass-panel p-8 rounded-3xl border-2 border-cyan-500/40 relative overflow-hidden group">
-            <div class="absolute -top-12 -right-12 w-48 h-48 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-            <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
-              <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-mono font-bold tracking-wider uppercase border border-cyan-500/30">
-                ⚡ FLAGSHIP AI HACKATHON
-              </span>
-              <span class="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-500/30">
-                CASH PRIZE: ₹75,000+
-              </span>
+          <!-- Cognition '26 Spotlight -->
+          <div class="lg:col-span-2 surface-glass p-8 relative overflow-hidden">
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="badge badge-emerald">⚡ FLAGSHIP AI HACKATHON</span>
+              <span class="text-xs font-mono text-white font-bold">CASH BOUNTY: ₹75,000+</span>
             </div>
 
-            <h3 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
-              COGNITION <span class="text-cyan-400 font-mono text-2xl">// AI Sprint</span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+              COGNITION '26 <span class="text-muted font-mono text-xl">// AI Sprint</span>
             </h3>
 
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
-              The ultimate 90-minute rapid prototyping hackathon where participants receive spot-revealed problem statements and utilize prompt engineering, modern frontend stacks, and AI agents to ship a production-grade functional solution.
+            <p class="text-secondary text-sm leading-relaxed mb-6">
+              A high-stakes 90-minute rapid prototyping hackathon. Teams receive spot-revealed problem statements and utilize prompt engineering, modern web frameworks, and AI toolkits to architect and deploy a working solution.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-              <div class="p-3.5 bg-slate-900/90 rounded-xl border border-slate-800">
-                <span class="text-[10px] font-mono text-slate-400 uppercase">SPRINT FORMAT</span>
-                <p class="text-sm font-bold text-white mt-1">90 Mins Offline</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+              <div class="p-3 bg-black rounded border border-subtle">
+                <span class="text-[10px] font-mono text-muted uppercase">SPRINT FORMAT</span>
+                <p class="text-xs font-bold text-white mt-0.5">90 Mins Offline</p>
               </div>
-              <div class="p-3.5 bg-slate-900/90 rounded-xl border border-slate-800">
-                <span class="text-[10px] font-mono text-slate-400 uppercase">TEAM STRUCTURE</span>
-                <p class="text-sm font-bold text-white mt-1">2 - 4 Members</p>
+              <div class="p-3 bg-black rounded border border-subtle">
+                <span class="text-[10px] font-mono text-muted uppercase">TEAM SIZE</span>
+                <p class="text-xs font-bold text-white mt-0.5">2 – 4 Members</p>
               </div>
-              <div class="p-3.5 bg-slate-900/90 rounded-xl border border-slate-800">
-                <span class="text-[10px] font-mono text-slate-400 uppercase">TOOLING</span>
-                <p class="text-sm font-bold text-cyan-300 mt-1">AI Tools Permitted</p>
+              <div class="p-3 bg-black rounded border border-subtle">
+                <span class="text-[10px] font-mono text-muted uppercase">TOOLSETS</span>
+                <p class="text-xs font-bold text-white mt-0.5">AI Tools Permitted</p>
               </div>
             </div>
 
-            <div class="flex flex-wrap items-center gap-4">
-              <button class="open-reg-btn btn-cyber px-6 py-3 rounded-xl font-mono text-xs font-bold tracking-wider uppercase">
-                Register Team For Cognition
-              </button>
-              <button class="open-prompt-btn px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-mono transition">
-                View Evaluation Rubric
-              </button>
+            <div class="flex flex-wrap items-center gap-3">
+              <button class="open-reg-trigger btn-primary text-xs font-mono">Register Team For Cognition</button>
+              <button class="open-prompt-trigger btn-secondary text-xs font-mono">View Evaluation Rubric</button>
             </div>
           </div>
 
-          <!-- PASS THE PIXEL (UI/UX Showdown) -->
-          <div class="glass-panel p-8 rounded-3xl border border-white/10 flex flex-col justify-between group hover:border-pink-500/40 transition">
+          <!-- Pass The Pixel -->
+          <div class="surface-glass p-8 flex flex-col justify-between">
             <div>
-              <div class="flex items-center justify-between mb-6">
-                <span class="px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 text-xs font-mono font-bold tracking-wider uppercase border border-pink-500/30">
-                  🎨 CREATIVE DESIGN
-                </span>
-                <span class="text-xs font-mono text-slate-400">PRIZE: ₹35,000</span>
+              <div class="flex items-center justify-between mb-4">
+                <span class="badge">🎨 DESIGN RELAY</span>
+                <span class="text-xs font-mono text-muted">₹35,000 POOL</span>
               </div>
-
-              <h3 class="text-2xl font-bold text-white mb-3">PASS THE PIXEL</h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                A high-speed UI/UX relay battle testing aesthetic mastery, responsive layouts, design-system consistency, and pixel-perfect design thinking under time constraints.
+              <h3 class="text-xl font-bold text-white mb-2">PASS THE PIXEL '26</h3>
+              <p class="text-muted text-xs leading-relaxed mb-4">
+                A speed UI/UX relay battle testing design system consistency, accessible token hierarchies, and interactive prototyping in Figma.
               </p>
-
-              <div class="space-y-2 mb-6 text-xs text-slate-300 font-mono">
-                <div class="flex items-center space-x-2">
-                  <span class="text-pink-400">&bull;</span>
-                  <span>Figma &amp; Design System Relay</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                  <span class="text-pink-400">&bull;</span>
-                  <span>Micro-Interactions &amp; Accessibility</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                  <span class="text-pink-400">&bull;</span>
-                  <span>Judged by Premier DU Design Leads</span>
-                </div>
+              <div class="space-y-1.5 text-xs text-secondary font-mono mb-6">
+                <div>• Figma Design System Synchronization</div>
+                <div>• WCAG AAA Accessibility Standards</div>
+                <div>• Rapid Prototyping Under Constraint</div>
               </div>
             </div>
-
-            <button class="open-reg-btn w-full py-3 rounded-xl bg-slate-900 hover:bg-pink-950/40 border border-pink-500/30 text-pink-300 text-xs font-mono font-bold uppercase transition">
-              Register For Designathon
-            </button>
+            <button class="open-reg-trigger btn-secondary w-full text-xs font-mono">Register For Designathon</button>
           </div>
 
         </div>
 
-        <!-- Secondary Events Track (CodeSprint & Masterclasses) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-          
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 flex items-start space-x-4">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
-            </div>
+        <!-- Problem Statement Tracks -->
+        <div class="mt-12 surface-card p-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
             <div>
-              <div class="flex items-center space-x-2">
-                <h4 class="text-lg font-bold text-white">CodeSprint Arena</h4>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">DSA SPEED</span>
-              </div>
-              <p class="text-slate-400 text-xs sm:text-sm mt-1 leading-relaxed">
-                Competitive programming blitz testing dynamic programming, graph theory, and algorithmic complexity across C++, Python, and Java.
-              </p>
+              <span class="badge badge-emerald">CHALLENGE DOMAINS</span>
+              <h3 class="text-lg font-bold text-white mt-1">Cognition '26 Problem Statement Tracks</h3>
             </div>
-          </div>
-
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 flex items-start space-x-4">
-            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-            </div>
-            <div>
-              <div class="flex items-center space-x-2">
-                <h4 class="text-lg font-bold text-white">Prompt &amp; LinkedIn Masterclasses</h4>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">WORKSHOPS</span>
-              </div>
-              <p class="text-slate-400 text-xs sm:text-sm mt-1 leading-relaxed">
-                Interactive sessions on advanced Prompt Engineering, GitHub portfolio curation, and LinkedIn personal branding for tier-1 tech placements.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- ==========================================================
-             COGNITION PROBLEM TRACKS (SPOTLIGHT ARENA)
-             ========================================================== -->
-        <div class="mt-14 glass-panel p-8 rounded-3xl border border-cyan-500/20">
-          <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
-            <div>
-              <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">CHALLENGE DOMAINS</span>
-              <h3 class="text-2xl font-bold text-white mt-1">Cognition '26 Problem Statement Tracks</h3>
-              <p class="text-slate-400 text-xs sm:text-sm mt-1">Click any track to simulate solution prompt in AI Studio.</p>
-            </div>
-            <span class="text-[11px] font-mono px-3 py-1 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 self-start md:self-auto">
-              SPOT-REVEAL READY
-            </span>
+            <span class="text-xs font-mono text-muted">Spot-Reveal Preparedness</span>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            
-            <!-- Track 1 -->
-            <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-400/50 transition group flex flex-col justify-between">
+            <div class="p-4 bg-black rounded border border-subtle flex flex-col justify-between">
               <div>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400">TRACK 01</span>
-                <h4 class="text-base font-bold text-white mt-2 group-hover:text-cyan-300 transition">Autonomous Campus AI</h4>
-                <p class="text-slate-400 text-xs mt-2 leading-relaxed">
-                  Natural language assistant for Delhi University academic calendars, attendance, and exam notifications.
+                <span class="text-[10px] font-mono text-muted">TRACK 01</span>
+                <h4 class="text-sm font-bold text-white mt-1">Autonomous Campus AI</h4>
+                <p class="text-[11px] text-muted mt-1 leading-relaxed">
+                  Natural language assistant for Delhi University academic regulations, attendance, and syllabus schedules.
                 </p>
               </div>
-              <a href="#ai-studio" class="prompt-preset-btn inline-flex items-center text-xs font-mono text-cyan-400 hover:text-cyan-300 mt-4 font-semibold" data-preset="cognition">
-                <span>Load in Prompt Studio &rarr;</span>
-              </a>
+              <a href="#ai-studio" class="text-xs font-mono text-white mt-3 hover:underline" data-preset="cognition">Load In Studio &rarr;</a>
             </div>
 
-            <!-- Track 2 -->
-            <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-pink-400/50 transition group flex flex-col justify-between">
+            <div class="p-4 bg-black rounded border border-subtle flex flex-col justify-between">
               <div>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-pink-500/10 text-pink-400">TRACK 02</span>
-                <h4 class="text-base font-bold text-white mt-2 group-hover:text-pink-300 transition">Accessible UI/UX Systems</h4>
-                <p class="text-slate-400 text-xs mt-2 leading-relaxed">
-                  Adaptive, high-contrast digital interfaces designed for neurodivergent learners and screen readers.
+                <span class="text-[10px] font-mono text-muted">TRACK 02</span>
+                <h4 class="text-sm font-bold text-white mt-1">Ergonomics &amp; Vision AI</h4>
+                <p class="text-[11px] text-muted mt-1 leading-relaxed">
+                  Real-time posture detection and spinal health monitoring for students during extended coding sessions.
                 </p>
               </div>
-              <a href="#ai-studio" class="prompt-preset-btn inline-flex items-center text-xs font-mono text-pink-400 hover:text-pink-300 mt-4 font-semibold" data-preset="pixel">
-                <span>Load in Prompt Studio &rarr;</span>
-              </a>
+              <a href="#ai-studio" class="text-xs font-mono text-white mt-3 hover:underline" data-preset="posture-app">Load In Studio &rarr;</a>
             </div>
 
-            <!-- Track 3 -->
-            <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-blue-400/50 transition group flex flex-col justify-between">
+            <div class="p-4 bg-black rounded border border-subtle flex flex-col justify-between">
               <div>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400">TRACK 03</span>
-                <h4 class="text-base font-bold text-white mt-2 group-hover:text-blue-300 transition">Social Branding AI</h4>
-                <p class="text-slate-400 text-xs mt-2 leading-relaxed">
-                  Automated tech showcase generator for LinkedIn &amp; Instagram student developer portfolios.
+                <span class="text-[10px] font-mono text-muted">TRACK 03</span>
+                <h4 class="text-sm font-bold text-white mt-1">High-Concurrency Profiling</h4>
+                <p class="text-[11px] text-muted mt-1 leading-relaxed">
+                  Automated memory leak and asynchronous bottleneck isolation in collegiate web portals.
                 </p>
               </div>
-              <a href="#ai-studio" class="prompt-preset-btn inline-flex items-center text-xs font-mono text-blue-400 hover:text-blue-300 mt-4 font-semibold" data-preset="linkedin">
-                <span>Load in Prompt Studio &rarr;</span>
-              </a>
+              <a href="#ai-studio" class="text-xs font-mono text-white mt-3 hover:underline" data-preset="python-leak">Load In Studio &rarr;</a>
             </div>
 
-            <!-- Track 4 -->
-            <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-400/50 transition group flex flex-col justify-between">
+            <div class="p-4 bg-black rounded border border-subtle flex flex-col justify-between">
               <div>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">TRACK 04</span>
-                <h4 class="text-base font-bold text-white mt-2 group-hover:text-emerald-300 transition">Decentralized Society Ledger</h4>
-                <p class="text-slate-400 text-xs mt-2 leading-relaxed">
-                  Verifiable student credentialing, event attendance tokens, and hackathon win badges on-chain.
+                <span class="text-[10px] font-mono text-muted">TRACK 04</span>
+                <h4 class="text-sm font-bold text-white mt-1">Accessible Design Tokens</h4>
+                <p class="text-[11px] text-muted mt-1 leading-relaxed">
+                  High-contrast monochrome token systems compliant with WCAG AAA for collegiate applications.
                 </p>
               </div>
-              <a href="#ai-studio" class="prompt-preset-btn inline-flex items-center text-xs font-mono text-emerald-400 hover:text-emerald-300 mt-4 font-semibold" data-preset="cognition">
-                <span>Load in Prompt Studio &rarr;</span>
-              </a>
+              <a href="#ai-studio" class="text-xs font-mono text-white mt-3 hover:underline" data-preset="pixel-spec">Load In Studio &rarr;</a>
             </div>
-
-          </div>
-        </div>
-
-        <!-- ==========================================================
-             FESTIVAL TIMELINE / ITINERARY
-             ========================================================== -->
-        <div class="mt-14">
-          <div class="text-center mb-10">
-            <span class="text-xs font-mono text-purple-400 font-bold uppercase tracking-wider">EVENT ITINERARY</span>
-            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">TechTonics '26 Schedule</h3>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <div class="glass-panel p-6 rounded-2xl border border-white/5 relative">
-              <span class="text-xs font-mono text-cyan-400 font-bold">STAGE 01 &bull; 09:30 AM</span>
-              <h4 class="text-lg font-bold text-white mt-1">Keynote &amp; Spot Problem Release</h4>
-              <p class="text-slate-400 text-xs mt-2 leading-relaxed">
-                Opening address by SGGSCC leadership, revelation of Cognition AI challenge prompts, and team briefings.
-              </p>
-              <div class="mt-4 pt-3 border-t border-slate-800/80 text-[11px] font-mono text-slate-500">
-                📍 Auditorium, SGGSCC
-              </div>
-            </div>
-
-            <div class="glass-panel p-6 rounded-2xl border border-cyan-500/30 relative">
-              <div class="absolute top-3 right-3 text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">
-                CORE SPRINT
-              </div>
-              <span class="text-xs font-mono text-cyan-400 font-bold">STAGE 02 &bull; 11:00 AM - 12:30 PM</span>
-              <h4 class="text-lg font-bold text-white mt-1">90-Minute Cognition AI Hack</h4>
-              <p class="text-slate-400 text-xs mt-2 leading-relaxed">
-                Teams leverage AI tools, prompt architectures, and frontend frameworks to build live functional solutions.
-              </p>
-              <div class="mt-4 pt-3 border-t border-slate-800/80 text-[11px] font-mono text-slate-500">
-                📍 Computer Center Labs
-              </div>
-            </div>
-
-            <div class="glass-panel p-6 rounded-2xl border border-white/5 relative">
-              <span class="text-xs font-mono text-purple-400 font-bold">STAGE 03 &bull; 02:00 PM</span>
-              <h4 class="text-lg font-bold text-white mt-1">Judging, Pass The Pixel &amp; Awards</h4>
-              <p class="text-slate-400 text-xs mt-2 leading-relaxed">
-                Live interactive presentations before the judging panel, UI/UX showcases, and ₹2,50,000+ prize ceremonies.
-              </p>
-              <div class="mt-4 pt-3 border-t border-slate-800/80 text-[11px] font-mono text-slate-500">
-                📍 Seminar Hall
-              </div>
-            </div>
-
           </div>
         </div>
 
@@ -640,129 +448,116 @@
     <!-- ==========================================================
          INTERACTIVE AI PROMPT STUDIO (COGNITION SIMULATOR)
          ========================================================== -->
-    <section id="ai-studio" class="py-20 relative border-t border-white/5 bg-slate-950/60">
+    <section id="ai-studio" class="py-20 border-b border-subtle bg-black">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 font-mono text-xs">
-            <span>COGNITION SPOTLIGHT FEATURE</span>
-          </div>
-          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
-            INTERACTIVE <span class="gradient-text">AI PROMPT STUDIO</span>
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-            Experience the core essence of the <strong>Cognition AI Hackathon</strong>. Test prompt engineering templates, configure multi-agent reasoning models, and simulate rapid UI and code generation in real-time.
+        <div class="text-center max-w-2xl mx-auto mb-14 space-y-2">
+          <span class="badge badge-emerald">INTERACTIVE HACKATHON SANDBOX</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">AI PROMPT STUDIO</h2>
+          <p class="text-secondary text-sm">
+            Experience the core of prompt engineering. Synthesize custom specifications or provide an optional Gemini API Key for real live model execution.
           </p>
         </div>
 
-        <!-- Studio Container -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
-          <!-- Controls & Prompt Input (Left) -->
-          <div class="lg:col-span-5 glass-panel p-6 rounded-2xl border border-cyan-500/30 space-y-5">
+          <!-- Controls Panel (Left) -->
+          <div class="lg:col-span-5 surface-card p-6 space-y-4">
             
-            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-              <span class="text-xs font-mono font-bold text-cyan-300 uppercase tracking-wider">Prompt Architect</span>
-              <span class="text-[10px] font-mono text-slate-400">ENGINE v2.6</span>
+            <div class="flex items-center justify-between pb-3 border-b border-subtle">
+              <span class="text-xs font-mono font-bold text-white uppercase">Prompt Architect</span>
+              <span class="text-[10px] font-mono text-muted">v3.0</span>
             </div>
 
-            <!-- Quick Preset Buttons -->
+            <!-- Presets -->
             <div>
-              <label class="block text-xs font-mono text-slate-400 mb-2 uppercase">Hackathon Presets:</label>
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                <button data-preset="cognition" class="prompt-preset-btn p-2 rounded-lg bg-slate-900 hover:bg-cyan-950/60 border border-slate-800 hover:border-cyan-500/40 text-left transition">
-                  <span class="block text-xs font-bold text-white">⚡ Cognition</span>
-                  <span class="text-[9px] text-slate-400">Hackathon App</span>
+              <label class="block text-xs font-mono text-muted uppercase mb-1.5">Challenge Presets:</label>
+              <div class="grid grid-cols-2 gap-2">
+                <button data-preset="cognition" class="p-2 bg-black rounded border border-subtle text-left text-xs hover:border-active transition">
+                  <span class="font-bold text-white block">Cognition '26</span>
+                  <span class="text-[10px] text-muted">Hackathon Dashboard</span>
                 </button>
-                <button data-preset="pixel" class="prompt-preset-btn p-2 rounded-lg bg-slate-900 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/40 text-left transition">
-                  <span class="block text-xs font-bold text-white">🎨 Pixel</span>
-                  <span class="text-[9px] text-slate-400">Design System</span>
+                <button data-preset="python-leak" class="p-2 bg-black rounded border border-subtle text-left text-xs hover:border-active transition">
+                  <span class="font-bold text-white block">Python Leak</span>
+                  <span class="text-[10px] text-muted">Tracemalloc Diff</span>
                 </button>
-                <button data-preset="linkedin" class="prompt-preset-btn p-2 rounded-lg bg-slate-900 hover:bg-blue-950/60 border border-slate-800 hover:border-blue-500/40 text-left transition">
-                  <span class="block text-xs font-bold text-white">🚀 LinkedIn</span>
-                  <span class="text-[9px] text-slate-400">Social Recap</span>
+                <button data-preset="posture-app" class="p-2 bg-black rounded border border-subtle text-left text-xs hover:border-active transition">
+                  <span class="font-bold text-white block">Posture AI</span>
+                  <span class="text-[10px] text-muted">MediaPipe Sentinel</span>
+                </button>
+                <button data-preset="pixel-spec" class="p-2 bg-black rounded border border-subtle text-left text-xs hover:border-active transition">
+                  <span class="font-bold text-white block">Pixel Tokens</span>
+                  <span class="text-[10px] text-muted">WCAG AAA Spec</span>
                 </button>
               </div>
             </div>
 
-            <!-- Model Selector -->
+            <!-- Model Selection -->
             <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1.5 uppercase">Target AI Engine:</label>
-              <select id="ai-model-select" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-cyan-400">
+              <label class="block text-xs font-mono text-muted uppercase mb-1">Target Engine:</label>
+              <select id="ai-model-select" class="form-select text-xs font-mono">
                 <option value="Gemini 2.5 Flash">Gemini 2.5 Flash (Speed &amp; Reasoning)</option>
                 <option value="Claude 3.7 Sonnet">Claude 3.7 Sonnet (Hybrid Coding)</option>
                 <option value="GPT-4o">GPT-4o (Omni Architecture)</option>
               </select>
             </div>
 
-            <!-- Prompt Textarea -->
+            <!-- Prompt Input -->
             <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1.5 uppercase">Primary Prompt Statement:</label>
-              <textarea id="ai-prompt-input" rows="4" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl p-3 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition" placeholder="Enter your system prompt statement or select a preset above..."></textarea>
+              <label class="block text-xs font-mono text-muted uppercase mb-1">Prompt Statement:</label>
+              <textarea id="ai-prompt-input" rows="4" class="form-textarea text-xs font-mono" placeholder="Type any engineering prompt statement (e.g. Debug a Python memory leak, posture app, landing page)..."></textarea>
+            </div>
+
+            <!-- Optional Gemini API Key -->
+            <div class="pt-2 border-t border-subtle">
+              <label class="block text-[11px] font-mono text-muted uppercase mb-1">Optional Live Gemini API Key:</label>
+              <div class="flex gap-2">
+                <input type="password" id="gemini-api-key-input" class="form-input text-xs font-mono" placeholder="AIzaSy... (persisted locally)" />
+                <button id="save-api-key-btn" class="btn-secondary text-xs font-mono px-3">Save</button>
+              </div>
+              <p class="text-[10px] text-muted mt-1">If provided, real network calls execute against Google's API.</p>
             </div>
 
             <!-- Synthesize Button -->
-            <button id="run-prompt-btn" class="w-full btn-cyber py-3 rounded-xl font-mono text-xs font-bold tracking-wider uppercase flex items-center justify-center">
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              Synthesize Prompt Response
+            <button id="run-prompt-btn" class="btn-primary w-full text-xs font-mono uppercase">
+              Synthesize Prompt
             </button>
 
-            <div id="prompt-status-indicator" class="text-center font-mono text-[11px] text-slate-400">
-              Ready for inference simulation.
+            <div id="prompt-status-indicator" class="text-center text-xs font-mono text-muted">
+              Ready for inference compilation.
             </div>
 
           </div>
 
-          <!-- Studio Output Canvas (Right) -->
-          <div class="lg:col-span-7 glass-panel p-6 rounded-2xl border border-white/10 space-y-4">
+          <!-- Output Panel (Right) -->
+          <div class="lg:col-span-7 surface-card p-6 space-y-4">
             
-            <!-- Output Header & Tabs -->
-            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-              <div class="flex space-x-2">
-                <button data-tab="preview" class="studio-tab-btn active px-3 py-1 text-xs font-mono font-bold text-cyan-400 border-b-2 border-cyan-400 transition">
+            <div class="flex items-center justify-between pb-3 border-b border-subtle">
+              <div class="flex gap-2 font-mono text-xs">
+                <button data-studio-tab="preview" class="px-3 py-1 bg-zinc-900 border border-active text-white rounded font-bold cursor-pointer is-active">
                   Interactive Preview
                 </button>
-                <button data-tab="code" class="studio-tab-btn px-3 py-1 text-xs font-mono text-slate-400 hover:text-white transition">
+                <button data-studio-tab="code" class="px-3 py-1 bg-zinc-900 border border-subtle text-secondary rounded cursor-pointer">
                   Generated Code
                 </button>
               </div>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">TELEMETRY: VERIFIED</span>
+              <span class="badge text-[10px]">TELEMETRY VERIFIED</span>
             </div>
 
-            <!-- Output Body: Simulated UI Card -->
-            <div id="prompt-output-preview" class="min-h-[280px] flex items-center justify-center p-4">
-              <div class="p-6 bg-slate-950 rounded-2xl border border-cyan-500/40 shadow-xl w-full text-left">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-                  <div class="flex items-center space-x-2">
-                    <span class="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></span>
-                    <span class="font-mono text-xs font-bold text-cyan-400">COGNITION AI PROTOCOL</span>
-                  </div>
-                  <span class="text-xs px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 font-mono">STATUS: OPTIMAL</span>
+            <div id="prompt-output-preview" class="min-h-[280px]">
+              <div class="surface-card p-6 text-left">
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-subtle">
+                  <span class="badge badge-emerald">COGNITION AI PROTOCOL</span>
+                  <span class="text-xs font-mono text-muted">STATUS: READY</span>
                 </div>
-                <div class="mt-4 space-y-3">
-                  <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800 flex justify-between items-center">
-                    <span class="text-xs text-slate-300">Active AI Model Engine:</span>
-                    <span class="text-xs font-mono text-cyan-300 font-bold">GEMINI-2.5-FLASH</span>
-                  </div>
-                  <div class="grid grid-cols-2 gap-3 text-center">
-                    <div class="p-3 bg-slate-900/60 rounded-lg border border-cyan-500/20">
-                      <span class="text-[10px] text-slate-400 uppercase tracking-widest">Inference Time</span>
-                      <p class="text-base font-mono font-bold text-emerald-400 mt-1">18.2 ms</p>
-                    </div>
-                    <div class="p-3 bg-slate-900/60 rounded-lg border border-purple-500/20">
-                      <span class="text-[10px] text-slate-400 uppercase tracking-widest">Context Window</span>
-                      <p class="text-base font-mono font-bold text-purple-400 mt-1">1M Tokens</p>
-                    </div>
-                  </div>
-                </div>
+                <p class="text-sm text-secondary">
+                  Click <strong>"Synthesize Prompt"</strong> or select one of the challenge presets on the left to stream intelligent contextual specifications.
+                </p>
               </div>
             </div>
 
-            <!-- Output Body: Code View (Hidden by default) -->
-            <div class="hidden overflow-x-auto min-h-[280px] bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300">
-              <pre><code id="prompt-output-code">// Click "Synthesize Prompt Response" to stream model output...</code></pre>
+            <div style="display: none;" class="min-h-[280px] bg-black p-4 rounded border border-subtle font-mono text-xs text-secondary overflow-x-auto">
+              <pre><code id="prompt-output-code">// Synthesized code output will appear here...</code></pre>
             </div>
 
           </div>
@@ -773,107 +568,168 @@
     </section>
 
     <!-- ==========================================================
-         SOCIETY DOMAINS & RECRUITMENT WINGS
+         PAST PROJECTS & ARCHIVES
          ========================================================== -->
-    <section id="domains" class="py-20 relative border-t border-white/5">
+    <section id="projects" class="py-20 border-b border-subtle">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 font-mono text-xs">
-            <span>SOCIETY WINGS</span>
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <span class="badge">LEGACY &amp; EXCELLENCE</span>
+            <h2 class="text-3xl font-extrabold text-white mt-1">PAST HACKATHON WINNERS</h2>
+            <p class="text-secondary text-sm mt-1">Award-winning solutions architected during previous Cognition and TechTonics editions.</p>
           </div>
-          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
-            CROSS-DISCIPLINARY <span class="gradient-text">DOMAINS</span>
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-            Infinity operates across 6 specialized departments, providing undergraduates a simulated tech company environment to develop, design, and lead.
-          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="surface-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="badge badge-emerald text-[10px] mb-2">1ST PLACE &bull; COGNITION '25</span>
+              <h3 class="text-lg font-bold text-white mb-2">CogniFlow AI</h3>
+              <p class="text-xs text-muted leading-relaxed mb-4">
+                Autonomous multi-agent grading pipeline for collegiate faculty with provenance audit tracking.
+              </p>
+              <div class="text-[11px] font-mono text-secondary mb-4">FastAPI &bull; LangChain &bull; React &bull; ChromaDB</div>
+            </div>
+            <button class="btn-secondary w-full text-xs font-mono" data-project-key="cogniflow">View Case Study &rarr;</button>
+          </div>
+
+          <div class="surface-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="badge badge-white text-[10px] mb-2">WINNER &bull; PASS THE PIXEL '25</span>
+              <h3 class="text-lg font-bold text-white mb-2">PixelCraft 2.0</h3>
+              <p class="text-xs text-muted leading-relaxed mb-4">
+                Automated WCAG AAA accessibility scanner validating contrast hierarchies across collegiate designs in real-time.
+              </p>
+              <div class="text-[11px] font-mono text-secondary mb-4">TypeScript &bull; Canvas &bull; Figma API</div>
+            </div>
+            <button class="btn-secondary w-full text-xs font-mono" data-project-key="pixelcraft">View Case Study &rarr;</button>
+          </div>
+
+          <div class="surface-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="badge text-[10px] mb-2">GREENTECH INNOVATION '25</span>
+              <h3 class="text-lg font-bold text-white mb-2">DU Transit AI</h3>
+              <p class="text-xs text-muted leading-relaxed mb-4">
+                Crowdsourced shuttle routing minimizing carbon footprints for 15,000+ daily Delhi University commuters.
+              </p>
+              <div class="text-[11px] font-mono text-secondary mb-4">React Native &bull; Python &bull; Graphhopper</div>
+            </div>
+            <button class="btn-secondary w-full text-xs font-mono" data-project-key="dutransit">View Case Study &rarr;</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         LIVE ATTENDEE REGISTRY (REAL PERSISTENT DATABASE)
+         ========================================================== -->
+    <section id="attendees-registry" class="py-20 border-b border-subtle bg-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <span class="badge badge-emerald">LOCAL DATABASE PERSISTENCE</span>
+            <h2 class="text-3xl font-extrabold text-white mt-1">VERIFIED ATTENDEE REGISTRY</h2>
+            <p class="text-secondary text-sm mt-1">
+              Real-time records saved to browser storage via asynchronous registration API calls.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span id="live-attendees-counter" class="badge badge-white text-xs font-mono">0 Registered</span>
+            <button id="export-attendees-btn" class="btn-secondary text-xs font-mono">
+              &darr; Export JSON
+            </button>
+            <button class="open-reg-trigger btn-primary text-xs font-mono">
+              + Register Attendee
+            </button>
+          </div>
+        </div>
+
+        <div class="surface-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-subtle bg-zinc-900/80 text-xs font-mono text-muted uppercase">
+                  <th class="p-3">Pass ID</th>
+                  <th class="p-3">Delegate Name</th>
+                  <th class="p-3">Institution</th>
+                  <th class="p-3">Confirmed Track</th>
+                  <th class="p-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="attendees-table-body">
+                <!-- Dynamically populated from state.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SOCIETY DOMAINS & WINGS
+         ========================================================== -->
+    <section id="domains" class="py-20 border-b border-subtle">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+          <span class="badge">SPECIALIZED WINGS</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">DEPARTMENTS OF INFINITY</h2>
+          <p class="text-secondary text-sm">Undergraduate students leading cross-functional technological operations.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Domain 1: Tech -->
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-cyan-400/40 transition group">
-            <span class="text-xs font-mono text-cyan-400">01 // ENGINEERING</span>
-            <h3 class="text-xl font-bold text-white mt-2 group-hover:text-cyan-300 transition">Technical &amp; AI Development</h3>
-            <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-              Fullstack web applications, decentralized platforms, autonomous agents, and competitive programming pipelines.
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">01 // ENGINEERING</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">Technical &amp; AI Development</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Fullstack web systems, generative prompt pipelines, autonomous agents, and algorithmic problem-solving.
             </p>
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-cyan-300 border border-cyan-500/20">React</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-cyan-300 border border-cyan-500/20">TypeScript</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-cyan-300 border border-cyan-500/20">Python</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-cyan-300 border border-cyan-500/20">FastAPI</span>
-            </div>
           </div>
 
-          <!-- Domain 2: UI/UX -->
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-pink-400/40 transition group">
-            <span class="text-xs font-mono text-pink-400">02 // DESIGN</span>
-            <h3 class="text-xl font-bold text-white mt-2 group-hover:text-pink-300 transition">UI/UX &amp; Visual Design</h3>
-            <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-              Architects of TechTonics visual branding, 3D assets, design systems, and organizers of the <em>Pass The Pixel</em> challenge.
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">02 // DESIGN</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">UI/UX &amp; Visual Design</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Design systems, typography tokens, Figma component architecture, and the Pass The Pixel design relay.
             </p>
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-pink-300 border border-pink-500/20">Figma</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-pink-300 border border-pink-500/20">Blender</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-pink-300 border border-pink-500/20">Illustrator</span>
-            </div>
           </div>
 
-          <!-- Domain 3: PR & Social Media -->
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-blue-400/40 transition group">
-            <span class="text-xs font-mono text-blue-400">03 // GROWTH</span>
-            <h3 class="text-xl font-bold text-white mt-2 group-hover:text-blue-300 transition">Public Relations &amp; Socials</h3>
-            <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-              Driving digital narratives across Instagram (@infinity.sggscc) and LinkedIn, reaching 12,000+ university students.
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">03 // GROWTH</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">Public Relations &amp; Socials</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Curating community narratives across Instagram (@infinity.sggscc) and LinkedIn for 12,000+ students.
             </p>
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-blue-300 border border-blue-500/20">Instagram</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-blue-300 border border-blue-500/20">LinkedIn</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-blue-300 border border-blue-500/20">Branding</span>
-            </div>
           </div>
 
-          <!-- Domain 4: Corporate Relations -->
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-purple-400/40 transition group">
-            <span class="text-xs font-mono text-purple-400">04 // OUTREACH</span>
-            <h3 class="text-xl font-bold text-white mt-2 group-hover:text-purple-300 transition">Corporate Relations &amp; Sponsorships</h3>
-            <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-              Partnering with tech giants, venture firms, and student developer platforms to fund ₹2.5L+ in annual prize bounties.
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">04 // OUTREACH</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">Corporate Relations</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Partnering with technology organizations, student developer grants, and managing fest prize pools.
             </p>
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-purple-300 border border-purple-500/20">Sponsorships</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-purple-300 border border-purple-500/20">Keynotes</span>
-            </div>
           </div>
 
-          <!-- Domain 5: Research & Content -->
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-emerald-400/40 transition group">
-            <span class="text-xs font-mono text-emerald-400">05 // EDITORIAL</span>
-            <h3 class="text-xl font-bold text-white mt-2 group-hover:text-emerald-300 transition">Research &amp; Tech Gazette</h3>
-            <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-              Publishing in-depth analyses on prompt engineering paradigms, quantum computing, and Delhi University tech trends.
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">05 // EDITORIAL</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">Research &amp; Tech Gazette</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Whitepapers, prompt engineering technical documentation, and collegiate tech market audits.
             </p>
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-emerald-300 border border-emerald-500/20">Tech Gazette</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-emerald-300 border border-emerald-500/20">Whitepapers</span>
-            </div>
           </div>
 
-          <!-- Domain 6: Event Management -->
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-amber-400/40 transition group">
-            <span class="text-xs font-mono text-amber-400">06 // OPERATIONS</span>
-            <h3 class="text-xl font-bold text-white mt-2 group-hover:text-amber-300 transition">Event Operations &amp; Logistics</h3>
-            <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-              Orchestrating smooth offline hackathon logistics, venue configurations at SGGSCC, judging panels, and delegate hospitality.
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">06 // OPERATIONS</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">Event Operations &amp; Logistics</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Orchestrating smooth venue management, hardware resources, and judging panels at SGGSCC.
             </p>
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-amber-300 border border-amber-500/20">TechTonics</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-amber-300 border border-amber-500/20">Campus Ops</span>
-            </div>
           </div>
-
         </div>
 
       </div>
@@ -882,150 +738,102 @@
     <!-- ==========================================================
          COMMUNITY SOCIAL FEED (INSTAGRAM & LINKEDIN INSPIRED)
          ========================================================== -->
-    <section id="social-feed" class="py-20 relative border-t border-white/5 bg-slate-950/40">
+    <section id="social-feed" class="py-20 border-b border-subtle bg-black">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-pink-950/60 border border-pink-500/30 text-pink-300 font-mono text-xs mb-3">
-              <span>SOCIAL FOOTPRINT &bull; INSPIRED ARCHITECTURE</span>
-            </div>
-            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
-              COMMUNITY <span class="gradient-text">PULSE</span>
-            </h2>
-            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-xl">
-              Directly synthesized from our official Instagram (@infinity.sggscc) and LinkedIn channels.
-            </p>
+            <span class="badge">OFFICIAL SOCIAL CHANNELS</span>
+            <h2 class="text-3xl font-extrabold text-white mt-1">COMMUNITY PULSE</h2>
+            <p class="text-secondary text-sm mt-1">Click any card to inspect full post caption, metrics, and details.</p>
           </div>
-
-          <div class="flex items-center space-x-3">
-            <a href="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-pink-950/50 hover:bg-pink-900/50 border border-pink-500/30 text-pink-300 text-xs font-mono font-bold flex items-center space-x-2 transition">
-              <span>Follow @infinity.sggscc</span>
+          <div class="flex gap-3">
+            <a href="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono">
+              @infinity.sggscc &rarr;
             </a>
-            <a href="https://www.linkedin.com/company/infinitysggscc" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-blue-950/50 hover:bg-blue-900/50 border border-blue-500/30 text-blue-300 text-xs font-mono font-bold flex items-center space-x-2 transition">
-              <span>Connect on LinkedIn</span>
+            <a href="https://www.linkedin.com/company/infinitysggscc" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono">
+              /company/infinitysggscc &rarr;
             </a>
           </div>
         </div>
 
-        <!-- Social Feed Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          <!-- Post 1: Instagram TechTonics Announcement -->
-          <div class="glass-panel rounded-2xl border border-white/10 overflow-hidden insta-card">
-            <div class="p-3.5 bg-slate-900/80 border-b border-slate-800 flex items-center justify-between">
-              <div class="flex items-center space-x-2.5">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-pink-500 p-0.5">
-                  <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center text-[10px] font-bold text-white font-mono">&infin;</div>
-                </div>
-                <div>
-                  <p class="text-xs font-bold text-white leading-none">infinity.sggscc</p>
-                  <p class="text-[9px] text-slate-400">Sri Guru Gobind Singh College of Commerce</p>
-                </div>
-              </div>
-              <span class="text-[10px] font-mono text-pink-400">INSTAGRAM</span>
+          <!-- Post 1: Instagram TechTonics Reveal -->
+          <div class="surface-card p-5 cursor-pointer hover:border-active transition"
+               data-social-card
+               data-platform="Instagram"
+               data-handle="@infinity.sggscc"
+               data-headline="TECHTONICS '26 GRAND REVEAL"
+               data-caption="The wait is over! TechTonics '26 brings the fiercest minds together for Cognition '26 (AI Hackathon), Pass The Pixel (UI/UX), and ₹2,50,000+ in prizes. Delegate passes are officially open!"
+               data-stats="842 Likes • 64 Comments"
+               data-url="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-subtle">
+              <span class="text-xs font-bold text-white font-mono">@infinity.sggscc</span>
+              <span class="badge text-[10px]">INSTAGRAM</span>
             </div>
-
-            <!-- Card Visual Banner -->
-            <div class="h-48 bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-950 p-6 flex flex-col justify-between relative overflow-hidden">
-              <div class="absolute inset-0 cyber-grid opacity-30"></div>
-              <span class="relative z-10 text-[10px] font-mono px-2 py-0.5 rounded bg-black/60 text-cyan-300 self-start border border-cyan-400/30">FLAGSHIP REVEAL</span>
-              <div class="relative z-10">
-                <p class="text-2xl font-black text-white tracking-tight">TECHTONICS '26</p>
-                <p class="text-xs text-cyan-300 font-mono">The Annual Tech Fest is Back</p>
-              </div>
+            <div class="h-32 bg-zinc-900 rounded p-4 flex flex-col justify-between mb-3 border border-subtle">
+              <span class="text-[10px] font-mono text-muted">FLAGSHIP ANNOUNCEMENT</span>
+              <p class="text-lg font-bold text-white">TECHTONICS '26</p>
             </div>
-
-            <div class="p-4 space-y-3">
-              <div class="flex items-center justify-between">
-                <button class="insta-like-btn flex items-center space-x-1.5 text-xs text-slate-300 hover:text-pink-500 transition" data-liked="false">
-                  <svg class="w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                  <span class="font-bold like-count">842</span>
-                </button>
-                <span class="text-[10px] font-mono text-slate-500">2 DAYS AGO</span>
-              </div>
-              <p class="text-xs text-slate-300 leading-relaxed">
-                <strong class="text-white">infinity.sggscc</strong> The wait is over! TechTonics '26 brings the fiercest minds together for <strong>Cognition</strong>, <strong>Pass The Pixel</strong>, and cash prizes worth ₹2,50,000+! 🚀
-              </p>
-              <div class="text-[11px] text-cyan-400 font-mono">#InfinitySGGSCC #TechTonics #AIHackathon #DelhiUniversity</div>
+            <p class="text-xs text-secondary leading-relaxed line-clamp-2">
+              The wait is over! TechTonics '26 brings the fiercest minds together for Cognition '26...
+            </p>
+            <div class="mt-3 pt-3 border-t border-subtle flex justify-between text-[11px] font-mono text-muted">
+              <span>❤️ 842 Likes</span>
+              <span>💬 64 Comments</span>
             </div>
           </div>
 
-          <!-- Post 2: LinkedIn Professional Showcase -->
-          <div class="glass-panel rounded-2xl border border-white/10 overflow-hidden linkedin-card">
-            <div class="p-3.5 bg-slate-900/80 border-b border-slate-800 flex items-center justify-between">
-              <div class="flex items-center space-x-2.5">
-                <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold text-white font-mono">IN</div>
-                <div>
-                  <p class="text-xs font-bold text-white leading-none">Infinity - The Tech Society, SGGSCC</p>
-                  <p class="text-[9px] text-slate-400">1,920+ followers • Official Update</p>
-                </div>
-              </div>
-              <span class="text-[10px] font-mono text-blue-400">LINKEDIN</span>
+          <!-- Post 2: LinkedIn Professional Leadership -->
+          <div class="surface-card p-5 cursor-pointer hover:border-active transition"
+               data-social-card
+               data-platform="LinkedIn"
+               data-handle="Infinity - The Tech Society, SGGSCC"
+               data-headline="PROMPT ENGINEERING & AI ARCHITECTURE MASTERCLASS"
+               data-caption="Bridging academic curriculum with bleeding-edge generative AI. Over 300+ undergraduates attended our weekend hands-on prompt optimization masterclass with senior industry engineers."
+               data-stats="512 Endorsements • 38 Reposts"
+               data-url="https://www.linkedin.com/company/infinitysggscc">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-subtle">
+              <span class="text-xs font-bold text-white font-mono">/company/infinitysggscc</span>
+              <span class="badge text-[10px]">LINKEDIN</span>
             </div>
-
-            <!-- Card Visual Banner -->
-            <div class="h-48 bg-gradient-to-br from-blue-950 via-slate-900 to-slate-950 p-6 flex flex-col justify-between relative overflow-hidden">
-              <div class="absolute inset-0 cyber-grid opacity-20"></div>
-              <span class="relative z-10 text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 self-start border border-blue-400/30">MASTERCLASS</span>
-              <div class="relative z-10">
-                <p class="text-xl font-bold text-white">Prompt Engineering &amp; AI Agents</p>
-                <p class="text-xs text-slate-300 font-mono mt-1">Speaker: Senior ML Engineer @ Google</p>
-              </div>
+            <div class="h-32 bg-zinc-900 rounded p-4 flex flex-col justify-between mb-3 border border-subtle">
+              <span class="text-[10px] font-mono text-muted">CAREER &amp; WEBINAR</span>
+              <p class="text-base font-bold text-white">Prompt Engineering &amp; AI Agents</p>
             </div>
-
-            <div class="p-4 space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="text-xs text-slate-300 flex items-center space-x-1">
-                  <span>👏 👍 💡</span>
-                  <span class="font-bold ml-1">512 endorsements</span>
-                </span>
-                <span class="text-[10px] font-mono text-slate-500">1 WEEK AGO</span>
-              </div>
-              <p class="text-xs text-slate-300 leading-relaxed">
-                Bridging academic curriculum with bleeding-edge generative AI. Over 300+ undergraduates attended our weekend hands-on prompt optimization workshop!
-              </p>
-              <div class="text-[11px] text-blue-400 font-mono">#GenerativeAI #PromptEngineering #SGGSCC #TechLeadership</div>
+            <p class="text-xs text-secondary leading-relaxed line-clamp-2">
+              Bridging academic curriculum with bleeding-edge generative AI. Over 300+ undergraduates attended...
+            </p>
+            <div class="mt-3 pt-3 border-t border-subtle flex justify-between text-[11px] font-mono text-muted">
+              <span>👍 512 Endorsements</span>
+              <span>1,920+ Followers</span>
             </div>
           </div>
 
           <!-- Post 3: Instagram Pass The Pixel Spotlight -->
-          <div class="glass-panel rounded-2xl border border-white/10 overflow-hidden insta-card">
-            <div class="p-3.5 bg-slate-900/80 border-b border-slate-800 flex items-center justify-between">
-              <div class="flex items-center space-x-2.5">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-pink-500 p-0.5">
-                  <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center text-[10px] font-bold text-white font-mono">&infin;</div>
-                </div>
-                <div>
-                  <p class="text-xs font-bold text-white leading-none">infinity.sggscc</p>
-                  <p class="text-[9px] text-slate-400">Sri Guru Gobind Singh College of Commerce</p>
-                </div>
-              </div>
-              <span class="text-[10px] font-mono text-pink-400">INSTAGRAM</span>
+          <div class="surface-card p-5 cursor-pointer hover:border-active transition"
+               data-social-card
+               data-platform="Instagram"
+               data-handle="@infinity.sggscc"
+               data-headline="PASS THE PIXEL DESIGN RELAY"
+               data-caption="Can your design team pass the visual baton without dropping a single design token? Pass The Pixel registrations are live for UI/UX creators across Delhi University!"
+               data-stats="628 Likes • 42 Comments"
+               data-url="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-subtle">
+              <span class="text-xs font-bold text-white font-mono">@infinity.sggscc</span>
+              <span class="badge text-[10px]">INSTAGRAM</span>
             </div>
-
-            <!-- Card Visual Banner -->
-            <div class="h-48 bg-gradient-to-br from-purple-950 via-pink-950 to-slate-950 p-6 flex flex-col justify-between relative overflow-hidden">
-              <div class="absolute inset-0 cyber-grid opacity-30"></div>
-              <span class="relative z-10 text-[10px] font-mono px-2 py-0.5 rounded bg-black/60 text-pink-300 self-start border border-pink-400/30">EVENT SPOTLIGHT</span>
-              <div class="relative z-10">
-                <p class="text-2xl font-black text-white tracking-tight">PASS THE PIXEL</p>
-                <p class="text-xs text-pink-300 font-mono">The Ultimate Design Relay</p>
-              </div>
+            <div class="h-32 bg-zinc-900 rounded p-4 flex flex-col justify-between mb-3 border border-subtle">
+              <span class="text-[10px] font-mono text-muted">DESIGN CHALLENGE</span>
+              <p class="text-lg font-bold text-white">PASS THE PIXEL</p>
             </div>
-
-            <div class="p-4 space-y-3">
-              <div class="flex items-center justify-between">
-                <button class="insta-like-btn flex items-center space-x-1.5 text-xs text-slate-300 hover:text-pink-500 transition" data-liked="false">
-                  <svg class="w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                  <span class="font-bold like-count">628</span>
-                </button>
-                <span class="text-[10px] font-mono text-slate-500">4 DAYS AGO</span>
-              </div>
-              <p class="text-xs text-slate-300 leading-relaxed">
-                <strong class="text-white">infinity.sggscc</strong> Can your team pass the visual torch without dropping a single design token? Registrations are flying fast!
-              </p>
-              <div class="text-[11px] text-pink-400 font-mono">#UIUX #DesignRelay #PassThePixel #FigmaCommunity</div>
+            <p class="text-xs text-secondary leading-relaxed line-clamp-2">
+              Can your design team pass the visual baton without dropping a single design token?
+            </p>
+            <div class="mt-3 pt-3 border-t border-subtle flex justify-between text-[11px] font-mono text-muted">
+              <span>❤️ 628 Likes</span>
+              <span>🎨 UI/UX Focus</span>
             </div>
           </div>
 
@@ -1035,61 +843,53 @@
     </section>
 
     <!-- ==========================================================
-         EXECUTIVE COUNCIL & LEADERSHIP
+         COUNCIL & FACULTY ADVISORY
          ========================================================== -->
-    <section id="council" class="py-20 relative border-t border-white/5">
+    <section id="council" class="py-20 border-b border-subtle">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 font-mono text-xs">
-            <span>LEADERSHIP</span>
-          </div>
-          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
-            CORE COUNCIL <span class="gradient-text">&amp; ADVISORY</span>
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-            The visionary minds steering Infinity’s flagship hackathons, sponsorships, and technical operations.
-          </p>
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+          <span class="badge">LEADERSHIP</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">COUNCIL &amp; ADVISORY</h2>
+          <p class="text-secondary text-sm">Mentoring and governing the technology initiatives of SGGSCC.</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center hover:border-cyan-400/40 transition">
-            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600 p-1 mb-4">
-              <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center text-xl font-bold font-mono text-cyan-300">DR</div>
+          <div class="surface-card p-6 text-center">
+            <div class="w-16 h-16 rounded-full bg-zinc-900 border border-subtle mx-auto mb-3 flex items-center justify-center font-bold font-mono text-white text-lg">
+              DR
             </div>
-            <h4 class="text-base font-bold text-white">Dr. Jatinder Bir Singh</h4>
-            <p class="text-xs font-mono text-cyan-400 mt-0.5">Principal Patron</p>
-            <p class="text-[11px] text-slate-400 mt-2">SGGSCC, University of Delhi</p>
+            <h4 class="text-sm font-bold text-white">Dr. Jatinder Bir Singh</h4>
+            <p class="text-xs font-mono text-muted mt-0.5">Principal Patron</p>
+            <p class="text-[11px] text-muted mt-2">SGGSCC, University of Delhi</p>
           </div>
 
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center hover:border-purple-400/40 transition">
-            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-purple-400 to-pink-600 p-1 mb-4">
-              <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center text-xl font-bold font-mono text-purple-300">FC</div>
+          <div class="surface-card p-6 text-center">
+            <div class="w-16 h-16 rounded-full bg-zinc-900 border border-subtle mx-auto mb-3 flex items-center justify-center font-bold font-mono text-white text-lg">
+              FC
             </div>
-            <h4 class="text-base font-bold text-white">Faculty Convener</h4>
-            <p class="text-xs font-mono text-purple-400 mt-0.5">Department of Computer Science</p>
-            <p class="text-[11px] text-slate-400 mt-2">Guiding academic rigor &amp; industry ethics</p>
+            <h4 class="text-sm font-bold text-white">Faculty Convener</h4>
+            <p class="text-xs font-mono text-muted mt-0.5">Department of Computer Science</p>
+            <p class="text-[11px] text-muted mt-2">Academic rigor &amp; compliance</p>
           </div>
 
-          <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center hover:border-pink-400/40 transition">
-            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-pink-400 to-purple-600 p-1 mb-4">
-              <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center text-xl font-bold font-mono text-pink-300">PR</div>
+          <div class="surface-card p-6 text-center">
+            <div class="w-16 h-16 rounded-full bg-zinc-900 border border-subtle mx-auto mb-3 flex items-center justify-center font-bold font-mono text-white text-lg">
+              PR
             </div>
-            <h4 class="text-base font-bold text-white">Student President</h4>
-            <p class="text-xs font-mono text-pink-400 mt-0.5">Executive Lead</p>
-            <p class="text-[11px] text-slate-400 mt-2">Overseeing TechTonics '26 &amp; Operations</p>
+            <h4 class="text-sm font-bold text-white">Student President</h4>
+            <p class="text-xs font-mono text-muted mt-0.5">Executive Lead</p>
+            <p class="text-[11px] text-muted mt-2">Orchestrating TechTonics '26</p>
           </div>
 
-          <div class="glass-panel p-6 rounded-2xl border border-emerald-400/40 transition">
-            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-emerald-400 to-cyan-500 p-1 mb-4">
-              <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center text-xl font-bold font-mono text-emerald-300">TC</div>
+          <div class="surface-card p-6 text-center">
+            <div class="w-16 h-16 rounded-full bg-zinc-900 border border-subtle mx-auto mb-3 flex items-center justify-center font-bold font-mono text-white text-lg">
+              TC
             </div>
-            <h4 class="text-base font-bold text-white">Technical Head</h4>
-            <p class="text-xs font-mono text-emerald-400 mt-0.5">Cognition Hackathon Lead</p>
-            <p class="text-[11px] text-slate-400 mt-2">Architecture, Cloud &amp; AI Infra</p>
+            <h4 class="text-sm font-bold text-white">Technical Head</h4>
+            <p class="text-xs font-mono text-muted mt-0.5">Cognition Hackathon Lead</p>
+            <p class="text-[11px] text-muted mt-2">Architecture &amp; Cloud Infra</p>
           </div>
-
         </div>
 
       </div>
@@ -1100,65 +900,58 @@
   <!-- ==========================================================
        FOOTER
        ========================================================== -->
-  <footer class="relative z-10 border-t border-white/10 bg-slate-950 py-12">
+  <footer class="bg-black py-12 text-xs font-mono text-muted border-t border-subtle">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-800">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-subtle">
         
-        <!-- Brand Info -->
-        <div class="md:col-span-5 space-y-4">
-          <div class="flex items-center space-x-2">
-            <span class="text-3xl font-black text-cyan-400 font-mono">&infin;</span>
-            <span class="text-xl font-bold tracking-wider text-white">INFINITY</span>
-            <span class="text-xs px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-mono">SGGSCC</span>
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl font-bold text-white font-mono">&infin;</span>
+            <span class="text-base font-bold text-white">INFINITY</span>
+            <span class="badge text-[10px]">SGGSCC</span>
           </div>
-          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
+          <p class="text-secondary text-xs leading-relaxed max-w-sm">
             The Official Technology Society of Sri Guru Gobind Singh College of Commerce, University of Delhi. 
-            Cultivating innovation, AI prompt engineering, and collegiate leadership.
+            Empowering students with real-world software architecture, AI prompt engineering, and collegiate hackathons.
           </p>
-          <p class="text-xs font-mono text-slate-500">
-            📍 Pitampura, New Delhi, Delhi 110034
-          </p>
+          <p class="text-[11px]">📍 Pitampura, New Delhi, Delhi 110034</p>
         </div>
 
-        <!-- Quick Links -->
-        <div class="md:col-span-3 space-y-3 font-mono text-xs">
-          <p class="text-white font-bold uppercase tracking-wider">Navigation</p>
-          <ul class="space-y-2 text-slate-400">
-            <li><a href="#about" class="hover:text-cyan-400 transition">&gt; About Society</a></li>
-            <li><a href="#techtonics" class="hover:text-cyan-400 transition">&gt; TechTonics '26</a></li>
-            <li><a href="#ai-studio" class="hover:text-cyan-400 transition">&gt; AI Prompt Studio</a></li>
-            <li><a href="#domains" class="hover:text-cyan-400 transition">&gt; Wings &amp; Domains</a></li>
-            <li><a href="#social-feed" class="hover:text-cyan-400 transition">&gt; Social Media Hub</a></li>
+        <div class="md:col-span-3 space-y-2">
+          <p class="text-white font-bold uppercase">Navigation</p>
+          <ul class="space-y-1.5 text-secondary">
+            <li><a href="#about" class="hover:text-white transition">&gt; About Society</a></li>
+            <li><a href="#techtonics" class="hover:text-white transition">&gt; TechTonics '26 Hub</a></li>
+            <li><a href="#ai-studio" class="hover:text-white transition">&gt; AI Prompt Studio</a></li>
+            <li><a href="#projects" class="hover:text-white transition">&gt; Past Winners</a></li>
+            <li><a href="#attendees-registry" class="hover:text-white transition">&gt; Attendee Registry</a></li>
           </ul>
         </div>
 
-        <!-- Official Social Links -->
-        <div class="md:col-span-4 space-y-3">
-          <p class="text-white font-bold font-mono text-xs uppercase tracking-wider">Official Handles</p>
-          <div class="space-y-2">
-            <a href="https://www.linkedin.com/company/infinitysggscc" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-xs text-slate-300 hover:text-blue-400 transition">
-              <span class="p-1.5 rounded bg-slate-900 border border-slate-800 text-blue-400">in</span>
-              <span>LinkedIn: linkedin.com/company/infinitysggscc</span>
+        <div class="md:col-span-4 space-y-2">
+          <p class="text-white font-bold uppercase">Official Socials</p>
+          <div class="space-y-1.5">
+            <a href="https://www.linkedin.com/company/infinitysggscc" target="_blank" rel="noopener noreferrer" class="block text-secondary hover:text-white transition">
+              • LinkedIn: /company/infinitysggscc
             </a>
-            <a href="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-xs text-slate-300 hover:text-pink-400 transition">
-              <span class="p-1.5 rounded bg-slate-900 border border-slate-800 text-pink-400">ig</span>
-              <span>Instagram: @infinity.sggscc</span>
+            <a href="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1" target="_blank" rel="noopener noreferrer" class="block text-secondary hover:text-white transition">
+              • Instagram: @infinity.sggscc
             </a>
           </div>
 
-          <div class="pt-2">
-            <button class="open-prompt-btn px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-purple-500/40 text-purple-300 font-mono text-xs transition">
-              View Hackathon Primary Prompt Spec
+          <div class="pt-3">
+            <button class="open-prompt-trigger btn-secondary text-xs font-mono">
+              View Canonical Primary Prompt Spec
             </button>
           </div>
         </div>
 
       </div>
 
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-slate-500 gap-4">
-        <p>&copy; 2026 INFINITY (The Tech Society, SGGSCC). Built for Cognition AI Hackathon.</p>
-        <div class="flex items-center space-x-4">
-          <span class="text-cyan-400">ORIGINAL SUBMISSION</span>
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+        <p>&copy; 2026 INFINITY (SGGSCC, University of Delhi). Cognition AI Hackathon Submission.</p>
+        <div class="flex items-center gap-3">
+          <span class="text-emerald-400">ORIGINAL &bull; ZERO PLAGIARISM</span>
           <span>&bull;</span>
           <span>PUBLICLY ACCESSIBLE</span>
         </div>
@@ -1167,203 +960,344 @@
   </footer>
 
   <!-- ==========================================================
-       MODAL 1: PRIMARY PROMPT SPECIFICATION
+       MODAL 1: CANONICAL PRIMARY PROMPT SPECIFICATION
        ========================================================== -->
-  <div id="prompt-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="glass-panel w-full max-w-4xl max-h-[90vh] rounded-3xl border border-purple-500/40 flex flex-col shadow-2xl overflow-hidden">
-      
-      <!-- Modal Header -->
-      <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/90">
-        <div class="flex items-center space-x-3">
-          <span class="p-2 rounded-lg bg-purple-500/20 text-purple-300">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-          </span>
-          <div>
-            <h3 class="text-base font-bold text-white font-mono">PRIMARY_PROMPT.md</h3>
-            <p class="text-xs text-slate-400 font-mono">Cognition AI Hackathon Submission Spec</p>
-          </div>
+  <div id="prompt-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="prompt-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3 id="prompt-modal-title" class="text-sm font-bold text-white font-mono">PRIMARY_PROMPT.md</h3>
+          <p class="text-xs text-muted font-mono">Canonical Specification for Cognition AI Hackathon</p>
         </div>
-
-        <div class="flex items-center space-x-2">
-          <button id="copy-prompt-btn" class="px-3 py-1.5 rounded-lg bg-purple-950/60 hover:bg-purple-900/80 border border-purple-500/40 text-purple-300 text-xs font-mono font-bold flex items-center transition">
-            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-            Copy Prompt
-          </button>
-          <button id="download-prompt-btn" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono transition" title="Download Markdown">
-            &darr; Download
-          </button>
-          <button id="close-prompt-btn" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
+        <div class="flex items-center gap-2">
+          <button id="copy-prompt-btn" class="btn-secondary text-xs font-mono">Copy Prompt</button>
+          <button id="download-prompt-btn" class="btn-secondary text-xs font-mono">&darr; Download</button>
+          <button data-close-modal class="text-muted hover:text-white p-1" aria-label="Close modal">&times;</button>
         </div>
       </div>
+      <div class="modal-body font-mono text-xs text-secondary">
+        <div class="p-4 bg-black rounded border border-subtle overflow-y-auto max-h-[60vh]">
+          <pre id="prompt-text-block" class="whitespace-pre-wrap leading-relaxed select-all"># PRIMARY PROMPT — INFINITY // THE TECH SOCIETY OF SGGSCC (UNIVERSITY OF DELHI)
 
-      <!-- Modal Content Body -->
-      <div class="p-6 overflow-y-auto space-y-4 font-mono text-xs text-slate-300">
-        <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
-          <pre id="prompt-text-block" class="whitespace-pre-wrap leading-relaxed select-all"># PRIMARY PROMPT - INFINITY (The Tech Society, SGGSCC) FRONTEND DEVELOPMENT
+### SYSTEM ROLE & ARCHITECTURAL OBJECTIVE
+You are a Principal Frontend Architect and Creative Technologist specializing in ultra-modern, high-performance, accessible web applications for premier collegiate technology societies and hackathons.
 
-### SYSTEM ROLE & OBJECTIVE
-You are a Principal Frontend Architect and Creative Technologist specializing in ultra-modern, high-performance web applications for tier-1 collegiate technology societies and hackathons.
+Your task is to build a fully functional, production-ready, accessible, and visually captivating frontend web application for:
+**INFINITY — The Tech Society of Sri Guru Gobind Singh College of Commerce (SGGSCC), University of Delhi**.
 
-Your task is to build a fully functional, responsive, and visually captivating frontend web application for:
-INFINITY — The Tech Society of Sri Guru Gobind Singh College of Commerce (SGGSCC), University of Delhi.
+### SOCIAL MEDIA BRANDING & INSPIRATION
+Incorporate the identity, tone, initiatives, and visual aesthetics from the official social handles:
+- **LinkedIn**: https://www.linkedin.com/company/infinitysggscc
+  (Focus: Academic credibility, faculty governance, placement achievements, corporate sponsorships, alumni networks, webinars)
+- **Instagram**: https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1
+  (Focus: Collegiate tech culture, TechTonics '26 flagship festival announcements, Cognition 90-min AI Hackathon, Pass The Pixel design relay, member recruitment drives, byte-sized technology insights)
 
-### INSPIRATION & SOCIAL MEDIA BRANDING
-Incorporate the visual identity, tone, and activities from the official social handles:
-- LinkedIn: https://www.linkedin.com/company/infinitysggscc (Focus: Tech leadership, hackathons, professional webinars, guest lectures, industry partnerships, alumni achievements)
-- Instagram: https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1 (Focus: Vibrant tech community, cyber-aesthetic graphics, "TechTonics" flagship fest, "Cognition" AI Hackathon, "Pass The Pixel" design showdown, workshop countdowns, recruitment drives, tech culture)
+### CORE THEME & DESIGN SYSTEM
+- **Palette**: Deep Matte Black / Obsidian (#050507), Carbon Surface (#0c0d12), Slate Borders (rgba(255, 255, 255, 0.08)), Platinum White Typography (#f8fafc, #ffffff), and Monochromatic Silver / Terminal Emerald (#10b981) status telemetry. Strictly avoid oversaturated neon purple or cyan candy gradients.
+- **Typography & Accessibility**: Clean system and monospace typography (Space Grotesk / JetBrains Mono fallbacks), full WAI-ARIA compliance (role="dialog", aria-modal="true", focus trapping, Escape key closing), and strict support for @media (prefers-reduced-motion: reduce).
+- **Zero External Runtime Dependency**: 100% self-contained styling and vanilla ES6 modules without requiring fragile runtime CDN compilers (e.g., avoid Tailwind Play CDN in production) so the application functions flawlessly offline.
 
-### CORE THEME & DESIGN LANGUAGE
-- Aesthetic: Futuristic Deep Cyber-Dark mode (#070913, #0d1127) with vibrant neon accents: Electric Cyan (#00f2fe), Ultraviolet (#8a2be2), Magenta Glow (#ec4899), and Terminal Emerald (#10b981).
-- Typography & Elements: JetBrains Mono / Space Grotesk font styling, glowing glassmorphic cards (backdrop-blur-xl), animated gradients, micro-interactions, and an interactive particle constellation canvas.
-- Brand Motifs: Animated Infinity loop (∞), circuit lines, telemetry HUD indicators, live status badges, cyber grid patterns.
-
-### KEY FUNCTIONAL MODULES & FEATURES TO DELIVER
-1. Top Navigation & Cyber HUD: Brand logo, status badge, sound toggle, accent switcher, embedded CLI launcher.
-2. Hero Command Center: Dynamic typing headline, real-time counters, social proof links to LinkedIn & Instagram.
-3. TechTonics '26 Hub: Spotlight for Cognition AI Hackathon, Pass The Pixel, CodeSprint, live countdown clock.
-4. Interactive AI Prompt Studio: Live prompt simulator honoring the Cognition AI Hackathon theme.
-5. Society Domains: Detailed interactive cards for Technical, UI/UX, PR & Socials, Corporate Relations, Research, Operations.
-6. Social Feed Feedwall: Interactive post mockups mimicking Instagram (@infinity.sggscc) and LinkedIn.
-7. Interactive Terminal (infinity-cli): Accessible via Ctrl+~ with full command suite.
-8. Registration & Pass Generator: Complete interactive form generating a personalized cyber delegate ticket.
-9. Zero external dependency errors, 100% responsive, publicly deployable.</pre>
+### KEY FUNCTIONAL MODULES TO DELIVER
+1. **Interactive 3D WebGL Hero Canvas**: Native 3D geometric Torus Knot (Infinite Loop) rendered via WebGL/Canvas with perspective projection and real-time mouse coordinate tracking.
+2. **Top Navigation & Audio HUD**: Built-in Web Audio API tone synthesizer (toggleable, persists state), theme switcher operating via data-theme attribute, and CLI launcher.
+3. **Command Center Hero Section**: Fixed deterministic countdown clock targeting TechTonics '26 Grand Sprint (2026-11-28T09:30:00+05:30), dynamic typewriter, and verified stats with data provenance citations.
+4. **TechTonics '26 & Cognition AI Hackathon Hub**: Spotlight on Cognition '26 (90-min rapid prototype sprint), Pass The Pixel, CodeSprint, and 4 spot-reveal problem tracks.
+5. **Interactive AI Prompt Studio**: Live prompt playground supporting both an intelligent multi-intent dynamic compiler and real Google Gemini API calls (via user-provided API key). Covers Python concurrency memory leaks, Posture AI, accessible design tokens, and arbitrary custom prompts.
+6. **True Multi-Step Registration Wizard & Attendee Registry**: 3-step wizard with real asynchronous API call simulation, persistent localStorage database, duplicate checking, JSON export, and personalized Delegate Pass generation.
+7. **Security-Hardened Developer Terminal (infinity-cli)**: Accessible via Ctrl+~ with textContent-based safe rendering, eliminating Self-XSS vulnerabilities.
+8. **Past Hackathon Project Showcases**: Case study modals for CogniFlow AI, PixelCraft 2.0, and DU Transit AI.
+9. **Curated Social Media Feedwall**: Interactive post cards mirroring Instagram (@infinity.sggscc) and LinkedIn (/company/infinitysggscc) with inspection modals.
+10. **Canonical Primary Prompt Modal & One-Click Export**: Single source of truth for prompt specifications with verified copy and download.</pre>
         </div>
       </div>
-
     </div>
   </div>
 
   <!-- ==========================================================
-       MODAL 2: REGISTRATION & DELEGATE PASS GENERATOR
+       MODAL 2: 3-STEP REGISTRATION WIZARD
        ========================================================== -->
-  <div id="register-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="glass-panel w-full max-w-lg rounded-3xl border border-cyan-500/40 flex flex-col shadow-2xl overflow-hidden">
-      
-      <!-- Modal Header -->
-      <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/90">
-        <div class="flex items-center space-x-2.5">
-          <span class="p-1.5 rounded-lg bg-cyan-500/20 text-cyan-300">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg>
-          </span>
-          <div>
-            <h3 class="text-base font-bold text-white font-mono">REGISTRATION PORTAL</h3>
-            <p class="text-xs text-slate-400 font-mono">TechTonics '26 &bull; SGGSCC</p>
+  <div id="register-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="register-modal-title" aria-hidden="true">
+    <div class="modal-dialog max-w-lg">
+      <div class="modal-header">
+        <div>
+          <h3 id="register-modal-title" class="text-sm font-bold text-white font-mono">DELEGATE REGISTRATION WIZARD</h3>
+          <p class="text-xs text-muted font-mono">TechTonics '26 &bull; Verified Entry Pass</p>
+        </div>
+        <button data-close-modal class="text-muted hover:text-white p-1" aria-label="Close modal">&times;</button>
+      </div>
+
+      <!-- Form View -->
+      <div id="registration-form-view" class="modal-body">
+        
+        <!-- Wizard Progress Bar -->
+        <div class="wizard-progress">
+          <div class="wizard-step is-active" id="step-indicator-1">
+            <div class="step-node" id="step-node-1">1</div>
+            <span class="step-label">Identity</span>
+          </div>
+          <div class="wizard-step" id="step-indicator-2">
+            <div class="step-node" id="step-node-2">2</div>
+            <span class="step-label">Track</span>
+          </div>
+          <div class="wizard-step" id="step-indicator-3">
+            <div class="step-node" id="step-node-3">3</div>
+            <span class="step-label">Pitch</span>
           </div>
         </div>
 
-        <button id="close-reg-btn" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
+        <form id="wizard-form" novalidate>
+          
+          <!-- Step 1: Delegate Identity -->
+          <div id="step-pane-1">
+            <div class="form-group">
+              <label for="reg-name" class="form-label">Full Name *</label>
+              <input type="text" id="reg-name" class="form-input" placeholder="e.g. Aryan Sharma" required />
+              <div class="form-error"></div>
+            </div>
 
-      <!-- Form Section -->
-      <div id="reg-form-section" class="p-6 space-y-4">
-        <form id="registration-form" class="space-y-4">
-          <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1">PARTICIPANT / TEAM LEAD NAME *</label>
-            <input type="text" id="reg-name" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400" placeholder="e.g. Aryan Sharma" />
+            <div class="form-group">
+              <label for="reg-college" class="form-label">College / Institution *</label>
+              <input type="text" id="reg-college" class="form-input" placeholder="e.g. Sri Guru Gobind Singh College of Commerce" required />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-university" class="form-label">University / Board</label>
+              <input type="text" id="reg-university" class="form-input" value="University of Delhi" />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-email" class="form-label">Contact Email Address *</label>
+              <input type="email" id="reg-email" class="form-input" placeholder="e.g. aryan.sharma@sggscc.ac.in" required />
+              <div class="form-error"></div>
+            </div>
           </div>
 
-          <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1">COLLEGE / INSTITUTION NAME *</label>
-            <input type="text" id="reg-college" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400" placeholder="e.g. SGGSCC, University of Delhi" />
+          <!-- Step 2: Track Selection & Team Composition -->
+          <div id="step-pane-2" style="display: none;">
+            <div class="form-group">
+              <label for="reg-track" class="form-label">Select Competition Track *</label>
+              <select id="reg-track" class="form-select">
+                <option value="Cognition AI Hackathon">Cognition: 90-Min AI &amp; Prompt Hackathon</option>
+                <option value="Pass The Pixel (UI/UX)">Pass The Pixel: UI/UX Design Relay</option>
+                <option value="CodeSprint DSA Arena">CodeSprint: Rapid Algorithmic Arena</option>
+                <option value="Infinity Society Recruitment">General Society Recruitment (All Wings)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-team-size" class="form-label">Team Size *</label>
+              <select id="reg-team-size" class="form-select">
+                <option value="1">1 Member (Solo Delegate)</option>
+                <option value="2">2 Members</option>
+                <option value="3" selected>3 Members</option>
+                <option value="4">4 Members (Maximum)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-members" class="form-label">Team Members Names &amp; Roll Numbers</label>
+              <input type="text" id="reg-members" class="form-input" placeholder="e.g. Aryan S. (2401), Priya M. (2409)" />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-github" class="form-label">GitHub / Portfolio URL (Optional)</label>
+              <input type="url" id="reg-github" class="form-input" placeholder="https://github.com/yourhandle" />
+            </div>
           </div>
 
-          <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1">EMAIL ADDRESS *</label>
-            <input type="email" id="reg-email" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400" placeholder="e.g. aryan@example.com" />
+          <!-- Step 3: Motivation Statement & Technical Pitch -->
+          <div id="step-pane-3" style="display: none;">
+            <div class="form-group">
+              <label for="reg-motivation" class="form-label">Motivation Statement / Project Pitch *</label>
+              <textarea id="reg-motivation" rows="3" class="form-textarea" placeholder="Briefly explain your proposed idea, tooling choice, and why your team wants to compete in Cognition '26..."></textarea>
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group" id="reg-consent-wrapper">
+              <label class="flex items-start gap-2 text-xs text-secondary cursor-pointer">
+                <input type="checkbox" id="reg-consent" class="mt-0.5" />
+                <span>I confirm that all submissions will be original, free from plagiarism, and comply with SGGSCC academic integrity guidelines. *</span>
+              </label>
+              <div class="form-error"></div>
+            </div>
           </div>
 
-          <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1">SELECT TRACK / EVENT *</label>
-            <select id="reg-track" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-cyan-400">
-              <option value="Cognition AI Hackathon">Cognition: AI &amp; Prompt Hackathon</option>
-              <option value="Pass The Pixel (UI/UX)">Pass The Pixel: UI/UX Relay</option>
-              <option value="CodeSprint DSA Arena">CodeSprint: Algorithmic Battle</option>
-              <option value="Infinity Society Recruitment">General Society Recruitment (All Domains)</option>
-            </select>
+          <!-- Wizard Footer Controls -->
+          <div class="modal-footer px-0 pb-0 pt-4">
+            <button type="button" id="wizard-prev-btn" class="btn-secondary text-xs font-mono" style="display: none;">&larr; Back</button>
+            <button type="button" id="wizard-next-btn" class="btn-primary text-xs font-mono">Next Step &rarr;</button>
+            <button type="submit" id="wizard-submit-btn" class="btn-emerald text-xs font-mono" style="display: none;">Submit Registration &amp; Generate Pass</button>
           </div>
 
-          <button type="submit" class="w-full btn-cyber py-3 rounded-xl font-mono text-xs font-bold tracking-wider uppercase mt-2">
-            Generate Cyber Delegate Pass
-          </button>
         </form>
       </div>
 
-      <!-- Generated Pass Section (Hidden Initially) -->
-      <div id="reg-pass-section" class="p-6 hidden space-y-4 text-center">
-        <div class="cyber-pass-ticket p-6 rounded-2xl border border-cyan-400/50 shadow-2xl space-y-4">
-          <div class="flex items-center justify-between pb-3 border-b border-cyan-500/20">
-            <span class="text-xs font-mono font-bold text-cyan-300">INFINITY SGGSCC DELEGATE</span>
-            <span id="ticket-id" class="text-xs font-mono text-purple-300 font-bold">INF-849201</span>
+      <!-- Pass View (Shown on Successful Submission) -->
+      <div id="registration-pass-view" class="modal-body" style="display: none;">
+        <div class="attendee-pass">
+          <div class="flex justify-between items-center pb-2 mb-3 border-b border-subtle">
+            <span class="badge badge-emerald">VERIFIED DELEGATE</span>
+            <span id="pass-id" class="text-xs font-mono text-white font-bold">INF-000000</span>
           </div>
 
-          <div class="text-left space-y-1">
-            <span class="text-[10px] text-slate-400 uppercase font-mono">DELEGATE NAME</span>
-            <h4 id="ticket-name" class="text-xl font-extrabold text-white">Aryan Sharma</h4>
-            <p id="ticket-college" class="text-xs text-slate-300 font-mono">SGGSCC, University of Delhi</p>
+          <div class="space-y-1 mb-3">
+            <span class="text-[10px] font-mono text-muted uppercase">DELEGATE NAME</span>
+            <h4 id="pass-name" class="text-xl font-bold text-white">Aryan Sharma</h4>
+            <p id="pass-college" class="text-xs text-secondary font-mono">SGGSCC (University of Delhi)</p>
           </div>
 
-          <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 text-left">
-            <span class="text-[10px] text-slate-400 uppercase font-mono">CONFIRMED TRACK</span>
-            <p id="ticket-track" class="text-sm font-bold text-cyan-400 font-mono">Cognition AI Hackathon</p>
+          <div class="p-3 bg-black rounded border border-subtle space-y-1 mb-3 text-xs font-mono">
+            <div><span class="text-muted">Track:</span> <strong id="pass-track" class="text-white">Cognition AI Hackathon</strong></div>
+            <div><span class="text-muted">Team:</span> <span id="pass-team" class="text-secondary"></span></div>
+            <div><span class="text-muted">Pitch:</span> <span id="pass-motivation" class="text-secondary italic"></span></div>
           </div>
 
-          <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-[10px] font-mono text-slate-400">
-            <span>ISSUED: <span id="ticket-time" class="text-slate-300"></span></span>
-            <span class="text-emerald-400 font-bold">VERIFIED ACCESS ✓</span>
+          <div class="flex justify-between items-center text-[10px] font-mono text-muted pt-2 border-t border-subtle">
+            <span>ISSUED: <span id="pass-timestamp" class="text-secondary"></span></span>
+            <span class="text-emerald-400 font-bold">ACCESS GRANTED ✓</span>
           </div>
         </div>
 
-        <button id="reset-reg-btn" class="text-xs font-mono text-slate-400 hover:text-cyan-300 underline">
-          Register Another Member / Team
-        </button>
+        <div class="mt-4 text-center">
+          <button id="register-another-btn" class="btn-secondary text-xs font-mono">
+            + Register Another Delegate
+          </button>
+        </div>
       </div>
 
     </div>
   </div>
 
   <!-- ==========================================================
-       MODAL 3: INTERACTIVE `INFINITY-CLI` TERMINAL
+       MODAL 3: DEVELOPER CLI TERMINAL (`infinity-cli`)
        ========================================================== -->
-  <div id="terminal-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="terminal-window w-full max-w-3xl rounded-2xl overflow-hidden flex flex-col shadow-2xl h-[520px]">
-      
-      <!-- Terminal Window Bar -->
-      <div class="terminal-header px-4 py-3 flex items-center justify-between">
-        <div class="flex items-center space-x-2">
-          <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
-          <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
-          <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
-          <span class="text-xs font-mono text-slate-400 ml-2">infinity@sggscc:~ (bash)</span>
+  <div id="terminal-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="terminal-title" aria-hidden="true">
+    <div class="modal-dialog max-w-2xl">
+      <div class="terminal-container">
+        
+        <div class="terminal-top-bar">
+          <div class="flex items-center gap-2">
+            <div class="terminal-dots">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+            </div>
+            <span id="terminal-title" class="text-xs text-muted font-mono ml-2">guest@infinity-sggscc:~ (bash)</span>
+          </div>
+          <button data-close-modal class="text-xs text-muted hover:text-white font-mono" aria-label="Close terminal">[ESC / CLOSE]</button>
         </div>
-        <button id="close-terminal-btn" class="text-xs font-mono text-slate-400 hover:text-white">
-          [ESC / CLOSE]
-        </button>
-      </div>
 
-      <!-- Terminal Output Screen -->
-      <div id="terminal-body" class="p-4 flex-1 overflow-y-auto space-y-2 text-xs font-mono text-slate-200">
-        <div class="text-cyan-400 font-bold">
-          INFINITY CLI v2.6.0 (The Tech Society of SGGSCC)
+        <div id="terminal-screen" class="terminal-screen">
+          <div class="text-white font-bold mb-1">INFINITY CLI v3.0 // The Tech Society of SGGSCC</div>
+          <div class="text-muted mb-2">Type '<strong class="text-white">help</strong>' or '<strong class="text-white">events</strong>' for interactive manual.</div>
         </div>
-        <div class="text-slate-400">
-          Type '<span class="text-cyan-300 font-bold">help</span>' to list interactive commands.
+
+        <div class="terminal-input-row">
+          <span class="terminal-prompt">guest@infinity-sggscc:~$</span>
+          <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" placeholder="type command (help, events, cognition, socials)..." aria-label="Terminal command input" />
         </div>
-      </div>
 
-      <!-- Terminal Command Input Bar -->
-      <div class="p-3 bg-slate-950 border-t border-slate-800 flex items-center space-x-2">
-        <span class="text-xs font-mono text-cyan-400">guest@infinity-sggscc:~$</span>
-        <input type="text" id="terminal-input" class="flex-1 bg-transparent text-xs font-mono text-white focus:outline-none" autofocus autocomplete="off" spellcheck="false" placeholder="type command (help, cognition, socials)..." />
       </div>
-
     </div>
   </div>
 
-  <!-- Main JavaScript File -->
-  <script src="app.js"></script>
+  <!-- ==========================================================
+       MODAL 4: SOCIAL POST INSPECTION MODAL
+       ========================================================== -->
+  <div id="social-post-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="social-modal-handle" aria-hidden="true">
+    <div class="modal-dialog max-w-lg">
+      <div class="modal-header">
+        <div class="flex items-center gap-2">
+          <span id="social-modal-platform" class="badge">PLATFORM</span>
+          <h3 id="social-modal-handle" class="text-xs font-bold text-white font-mono">@handle</h3>
+        </div>
+        <button data-close-modal class="text-muted hover:text-white p-1" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body space-y-4">
+        <div id="social-modal-banner" class="h-32 bg-zinc-900 rounded border border-subtle p-4 flex items-center justify-center text-center font-bold font-mono text-white text-sm">
+          POST BANNER
+        </div>
+
+        <p id="social-modal-caption" class="text-xs text-secondary leading-relaxed"></p>
+
+        <div class="p-3 bg-black rounded border border-subtle flex justify-between items-center text-xs font-mono text-muted">
+          <span id="social-modal-stats">Metrics</span>
+          <a id="social-modal-link" href="#" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">
+            Open on Official Channel &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODAL 5: PAST PROJECT CASE STUDY MODAL
+       ========================================================== -->
+  <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-hidden="true">
+    <div class="modal-dialog max-w-lg">
+      <div class="modal-header">
+        <div>
+          <span id="project-modal-award" class="badge badge-emerald text-[10px] mb-1">AWARD</span>
+          <h3 id="project-modal-title" class="text-sm font-bold text-white">Project Title</h3>
+        </div>
+        <button data-close-modal class="text-muted hover:text-white p-1" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body space-y-3 text-xs">
+        <p id="project-modal-team" class="font-mono text-secondary"></p>
+        <p id="project-modal-tech" class="font-mono text-muted"></p>
+        <div class="p-3 bg-black rounded border border-subtle">
+          <p id="project-modal-desc" class="text-secondary leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODAL 6: DATA PROVENANCE & AUDIT SOURCES
+       ========================================================== -->
+  <div id="provenance-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="prov-modal-title" aria-hidden="true">
+    <div class="modal-dialog max-w-lg">
+      <div class="modal-header">
+        <div>
+          <h3 id="prov-modal-title" class="text-sm font-bold text-white font-mono">DATA PROVENANCE &amp; SOURCES</h3>
+          <p class="text-xs text-muted font-mono">Transparency &amp; Verification Audit</p>
+        </div>
+        <button data-close-modal class="text-muted hover:text-white p-1" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body space-y-2" id="provenance-list">
+        <!-- Dynamically rendered from state.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Shelf for Toast Notifications -->
+  <div id="toast-shelf" aria-live="polite"></div>
+
+  <!-- Modular ES6 JavaScript Bootstrap -->
+  <script type="module" src="js/app.js"></script>
+
+  <!-- Fallback trigger bindings for navbar and hero buttons -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pModal = document.getElementById('prompt-modal');
+      const rModal = document.getElementById('register-modal');
+      
+      const openP = () => {
+        pModal.classList.add('is-open');
+        pModal.setAttribute('aria-hidden', 'false');
+      };
+      const openR = () => {
+        rModal.classList.add('is-open');
+        rModal.setAttribute('aria-hidden', 'false');
+      };
+
+      document.querySelectorAll('#open-prompt-modal-nav-btn, #hero-prompt-btn, .open-prompt-trigger').forEach(b => b.addEventListener('click', openP));
+      document.querySelectorAll('#open-register-modal-nav-btn, #hero-register-btn, #open-register-modal-fest-btn, .open-reg-trigger').forEach(b => b.addEventListener('click', openR));
+    });
+  </script>
 </body>
 </html>

@@ -1,11 +1,13 @@
 {
   "name": "fronted_infinity",
-  "version": "1.0.0",
-  "description": "Functional Frontend for INFINITY — The Tech Society of SGGSCC, DU with Cognition AI Hackathon Hub and Primary Prompt Documentation",
+  "version": "2.0.0",
+  "description": "Production-Grade Frontend for INFINITY — The Tech Society of SGGSCC, DU with Cognition AI Hackathon Hub and Primary Prompt Documentation",
+  "type": "module",
   "main": "index.html",
   "scripts": {
     "start": "npx serve .",
-    "serve": "npx serve ."
+    "serve": "python -m http.server 3000",
+    "test": "node --test test/app.test.js"
   },
   "keywords": [
     "infinity",
@@ -14,6 +16,7 @@
     "techtonics",
     "hackathon",
     "ai",
+    "threejs",
     "frontend"
   ],
   "author": "Cognition Hackathon Submission Team",

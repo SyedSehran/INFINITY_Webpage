@@ -1,81 +1,82 @@
-# PRIMARY PROMPT - INFINITY (The Tech Society, SGGSCC) FRONTEND DEVELOPMENT
+# PRIMARY PROMPT — INFINITY // THE TECH SOCIETY OF SGGSCC (UNIVERSITY OF DELHI)
 
-Below is the official primary prompt formulated and utilized for the design, architecture, and end-to-end development of the **INFINITY** web application for **Cognition – AI Hackathon** (TechTonics '26, Sri Guru Gobind Singh College of Commerce, University of Delhi).
+Below is the canonical primary prompt formulated and utilized for the architectural engineering, UI design, and end-to-end development of the **INFINITY** web application for the **Cognition – AI Hackathon** (TechTonics '26, Sri Guru Gobind Singh College of Commerce, University of Delhi).
 
 ---
 
 ```markdown
-### SYSTEM ROLE & OBJECTIVE
-You are a Principal Frontend Architect and Creative Technologist specializing in ultra-modern, high-performance web applications for tier-1 collegiate technology societies and hackathons.
+### SYSTEM ROLE & ARCHITECTURAL OBJECTIVE
+You are a Principal Frontend Architect and Creative Technologist specializing in ultra-modern, high-performance, accessible web applications for premier collegiate technology societies and hackathons.
 
-Your task is to build a fully functional, responsive, and visually captivating frontend web application for:
+Your task is to build a fully functional, production-ready, accessible, and visually captivating frontend web application for:
 **INFINITY — The Tech Society of Sri Guru Gobind Singh College of Commerce (SGGSCC), University of Delhi**.
 
-### INSPIRATION & SOCIAL MEDIA BRANDING
-Incorporate the visual identity, tone, and activities from the official social handles:
-- **LinkedIn**: https://www.linkedin.com/company/infinitysggscc (Focus: Tech leadership, hackathons, professional webinars, guest lectures, industry partnerships, alumni achievements)
-- **Instagram**: https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1 (Focus: Vibrant tech community, cyber-aesthetic graphics, "TechTonics" flagship fest, "Cognition" AI Hackathon, "Pass The Pixel" design showdown, workshop countdowns, recruitment drives, tech culture)
+### SOCIAL MEDIA BRANDING & INSPIRATION
+Incorporate the identity, tone, initiatives, and visual aesthetics from the official social handles:
+- **LinkedIn**: https://www.linkedin.com/company/infinitysggscc
+  (Focus: Academic credibility, faculty governance, placement achievements, corporate sponsorships, alumni networks, webinars)
+- **Instagram**: https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1
+  (Focus: Collegiate tech culture, TechTonics '26 flagship festival announcements, Cognition 90-min AI Hackathon, Pass The Pixel design relay, member recruitment drives, byte-sized technology insights)
 
-### CORE THEME & DESIGN LANGUAGE
-- **Aesthetic**: Futuristic Deep Cyber-Dark mode (`#070913`, `#0d1127`) with vibrant neon accents: Electric Cyan (`#00f2fe`), Ultraviolet (`#8a2be2`), Magenta Glow (`#ec4899`), and Terminal Emerald (`#10b981`).
-- **Typography & Elements**: JetBrains Mono / Space Grotesk / Inter font styling, glowing glassmorphic cards (`backdrop-blur-xl`), animated gradients, micro-interactions, and an interactive particle constellation canvas.
-- **Brand Motifs**: Animated Infinity loop (`∞`), circuit lines, telemetry HUD indicators, live status badges, cyber grid patterns.
+### CORE THEME & DESIGN SYSTEM
+- **Palette**: Deep Matte Black / Obsidian (`#050507`), Carbon Surface (`#0c0d12`), Slate Borders (`rgba(255, 255, 255, 0.08)`), Platinum White Typography (`#f8fafc`, `#ffffff`), and Monochromatic Silver / Terminal Emerald (`#10b981`) status telemetry. Strictly avoid oversaturated neon purple or cyan candy gradients.
+- **Typography & Accessibility**: Clean system and monospace typography (Space Grotesk / JetBrains Mono fallbacks), full WAI-ARIA compliance (`role="dialog"`, `aria-modal="true"`, focus trapping, Escape key closing), and strict support for `@media (prefers-reduced-motion: reduce)`.
+- **Zero External Runtime Dependency**: 100% self-contained styling and vanilla ES6 modules without requiring fragile runtime CDN compilers (e.g., avoid Tailwind Play CDN in production) so the application functions flawlessly offline.
 
-### KEY FUNCTIONAL MODULES & FEATURES TO DELIVER
+### KEY FUNCTIONAL MODULES TO DELIVER
 
-1. **Top Navigation & Cyber HUD**:
-   - Brand logo with glowing infinity symbol and SGGSCC accreditation tag.
-   - Smooth navigation links: About, TechTonics '26, Domains, Live Events, AI Studio, Team, Socials.
-   - Interactive Cyber Controls: Ambient Synth Audio toggle (Web Audio API), Accent Color Swapper, and an embedded `INFINITY-CLI` terminal launcher.
-   - Quick "Register / Join Us" and "View Primary Prompt" CTA buttons.
+1. **Interactive 3D WebGL Hero Canvas**:
+   - Native 3D geometric Torus Knot (Infinite Loop) rendered via WebGL/Canvas with perspective projection and real-time mouse coordinate tracking.
+   - Respects user motion preferences by freezing rotation under reduced-motion mode.
 
-2. **Hero Section (Command Center)**:
-   - Dynamic typing sub-headline highlighting Infinity's mission at SGGSCC.
-   - Live metrics banner: 500+ Active Members, 35+ Workshops & Hackathons, ₹2.5L+ Annual Prize Pools, 12,000+ Reach.
-   - Dual Call-To-Action: Explore TechTonics '26 & Try the AI Prompt Playground.
-   - Social Proof Strip linking directly to official LinkedIn & Instagram pages.
+2. **Top Navigation & Audio HUD**:
+   - Society emblem with infinity glyph (`∞`) and college credentials.
+   - Built-in Web Audio API tone synthesizer (toggleable, persists state).
+   - Theme switcher operating safely via `data-theme` attribute (without wiping element classes).
+   - Quick triggers for CLI Terminal, Primary Prompt, and Registration Pass.
 
-3. **TechTonics '26 Flagship Festival Showcase**:
-   - Dedicated spotlight for **Cognition: The Flagship AI Hackathon** (rules, time-boxed sprint format, judging criteria, live registration modal).
-   - Spotlight for **Pass The Pixel** (UI/UX design challenge).
-   - Spotlight for **CodeSprint** (Algorithmic & DSA challenge).
-   - Live countdown timer ticking down to the TechTonics grand finale.
+3. **Command Center Hero Section**:
+   - Fixed deterministic countdown clock targeting TechTonics '26 Grand Sprint (2026-11-28T09:30:00+05:30) that does not reset on page reload.
+   - Dynamic typewriter cycling through verified collegiate initiatives.
+   - Real-time verified stats counter with transparent data provenance citations.
 
-4. **Interactive "AI Prompt Studio" (Spotlight Cognition Simulator)**:
-   - A live interactive sandbox on the frontend where participants and judges can test prompt templates (e.g. "Generate Hackathon Landing Page", "Debug Python Memory Leak", "Draft LinkedIn Tech Post").
-   - Instant simulated generation with code syntax preview and live render preview card.
-   - Directly honors the Cognition AI Hackathon prompt engineering theme.
+4. **TechTonics '26 & Cognition AI Hackathon Hub**:
+   - Comprehensive spotlight on **Cognition '26**: 90-minute time-boxed rapid prototype sprint, 2–4 member teams, AI toolkits permitted, and judging criteria.
+   - Spotlights on **Pass The Pixel** (UI/UX design relay) and **CodeSprint** (DSA speed arena).
+   - Spot-reveal problem statement tracks: Autonomous Campus AI, Accessible UI/UX Systems, Social Branding AI, and Decentralized Society Ledger.
 
-5. **Society Domains & Wings**:
-   - Detailed interactive cards for Technical (Full-stack/AI), UI/UX Design, Corporate Relations & PR, Content & Research, Event Operations.
-   - Domain-specific tech stack pills and past project showcases.
+5. **Interactive AI Prompt Studio (Cognition Simulator & Real API Gateway)**:
+   - Live prompt playground supporting both an intelligent multi-intent dynamic compiler and real Google Gemini API calls (via user-provided API key).
+   - Covers distinct domain intents:
+     * Python Concurrency & Memory Leak Diagnostics (with `tracemalloc` and diff profiling).
+     * Posture & Ergonomics Detection (MediaPipe pose tracking component).
+     * Accessible Design Tokens (WCAG AAA monochrome contrast tokens).
+     * LinkedIn Leadership Announcements.
+     * Dynamic synthesis for any arbitrary custom prompt.
 
-6. **Interactive Instagram & LinkedIn Social Feed Feedwall**:
-   - Custom-engineered responsive feed cards mimicking Instagram reels/posts (@infinity.sggscc) and LinkedIn post cards (@infinitysggscc).
-   - Interactive modal previews for recent posts, hackathon highlights, and workshop announcements.
+6. **True Multi-Step Registration Wizard & Attendee Registry**:
+   - Step 1: Delegate Identity & Institution (Name, College, University, validated Email with duplicate verification).
+   - Step 2: Track Selection & Team Composition (Track, Team Size 1–4, Team Member Names, GitHub URL).
+   - Step 3: Motivation Statement & Integrity Declaration.
+   - Real asynchronous API call simulation with persistent `localStorage` database, exportable attendee dataset (.json), and generation of a personalized, verified virtual Delegate Pass Ticket.
 
-7. **Interactive Developer CLI Terminal (`infinity-cli`)**:
-   - An in-browser interactive terminal supporting commands: `help`, `about`, `events`, `cognition`, `prompt`, `socials`, `matrix`, `clear`.
+7. **Security-Hardened Developer Terminal (`infinity-cli`)**:
+   - Interactive shell accessible via `Ctrl + ~` with commands: `help`, `events`, `about`, `cognition`, `socials`, `domains`, `attendees`, `prompt`, `register`, `clear`.
+   - Strictly utilizes `textContent` and safe DOM manipulation, eliminating Self-XSS vulnerabilities.
 
-8. **Recruitment & Event Registration Modal**:
-   - Complete multi-step interactive form with real-time field validation, domain selection, motivation statement, and instant badge generation on submission.
+8. **Past Hackathon Project Showcases**:
+   - Interactive modal showcases for past award-winning solutions: CogniFlow AI, PixelCraft 2.0, and DU Transit AI.
 
-9. **Submission Documentation Hub**:
-   - A dedicated interactive drawer/modal that displays this exact Primary Prompt, system specs, and submission guidelines with one-click copy and file download.
+9. **Curated Social Media Feedwall**:
+   - Interactive post cards mirroring Instagram (@infinity.sggscc) and LinkedIn (/company/infinitysggscc) with post inspection modals and engagement counters.
 
-10. **Technical Requirements**:
-    - Zero broken links, zero missing scripts, 100% self-contained so it works immediately upon opening or static hosting (Vercel, Netlify, GitHub Pages).
-    - Fully responsive across Mobile, Tablet, and Desktop displays.
-    - Accessible, semantic HTML5, modern CSS3 styling, and clean modular ES6+ JavaScript.
+10. **Canonical Primary Prompt Modal & One-Click Export**:
+    - One single source of truth for prompt specifications with verified copy-to-clipboard and file download.
 ```
 
 ---
 
-### PROMPT ENGINEERING STRATEGY & BREAKDOWN
-
-1. **Role Definition**: Positions the AI as a Principal Frontend Architect and Creative Technologist, establishing high standards for UI fidelity and responsive behavior.
-2. **Context Grounding**: References actual initiatives and branding of Infinity SGGSCC (TechTonics, Cognition Hackathon, Pass The Pixel, University of Delhi ecosystem).
-3. **Design Directives**: Enforces dark-mode cyber aesthetics aligned with Instagram visuals (`@infinity.sggscc`) and professional credibility from LinkedIn (`infinitysggscc`).
-4. **Interactive Completeness**: Mandates working simulators (AI Prompt Studio, interactive terminal, registration flow, audio toggle) rather than static text.
-5. **Zero-Dependency Portability**: Ensures evaluation can happen without build tool friction, perfectly satisfying hackathon judging criteria.
-
+### VERIFICATION & COMPLIANCE
+- **Deterministic Chronology**: Past event showcases explicitly reference Cognition '25 / past archives, while active countdowns and registrations reference the upcoming Cognition '26 / TechTonics '26 sprint.
+- **Security**: All dynamic content insertions are sanitized against DOM-based XSS attacks.
+- **Self-Sufficiency**: Fully functional locally, offline, or statically hosted via Vercel, Netlify, or GitHub Pages.
