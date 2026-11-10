@@ -172,10 +172,10 @@
           <!-- Hero Deterministic Countdown & Quick Widget (Right) -->
           <div class="lg:col-span-5 flex flex-col gap-4">
             
-            <div class="surface-glass p-6 tilt-card">
+            <div class="countdown-box p-6 tilt-card">
               <div class="flex items-center justify-between pb-3 mb-4 border-b border-subtle">
                 <span class="badge badge-emerald">DETERMINISTIC SCHEDULE</span>
-                <span class="text-xs font-mono text-muted">NOV 28, 2026</span>
+                <span class="text-xs font-mono text-cyan-400 font-bold">NOV 28, 2026</span>
               </div>
 
               <p class="text-xs font-mono text-muted uppercase tracking-wider text-center mb-3">
@@ -184,21 +184,21 @@
 
               <!-- Fixed Deterministic Countdown Clock -->
               <div class="grid grid-cols-4 gap-2 text-center font-mono">
-                <div class="p-3 bg-black rounded-lg border border-subtle">
-                  <span id="cd-days" class="text-2xl font-bold text-white block">00</span>
-                  <span class="text-[9px] text-muted uppercase">DAYS</span>
+                <div class="cd-digit-card p-3">
+                  <span id="cd-days" class="text-2xl sm:text-3xl font-bold text-white block">00</span>
+                  <span class="text-[9px] text-muted uppercase tracking-wider">DAYS</span>
                 </div>
-                <div class="p-3 bg-black rounded-lg border border-subtle">
-                  <span id="cd-hours" class="text-2xl font-bold text-white block">00</span>
-                  <span class="text-[9px] text-muted uppercase">HOURS</span>
+                <div class="cd-digit-card p-3">
+                  <span id="cd-hours" class="text-2xl sm:text-3xl font-bold text-white block">00</span>
+                  <span class="text-[9px] text-muted uppercase tracking-wider">HOURS</span>
                 </div>
-                <div class="p-3 bg-black rounded-lg border border-subtle">
-                  <span id="cd-mins" class="text-2xl font-bold text-white block">00</span>
-                  <span class="text-[9px] text-muted uppercase">MINS</span>
+                <div class="cd-digit-card p-3">
+                  <span id="cd-mins" class="text-2xl sm:text-3xl font-bold text-white block">00</span>
+                  <span class="text-[9px] text-muted uppercase tracking-wider">MINS</span>
                 </div>
-                <div class="p-3 bg-black rounded-lg border border-subtle">
-                  <span id="cd-secs" class="text-2xl font-bold text-emerald-400 block">00</span>
-                  <span class="text-[9px] text-muted uppercase">SECS</span>
+                <div class="cd-digit-card p-3">
+                  <span id="cd-secs" class="text-2xl sm:text-3xl font-bold text-emerald-400 block">00</span>
+                  <span class="text-[9px] text-emerald-500 uppercase tracking-wider font-bold">SECS</span>
                 </div>
               </div>
 
@@ -309,7 +309,7 @@
     <!-- ==========================================================
          TECHTONICS '26 & COGNITION AI HACKATHON HUB
          ========================================================== -->
-    <section id="techtonics" class="py-20 border-b border-subtle">
+    <section id="techtonics" class="py-20 border-b border-subtle bg-[#050507]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -570,7 +570,7 @@
     <!-- ==========================================================
          PAST PROJECTS & ARCHIVES
          ========================================================== -->
-    <section id="projects" class="py-20 border-b border-subtle">
+    <section id="projects" class="py-20 border-b border-subtle bg-[#050507]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -648,6 +648,11 @@
           </div>
         </div>
 
+        <!-- Real-Time Attendee Search Filter -->
+        <div class="mb-4">
+          <input type="text" id="search-attendees-input" class="form-input text-xs font-mono" placeholder="🔍 Search registered attendees by name, institution, track, or Pass ID (e.g. INF-782104)..." />
+        </div>
+
         <div class="surface-card overflow-hidden">
           <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
@@ -673,7 +678,7 @@
     <!-- ==========================================================
          SOCIETY DOMAINS & WINGS
          ========================================================== -->
-    <section id="domains" class="py-20 border-b border-subtle">
+    <section id="domains" class="py-20 border-b border-subtle bg-[#050507]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
@@ -845,7 +850,7 @@
     <!-- ==========================================================
          COUNCIL & FACULTY ADVISORY
          ========================================================== -->
-    <section id="council" class="py-20 border-b border-subtle">
+    <section id="council" class="py-20 border-b border-subtle bg-[#050507]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
@@ -966,7 +971,7 @@
     <div class="modal-dialog">
       <div class="modal-header">
         <div>
-          <h3 id="prompt-modal-title" class="text-sm font-bold text-white font-mono">PRIMARY_PROMPT.md</h3>
+          <h3 id="prompt-modal-title" class="text-sm font-bold text-white font-mono">PRIMARY PROMPT SPECIFICATION</h3>
           <p class="text-xs text-muted font-mono">Canonical Specification for Cognition AI Hackathon</p>
         </div>
         <div class="flex items-center gap-2">
@@ -993,16 +998,16 @@ Incorporate the identity, tone, initiatives, and visual aesthetics from the offi
   (Focus: Collegiate tech culture, TechTonics '26 flagship festival announcements, Cognition 90-min AI Hackathon, Pass The Pixel design relay, member recruitment drives, byte-sized technology insights)
 
 ### CORE THEME & DESIGN SYSTEM
-- **Palette**: Deep Matte Black / Obsidian (#050507), Carbon Surface (#0c0d12), Slate Borders (rgba(255, 255, 255, 0.08)), Platinum White Typography (#f8fafc, #ffffff), and Monochromatic Silver / Terminal Emerald (#10b981) status telemetry. Strictly avoid oversaturated neon purple or cyan candy gradients.
-- **Typography & Accessibility**: Clean system and monospace typography (Space Grotesk / JetBrains Mono fallbacks), full WAI-ARIA compliance (role="dialog", aria-modal="true", focus trapping, Escape key closing), and strict support for @media (prefers-reduced-motion: reduce).
-- **Zero External Runtime Dependency**: 100% self-contained styling and vanilla ES6 modules without requiring fragile runtime CDN compilers (e.g., avoid Tailwind Play CDN in production) so the application functions flawlessly offline.
+- **Design Philosophy**: High-contrast, dark technical aesthetic with glassmorphic depth, refined luminous container accents, and high-readability typography hierarchy. Prioritize clean layout structure, clear separation of containers, and subtle ambient glows.
+- **Typography & Accessibility**: Clean geometric display and monospace typography (Space Grotesk and JetBrains Mono), full WAI-ARIA compliance (role="dialog", aria-modal="true", focus trapping, Escape key closing), and strict support for @media (prefers-reduced-motion: reduce).
+- **Self-Sufficiency**: Self-hosted fonts, compiled stylesheets, and native ES6 modular architecture without requiring fragile runtime CDN compilers so the application functions flawlessly offline.
 
 ### KEY FUNCTIONAL MODULES TO DELIVER
-1. **Interactive 3D WebGL Hero Canvas**: Native 3D geometric Torus Knot (Infinite Loop) rendered via WebGL/Canvas with perspective projection and real-time mouse coordinate tracking.
+1. **Interactive 3D WebGL Hero Canvas**: Native 3D geometric Torus Knot (Infinite Loop) rendered via WebGL/Three.js with perspective projection and real-time mouse coordinate tracking.
 2. **Top Navigation & Audio HUD**: Built-in Web Audio API tone synthesizer (toggleable, persists state), theme switcher operating via data-theme attribute, and CLI launcher.
-3. **Command Center Hero Section**: Fixed deterministic countdown clock targeting TechTonics '26 Grand Sprint (2026-11-28T09:30:00+05:30), dynamic typewriter, and verified stats with data provenance citations.
+3. **Command Center Hero Section**: Fixed deterministic countdown clock targeting TechTonics '26 Grand Sprint (2026-11-28T09:30:00+05:30), dynamic typewriter, and transparent demonstration metrics.
 4. **TechTonics '26 & Cognition AI Hackathon Hub**: Spotlight on Cognition '26 (90-min rapid prototype sprint), Pass The Pixel, CodeSprint, and 4 spot-reveal problem tracks.
-5. **Interactive AI Prompt Studio**: Live prompt playground supporting both an intelligent multi-intent dynamic compiler and real Google Gemini API calls (via user-provided API key). Covers Python concurrency memory leaks, Posture AI, accessible design tokens, and arbitrary custom prompts.
+5. **Interactive AI Prompt Studio**: Live prompt playground supporting both an intelligent multi-intent dynamic compiler and real Google Gemini API calls (via user-provided API key). Covers REST APIs, Python concurrency memory leaks, Posture AI, accessible design tokens, and arbitrary custom prompts.
 6. **True Multi-Step Registration Wizard & Attendee Registry**: 3-step wizard with real asynchronous API call simulation, persistent localStorage database, duplicate checking, JSON export, and personalized Delegate Pass generation.
 7. **Security-Hardened Developer Terminal (infinity-cli)**: Accessible via Ctrl+~ with textContent-based safe rendering, eliminating Self-XSS vulnerabilities.
 8. **Past Hackathon Project Showcases**: Case study modals for CogniFlow AI, PixelCraft 2.0, and DU Transit AI.
@@ -1137,8 +1142,8 @@ Incorporate the identity, tone, initiatives, and visual aesthetics from the offi
       <div id="registration-pass-view" class="modal-body" style="display: none;">
         <div class="attendee-pass">
           <div class="flex justify-between items-center pb-2 mb-3 border-b border-subtle">
-            <span class="badge badge-emerald">VERIFIED DELEGATE</span>
-            <span id="pass-id" class="text-xs font-mono text-white font-bold">INF-000000</span>
+            <span class="badge badge-emerald">DEMO PARTICIPANT PASS</span>
+            <span id="pass-id" class="text-xs font-mono text-white font-bold">DEMO-000000</span>
           </div>
 
           <div class="space-y-1 mb-3">
@@ -1155,11 +1160,14 @@ Incorporate the identity, tone, initiatives, and visual aesthetics from the offi
 
           <div class="flex justify-between items-center text-[10px] font-mono text-muted pt-2 border-t border-subtle">
             <span>ISSUED: <span id="pass-timestamp" class="text-secondary"></span></span>
-            <span class="text-emerald-400 font-bold">ACCESS GRANTED ✓</span>
+            <span class="text-emerald-400 font-bold">DEMO PASS ISSUED ✓</span>
           </div>
         </div>
 
-        <div class="mt-4 text-center">
+        <div class="mt-4 flex items-center justify-center gap-3">
+          <button id="print-pass-btn" class="btn-primary text-xs font-mono">
+            🖨️ Print / Save Pass
+          </button>
           <button id="register-another-btn" class="btn-secondary text-xs font-mono">
             + Register Another Delegate
           </button>
@@ -1279,25 +1287,5 @@ Incorporate the identity, tone, initiatives, and visual aesthetics from the offi
 
   <!-- Modular ES6 JavaScript Bootstrap -->
   <script type="module" src="js/app.js"></script>
-
-  <!-- Fallback trigger bindings for navbar and hero buttons -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const pModal = document.getElementById('prompt-modal');
-      const rModal = document.getElementById('register-modal');
-      
-      const openP = () => {
-        pModal.classList.add('is-open');
-        pModal.setAttribute('aria-hidden', 'false');
-      };
-      const openR = () => {
-        rModal.classList.add('is-open');
-        rModal.setAttribute('aria-hidden', 'false');
-      };
-
-      document.querySelectorAll('#open-prompt-modal-nav-btn, #hero-prompt-btn, .open-prompt-trigger').forEach(b => b.addEventListener('click', openP));
-      document.querySelectorAll('#open-register-modal-nav-btn, #hero-register-btn, #open-register-modal-fest-btn, .open-reg-trigger').forEach(b => b.addEventListener('click', openR));
-    });
-  </script>
 </body>
 </html>

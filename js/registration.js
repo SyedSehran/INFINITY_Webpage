@@ -21,6 +21,12 @@ const formData = {
   consent: false
 };
 
+export function validateEmail(email) {
+  if (!email || typeof email !== 'string') return false;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email.trim());
+}
+
 export function initRegistration() {
   const wizardForm = document.getElementById('wizard-form');
   const prevBtn = document.getElementById('wizard-prev-btn');
@@ -89,7 +95,7 @@ export function initRegistration() {
       renderPass(response.attendee);
       formContainer.style.display = 'none';
       passContainer.style.display = 'block';
-      showAppToast(`Registration verified! Pass ${response.attendee.id} generated.`);
+      showAppToast(`Registration submitted! Demo Pass ${response.attendee.id} generated.`);
     } catch (err) {
       showAppToast(`Registration Notice: ${err.message}`);
     } finally {
@@ -124,7 +130,7 @@ export function initRegistration() {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showAppToast('Downloaded verified attendee dataset (.json)');
+      showAppToast('Downloaded attendee dataset (.json)');
     });
   }
 }
@@ -147,8 +153,7 @@ function validateStep(step) {
       showFieldError('reg-college', 'Institution / College name is required.');
       valid = false;
     }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!validateEmail(email)) {
       showFieldError('reg-email', 'Please provide a valid institutional or personal email address.');
       valid = false;
     }
@@ -249,7 +254,7 @@ function renderAttendeeTable(query = '') {
       )
     : allAttendees;
 
-  if (countBadge) countBadge.textContent = `${allAttendees.length} Registered`;
+  if (countBadge) countBadge.textContent = `${allAttendees.length} Registered (Including Demo Data)`;
 
   tableBody.innerHTML = '';
   if (attendees.length === 0) {
@@ -260,10 +265,14 @@ function renderAttendeeTable(query = '') {
   }
 
   attendees.slice(0, 15).forEach((a) => {
+    const isMock = a.isDemo || a.id.startsWith('DEMO');
     const tr = document.createElement('tr');
     tr.className = 'border-b border-subtle text-xs hover:bg-zinc-900/60';
     tr.innerHTML = `
-      <td class="p-3 font-mono font-bold text-white">${escapeHTML(a.id)}</td>
+      <td class="p-3 font-mono font-bold text-white flex items-center gap-2">
+        <span>${escapeHTML(a.id)}</span>
+        ${isMock ? '<span class="text-[9px] px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700 font-mono">DEMO</span>' : '<span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 font-mono">NEW</span>'}
+      </td>
       <td class="p-3 text-secondary font-medium">${escapeHTML(a.name)}</td>
       <td class="p-3 text-muted">${escapeHTML(a.college)}</td>
       <td class="p-3"><span class="badge ${a.track.includes('AI') ? 'badge-emerald' : 'badge-white'} text-[10px]">${escapeHTML(a.track)}</span></td>
@@ -313,4 +322,3 @@ function escapeHTML(str) {
   p.textContent = str;
   return p.innerHTML;
 }
-

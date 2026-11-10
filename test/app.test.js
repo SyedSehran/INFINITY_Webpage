@@ -1,55 +1,85 @@
 /**
  * INFINITY // Test Suite
- * Validates registration logic, security against XSS, and state integrity.
+ * Directly tests real project functions from js/registration.js, js/prompt-studio.js, and js/state.js.
  * Executable via `npm test` using Node.js built-in test runner.
  */
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-test('Registration Email Validation Regex', () => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  assert.equal(emailRegex.test('aryan.sharma@sggscc.ac.in'), true);
-  assert.equal(emailRegex.test('student@du.ac.in'), true);
-  assert.equal(emailRegex.test('invalid-email'), false);
-  assert.equal(emailRegex.test('missing@domain'), false);
-  assert.equal(emailRegex.test(''), false);
+import { validateEmail } from '../js/registration.js';
+import { classifyPromptIntent, PROMPT_PRESETS } from '../js/prompt-studio.js';
+import { TECHTONICS_TARGET_DATE, DATA_PROVENANCE, SEED_ATTENDEES, apiRegisterAttendee, getAttendees } from '../js/state.js';
+
+test('Real Registration Email Validation (validateEmail)', () => {
+  assert.equal(validateEmail('aryan.sharma@sggscc.ac.in'), true);
+  assert.equal(validateEmail('student@du.ac.in'), true);
+  assert.equal(validateEmail('dev@infinity.org'), true);
+
+  // Invalid cases
+  assert.equal(validateEmail('invalid-email'), false);
+  assert.equal(validateEmail('missing@domain'), false);
+  assert.equal(validateEmail(''), false);
+  assert.equal(validateEmail(null), false);
+  assert.equal(validateEmail(undefined), false);
+  assert.equal(validateEmail('   '), false);
 });
 
-test('Terminal Input XSS Sanitization Logic', () => {
-  const maliciousInput = '<img src=x onerror=alert(1)>';
-  
-  // Emulate terminal textContent assignment
-  const fakeElement = { textContent: '' };
-  fakeElement.textContent = maliciousInput;
-  
-  // Verify that it is stored purely as literal text string, not executable HTML
-  assert.equal(fakeElement.textContent, '<img src=x onerror=alert(1)>');
-  assert.notEqual(fakeElement.textContent.includes('<script>'), true);
+test('Prompt Intent Classifier (Keyword Priority & False Positive Immunity)', () => {
+  // Critical regression test: "memory cards" + "API" must resolve to REST API, not Python leak!
+  const apiIntent = classifyPromptIntent('Design a REST API for memory cards');
+  assert.equal(apiIntent, 'rest-api', 'REST API intent should prioritize over single word memory');
+
+  const crudIntent = classifyPromptIntent('Create a CRUD endpoint router for user profiles');
+  assert.equal(crudIntent, 'rest-api');
+
+  // Python leak requires compound matching (leak + memory / python / tracemalloc)
+  const leakIntent = classifyPromptIntent('Diagnose and fix a high-concurrency memory leak in a FastAPI worker');
+  assert.equal(leakIntent, 'python-leak');
+
+  const tracemallocIntent = classifyPromptIntent('Run tracemalloc snapshots to isolate memory growth');
+  assert.equal(tracemallocIntent, 'python-leak');
+
+  // Posture / Computer vision intent
+  const postureIntent = classifyPromptIntent('Create an AI-driven posture detection component using MediaPipe');
+  assert.equal(postureIntent, 'posture-vision');
+
+  // Design tokens intent
+  const tokenIntent = classifyPromptIntent('Generate high-contrast monochrome design tokens adhering to WCAG AAA');
+  assert.equal(tokenIntent, 'design-tokens');
+
+  // Social branding intent
+  const socialIntent = classifyPromptIntent('Draft an engaging LinkedIn society announcement for Cognition');
+  assert.equal(socialIntent, 'social-post');
+
+  // Unclassified arbitrary query
+  const customIntent = classifyPromptIntent('Build a custom smart contract ledger');
+  assert.equal(customIntent, 'custom-synthesis');
 });
 
-test('Deterministic Target Date Integrity', async () => {
-  const { TECHTONICS_TARGET_DATE, DATA_PROVENANCE } = await import('../js/state.js');
-  
+test('Deterministic Target Date & Honest Data Provenance', () => {
   assert.equal(TECHTONICS_TARGET_DATE, '2026-11-28T09:30:00+05:30');
   const targetTime = new Date(TECHTONICS_TARGET_DATE).getTime();
   assert.equal(Number.isNaN(targetTime), false);
 
-  assert.equal(DATA_PROVENANCE.members.stat, '500+');
-  assert.equal(DATA_PROVENANCE.events.stat, '35+');
-  assert.equal(DATA_PROVENANCE.reach.stat, '12,000+');
+  // Honest source attributions (demonstration benchmark disclosures)
+  assert.ok(DATA_PROVENANCE.members.source.includes('Demonstration metric'));
+  assert.ok(DATA_PROVENANCE.reach.source.includes('Demonstration metric'));
+
+  // Seed data explicitly disclosed as demo data
+  assert.ok(SEED_ATTENDEES.length >= 2);
+  SEED_ATTENDEES.forEach((attendee) => {
+    assert.equal(attendee.isDemo, true);
+    assert.ok(attendee.id.startsWith('DEMO-'));
+  });
 });
 
-test('Prompt Studio Preset Definitions', async () => {
-  const { PROMPT_PRESETS } = await import('../js/prompt-studio.js');
-  
-  assert.ok(PROMPT_PRESETS['cognition']);
-  assert.ok(PROMPT_PRESETS['python-leak']);
-  assert.ok(PROMPT_PRESETS['posture-app']);
-  assert.ok(PROMPT_PRESETS['pixel-spec']);
-  assert.ok(PROMPT_PRESETS['linkedin-recap']);
-  
-  assert.equal(PROMPT_PRESETS['python-leak'].category, 'python-debug');
-  assert.equal(PROMPT_PRESETS['posture-app'].category, 'computer-vision');
+test('Prompt Studio Presets Completeness', () => {
+  const presetKeys = ['cognition', 'python-leak', 'rest-api', 'posture-app', 'pixel-spec', 'linkedin-recap'];
+  presetKeys.forEach((key) => {
+    assert.ok(PROMPT_PRESETS[key], `Preset ${key} must exist`);
+    assert.ok(PROMPT_PRESETS[key].title.length > 0);
+    assert.ok(PROMPT_PRESETS[key].prompt.length > 0);
+    assert.ok(PROMPT_PRESETS[key].model.length > 0);
+  });
 });
-

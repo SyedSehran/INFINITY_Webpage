@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. Accessible Modal System
   initModals();
+  initModalTriggers();
 
   // 5. Developer Terminal
   initTerminal();
@@ -52,6 +53,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // 13. Canonical Primary Prompt Copy & Download
   initPromptActions();
 });
+
+/* ==========================================================
+   0. MODAL TRIGGER BINDINGS (Clean accessible event listeners)
+   ========================================================== */
+function initModalTriggers() {
+  const promptModal = document.getElementById('prompt-modal');
+  const registerModal = document.getElementById('register-modal');
+
+  document.querySelectorAll('#open-prompt-modal-nav-btn, #hero-prompt-btn, .open-prompt-trigger').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(promptModal);
+      playClick(520, 0.03);
+    });
+  });
+
+  document.querySelectorAll('#open-register-modal-nav-btn, #hero-register-btn, #open-register-modal-fest-btn, .open-reg-trigger').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(registerModal);
+      playClick(580, 0.03);
+    });
+  });
+}
 
 /* ==========================================================
    1. THEME INITIALIZATION (Zero body class wiping)
@@ -330,16 +355,16 @@ function initPromptActions() {
   if (downloadBtn && promptTextBlock) {
     downloadBtn.addEventListener('click', () => {
       const text = promptTextBlock.innerText;
-      const blob = new Blob([text], { type: 'text/markdown' });
+      const blob = new Blob([text], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'PRIMARY_PROMPT.md';
+      a.download = 'PRIMARY_PROMPT.txt';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showToast('Downloaded canonical PRIMARY_PROMPT.md');
+      showToast('Downloaded Primary Prompt');
     });
   }
 }

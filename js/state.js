@@ -1,9 +1,9 @@
 /**
  * INFINITY // State & Persistence Module
- * Manages local database, attendee registration, API keys, and data provenance.
+ * Manages local database, attendee registration, API keys, and honest data provenance.
  */
 
-const STORAGE_KEY_ATTENDEES = 'infinity_attendees_v1';
+const STORAGE_KEY_ATTENDEES = 'infinity_attendees_v2';
 const STORAGE_KEY_API_KEY = 'infinity_gemini_api_key_v1';
 const STORAGE_KEY_THEME = 'infinity_theme_v1';
 const STORAGE_KEY_AUDIO = 'infinity_audio_fx_v1';
@@ -11,65 +11,67 @@ const STORAGE_KEY_AUDIO = 'infinity_audio_fx_v1';
 // Fixed Deterministic Hackathon Date (TechTonics '26 Grand Sprint)
 export const TECHTONICS_TARGET_DATE = '2026-11-28T09:30:00+05:30';
 
-// Verified Data Provenance
+// Transparent Community Milestones & Demonstration Benchmarks
 export const DATA_PROVENANCE = {
   members: {
     stat: '500+',
     label: 'Active Tech Members',
-    source: 'SGGSCC Tech Society Annual Audit & Department of Computer Science Records (2024–2025)'
+    source: 'Society student membership roster (Demonstration metric)'
   },
   events: {
     stat: '35+',
     label: 'Workshops & Hackathons Hosted',
-    source: 'Infinity Society Event Register & TechTonics Archives (2022–2026)'
+    source: 'TechTonics archive catalog (Demonstration metric)'
   },
   prizes: {
     stat: '₹2,50,000+',
     label: 'Annual Fest Prize Pool',
-    source: 'TechTonics \'26 Corporate Sponsorship Commitments & Grant Allotments'
+    source: 'Estimated prize pool allocation (Demonstration metric)'
   },
   reach: {
     stat: '12,000+',
     label: 'Student Reach Across DU',
-    source: 'Inter-College Hackathon Registration Analytics & Unstop Portal Metrics'
+    source: 'Collegiate hackathon outreach benchmark (Demonstration metric)'
   },
   linkedinFollowers: {
-    stat: '1,920+',
+    stat: '1,900+',
     label: 'LinkedIn Community',
-    source: 'Official LinkedIn Page (/company/infinitysggscc) Analytics'
+    source: 'Official handle @infinitysggscc (Estimated milestone)'
   },
   instagramPostLikes: {
-    stat: '842',
+    stat: '800+',
     label: 'TechTonics Reveal Engagements',
-    source: 'Official Instagram Post Metric (@infinity.sggscc)'
+    source: 'Official handle @infinity.sggscc (Estimated milestone)'
   }
 };
 
-// Initial Seed Attendees
-const SEED_ATTENDEES = [
+// Initial Seed Attendees (Explicitly labeled as demonstration mock data)
+export const SEED_ATTENDEES = [
   {
-    id: 'INF-782104',
-    name: 'Harshit Malhotra',
-    college: 'Sri Guru Gobind Singh College of Commerce',
+    id: 'DEMO-782104',
+    name: '[DEMO] Harshit Malhotra',
+    college: 'SGGSCC (Demo Record)',
     university: 'University of Delhi',
-    email: 'harshit.m@sggscc.ac.in',
+    email: 'demo.harshit@example.com',
     track: 'Cognition AI Hackathon',
     teamSize: '3',
-    members: 'Harshit M., Priya S., Aman V.',
+    members: 'Demo Member 1, Demo Member 2',
     registeredAt: '2026-11-08T14:32:00+05:30',
-    motivation: 'Building an autonomous accessibility layer for DU student portals.'
+    motivation: '[DEMO SUBMISSION] Autonomous accessibility layer for DU student portals.',
+    isDemo: true
   },
   {
-    id: 'INF-519280',
-    name: 'Tanvi Kapoor',
-    college: 'Shaheed Sukhdev College of Business Studies',
+    id: 'DEMO-519280',
+    name: '[DEMO] Tanvi Kapoor',
+    college: 'SSCBS (Demo Record)',
     university: 'University of Delhi',
-    email: 'tanvi.k@sscbs.du.ac.in',
+    email: 'demo.tanvi@example.com',
     track: 'Pass The Pixel (UI/UX)',
     teamSize: '2',
-    members: 'Tanvi K., Rohan D.',
+    members: 'Demo Member A',
     registeredAt: '2026-11-09T11:15:00+05:30',
-    motivation: 'Designing high-contrast, WCAG AAA compliant design tokens for collegiate web portals.'
+    motivation: '[DEMO SUBMISSION] High-contrast, WCAG AAA compliant design tokens.',
+    isDemo: true
   }
 ];
 
@@ -101,7 +103,7 @@ export function saveAttendees(attendees) {
 
 /**
  * Real asynchronous API call to register an attendee.
- * Includes network delay, email validation, and duplicate verification.
+ * Includes network delay, email validation, duplicate verification, and local persistence.
  */
 export async function apiRegisterAttendee(data) {
   // Simulate network latency (200-350ms)
@@ -133,8 +135,8 @@ export async function apiRegisterAttendee(data) {
     throw new Error(`Email ${data.email} is already registered under Pass ID ${existing.id}.`);
   }
 
-  // Generate unique pass ID
-  const passId = 'INF-' + Math.floor(100000 + Math.random() * 900000);
+  // Generate unique demo pass ID
+  const passId = 'DEMO-' + Math.floor(100000 + Math.random() * 900000);
   const newAttendee = {
     id: passId,
     name: data.name.trim(),
@@ -145,7 +147,8 @@ export async function apiRegisterAttendee(data) {
     teamSize: data.teamSize || '1',
     members: data.members || data.name.trim(),
     motivation: data.motivation ? data.motivation.trim() : 'Active delegate participation.',
-    registeredAt: new Date().toISOString()
+    registeredAt: new Date().toISOString(),
+    isDemo: false
   };
 
   attendees.unshift(newAttendee);
@@ -220,4 +223,3 @@ export function saveAudioState(enabled) {
     localStorage.setItem(STORAGE_KEY_AUDIO, String(enabled));
   } catch (e) {}
 }
-
