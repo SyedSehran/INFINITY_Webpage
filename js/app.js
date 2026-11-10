@@ -52,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 13. Canonical Primary Prompt Copy & Download
   initPromptActions();
+
+  // 14. Accessible Mobile Navigation Menu
+  initMobileMenu();
 });
 
 /* ==========================================================
@@ -75,6 +78,63 @@ function initModalTriggers() {
       openModal(registerModal);
       playClick(580, 0.03);
     });
+  });
+}
+
+/* ==========================================================
+   0.1 ACCESSIBLE MOBILE NAVIGATION MENU
+   ========================================================== */
+function initMobileMenu() {
+  const toggleBtn = document.getElementById('mobile-menu-toggle-btn');
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const terminalModal = document.getElementById('terminal-modal');
+  const mobileTerminalBtn = document.getElementById('mobile-open-terminal-btn');
+
+  if (!toggleBtn || !drawer) return;
+
+  const toggleDrawer = (forceClose = false) => {
+    const isCurrentlyOpen = !drawer.classList.contains('hidden');
+    const shouldOpen = forceClose ? false : !isCurrentlyOpen;
+
+    if (shouldOpen) {
+      drawer.classList.remove('hidden');
+      drawer.setAttribute('aria-hidden', 'false');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      hamburgerIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+      playClick(560, 0.03);
+    } else {
+      drawer.classList.add('hidden');
+      drawer.setAttribute('aria-hidden', 'true');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    }
+  };
+
+  toggleBtn.addEventListener('click', () => toggleDrawer());
+
+  // Close drawer when any mobile nav link or button is clicked
+  drawer.querySelectorAll('.mobile-nav-link, button').forEach((el) => {
+    el.addEventListener('click', () => toggleDrawer(true));
+  });
+
+  // Mobile Terminal button trigger
+  if (mobileTerminalBtn && terminalModal) {
+    mobileTerminalBtn.addEventListener('click', () => {
+      openModal(terminalModal);
+      const inputEl = document.getElementById('terminal-input');
+      inputEl?.focus();
+    });
+  }
+
+  // Close drawer on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !drawer.classList.contains('hidden')) {
+      toggleDrawer(true);
+    }
   });
 }
 

@@ -27,34 +27,36 @@
 <body class="bg-[#050507] text-white min-h-screen bg-carbon-grid" style="background-color: #050507; color: #f8fafc;">
 
   <!-- ==========================================================
-       TOP HUD ANNOUNCEMENT BAR
+       TOP HUD ANNOUNCEMENT BAR (Vibrant Telemetry)
        ========================================================== -->
-  <div class="border-b border-subtle bg-black text-xs font-mono py-2 px-4 relative z-40">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+  <div class="border-b border-cyan-500/25 bg-[#070913] text-xs font-mono py-2 px-3 sm:px-4 relative z-40">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
       
-      <div class="flex items-center gap-2">
-        <span class="badge badge-emerald">ACTIVE</span>
-        <span class="text-secondary">TechTonics '26 &bull; Cognition 90-Min AI Hackathon Registrations Live</span>
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="badge badge-emerald shrink-0 text-[10px] animate-pulse">LIVE</span>
+        <span class="text-secondary truncate text-[11px] sm:text-xs">
+          <strong class="text-white">TechTonics '26</strong> &bull; Cognition 90-Min AI Hackathon Registrations Live
+        </span>
       </div>
 
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
         <!-- Audio Synth Toggle -->
-        <button id="sound-toggle-btn" class="flex items-center gap-1.5 text-secondary hover:text-white transition cursor-pointer" aria-pressed="false" title="Toggle Synthesizer Audio Effects">
-          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
-          <span id="sound-status-label" class="font-bold text-[11px]">FX OFF</span>
+        <button id="sound-toggle-btn" class="flex items-center gap-1 text-secondary hover:text-cyan-300 transition cursor-pointer px-2 py-0.5 rounded bg-zinc-900/80 border border-subtle" aria-pressed="false" title="Toggle Synthesizer Audio Effects">
+          <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          <span id="sound-status-label" class="font-bold text-[10px] text-emerald-400">FX OFF</span>
         </button>
 
         <!-- Minimalist Theme Switcher (data-theme) -->
-        <div class="flex items-center gap-1.5 pl-3 border-l border-subtle">
-          <span class="text-[10px] text-muted uppercase">THEME:</span>
-          <button data-theme-btn="black" class="w-3 h-3 rounded-full bg-black border border-white hover:scale-125 transition" title="Obsidian Black"></button>
-          <button data-theme-btn="silver" class="w-3 h-3 rounded-full bg-slate-300 hover:scale-125 transition" title="Monochrome Silver"></button>
-          <button data-theme-btn="emerald" class="w-3 h-3 rounded-full bg-emerald-500 hover:scale-125 transition" title="Terminal Emerald"></button>
-          <button data-theme-btn="amber" class="w-3 h-3 rounded-full bg-amber-500 hover:scale-125 transition" title="Solar Amber"></button>
+        <div class="hidden sm:flex items-center gap-1.5 pl-2 border-l border-subtle">
+          <span class="text-[9px] text-muted uppercase">THEME:</span>
+          <button data-theme-btn="black" class="w-2.5 h-2.5 rounded-full bg-black border border-white hover:scale-125 transition" title="Obsidian Black"></button>
+          <button data-theme-btn="silver" class="w-2.5 h-2.5 rounded-full bg-slate-300 hover:scale-125 transition" title="Monochrome Silver"></button>
+          <button data-theme-btn="emerald" class="w-2.5 h-2.5 rounded-full bg-emerald-500 hover:scale-125 transition" title="Terminal Emerald"></button>
+          <button data-theme-btn="amber" class="w-2.5 h-2.5 rounded-full bg-amber-500 hover:scale-125 transition" title="Solar Amber"></button>
         </div>
 
         <!-- Terminal Launcher -->
-        <button id="open-terminal-btn" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-zinc-900 border border-subtle text-secondary hover:text-white hover:border-active text-[11px] font-mono transition">
+        <button id="open-terminal-btn" class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 hover:text-white hover:border-cyan-400 text-[10px] font-mono transition">
           <span>&gt;_ CLI</span>
           <span class="text-[9px] text-muted">Ctrl+~</span>
         </button>
@@ -64,27 +66,27 @@
   </div>
 
   <!-- ==========================================================
-       MAIN NAVIGATION BAR
+       MAIN NAVIGATION BAR & ACCESSIBLE MOBILE DRAWER
        ========================================================== -->
-  <header class="sticky top-0 z-30 bg-black/90 backdrop-blur-md border-b border-subtle">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <header class="sticky top-0 z-30 bg-[#050507]/95 backdrop-blur-md border-b border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
       
       <!-- Logo Branding -->
-      <a href="#" class="flex items-center gap-3 text-decoration-none group">
-        <div class="w-10 h-10 rounded-xl bg-zinc-900 border border-subtle flex items-center justify-center text-white font-mono text-xl font-bold group-hover:border-active transition">
+      <a href="#" class="flex items-center gap-2.5 text-decoration-none group min-w-0">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-cyan-950 to-zinc-900 border border-cyan-500/40 flex items-center justify-center text-cyan-400 font-mono text-xl font-bold group-hover:border-cyan-300 transition shadow-[0_0_15px_rgba(56,189,248,0.2)] shrink-0">
           &infin;
         </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="font-bold text-base tracking-wider text-white">INFINITY</span>
-            <span class="badge text-[10px]">SGGSCC</span>
+        <div class="min-w-0">
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-sm sm:text-base tracking-wider text-white">INFINITY</span>
+            <span class="badge badge-emerald text-[9px] px-1.5 py-0.5">SGGSCC</span>
           </div>
-          <p class="text-[11px] text-muted">The Tech Society • University of Delhi</p>
+          <p class="text-[10px] text-muted truncate hidden sm:block">The Tech Society &bull; University of Delhi</p>
         </div>
       </a>
 
       <!-- Desktop Links -->
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-secondary">
+      <nav class="hidden md:flex items-center gap-5 lg:gap-6 text-sm font-medium text-secondary">
         <a href="#about" class="hover:text-white transition">About</a>
         <a href="#techtonics" class="hover:text-white transition flex items-center gap-1.5">
           <span>TechTonics '26</span>
@@ -98,16 +100,74 @@
       </nav>
 
       <!-- Action Buttons -->
-      <div class="flex items-center gap-3">
-        <button id="open-prompt-modal-nav-btn" class="btn-secondary text-xs font-mono hidden lg:inline-flex">
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <button id="open-prompt-modal-nav-btn" class="btn-secondary text-xs font-mono hidden xl:inline-flex border-cyan-500/30 text-cyan-300 hover:border-cyan-400">
           Primary Prompt
         </button>
 
-        <button id="open-register-modal-nav-btn" class="btn-primary text-xs font-mono">
-          Register Pass &rarr;
+        <button id="open-register-modal-nav-btn" class="btn-primary text-xs font-mono px-3 sm:px-4 py-2">
+          <span>Register</span>
+          <span class="hidden sm:inline">Pass &rarr;</span>
+        </button>
+
+        <!-- Accessible Mobile Menu Toggle Button -->
+        <button id="mobile-menu-toggle-btn" class="md:hidden p-2 rounded-lg bg-zinc-900 border border-subtle text-secondary hover:text-white hover:border-active transition" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
 
+    </div>
+
+    <!-- Mobile Slide-Down Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="md:hidden hidden bg-[#080b14]/98 border-b border-cyan-500/30 backdrop-blur-xl px-4 py-5 space-y-3 shadow-2xl transition-all" aria-hidden="true">
+      <nav class="flex flex-col space-y-2.5 font-medium text-sm">
+        <a href="#about" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>About Society</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#techtonics" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <span>TechTonics '26</span>
+            <span class="badge badge-emerald text-[9px]">FEST</span>
+          </span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#ai-studio" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>AI Prompt Studio</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#projects" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Past Projects</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#domains" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Society Wings</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#social-feed" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Social Feedwall</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#council" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Council &amp; Advisory</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+      </nav>
+
+      <div class="pt-2 flex flex-col gap-2">
+        <button class="open-prompt-trigger btn-secondary text-xs font-mono w-full justify-center py-2.5 border-cyan-500/40 text-cyan-300 hover:bg-cyan-950/40">
+          ⚡ View Primary Prompt Spec
+        </button>
+        <button id="mobile-open-terminal-btn" class="w-full justify-center flex items-center gap-2 px-3 py-2.5 rounded-lg bg-zinc-900/90 border border-subtle text-secondary hover:text-white text-xs font-mono transition">
+          <span>&gt;_ Launch Developer Terminal</span>
+          <span class="badge text-[9px]">Ctrl+~</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -130,9 +190,9 @@
               <span>COGNITION AI HACKATHON &bull; OFFICIAL PLATFORM</span>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.08]">
-              ENGINEERING LOGIC. <br />
-              <span class="text-slate-300">ARCHITECTING INFINITY.</span>
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.08]">
+              <span class="heading-punchy-cyan">ENGINEERING LOGIC.</span> <br />
+              <span class="heading-punchy-emerald">ARCHITECTING INFINITY.</span>
             </h1>
 
             <div class="h-8 flex items-center text-sm font-mono text-emerald-400">
@@ -315,7 +375,9 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
             <span class="badge badge-emerald mb-2">FLAGSHIP FESTIVAL</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-white">TECHTONICS '26</h2>
+            <h2 class="text-3xl sm:text-5xl font-extrabold">
+              <span class="heading-punchy-cyan">TECHTONICS '26</span> <span class="heading-punchy-emerald">// ANNUAL TECH FEST</span>
+            </h2>
             <p class="text-secondary text-sm mt-1 max-w-xl">
               Delhi University’s premier collegiate technology festival. Featuring Cognition '26, Pass The Pixel, and CodeSprint.
             </p>
@@ -453,7 +515,9 @@
         
         <div class="text-center max-w-2xl mx-auto mb-14 space-y-2">
           <span class="badge badge-emerald">INTERACTIVE HACKATHON SANDBOX</span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">AI PROMPT STUDIO</h2>
+          <h2 class="text-3xl sm:text-4xl font-extrabold">
+            <span class="heading-punchy-cyan">AI PROMPT STUDIO</span> <span class="heading-punchy-emerald">// COGNITION GATEWAY</span>
+          </h2>
           <p class="text-secondary text-sm">
             Experience the core of prompt engineering. Synthesize custom specifications or provide an optional Gemini API Key for real live model execution.
           </p>
@@ -984,35 +1048,28 @@
         <div class="p-4 bg-black rounded border border-subtle overflow-y-auto max-h-[60vh]">
           <pre id="prompt-text-block" class="whitespace-pre-wrap leading-relaxed select-all"># PRIMARY PROMPT — INFINITY // THE TECH SOCIETY OF SGGSCC (UNIVERSITY OF DELHI)
 
-### SYSTEM ROLE & ARCHITECTURAL OBJECTIVE
-You are a Principal Frontend Architect and Creative Technologist specializing in ultra-modern, high-performance, accessible web applications for premier collegiate technology societies and hackathons.
+### ARCHITECTURAL OBJECTIVE
+Build a high-performance, accessible, production-ready frontend web application for **INFINITY — The Tech Society of Sri Guru Gobind Singh College of Commerce (SGGSCC), University of Delhi** for the **Cognition AI Hackathon (TechTonics '26)**.
 
-Your task is to build a fully functional, production-ready, accessible, and visually captivating frontend web application for:
-**INFINITY — The Tech Society of Sri Guru Gobind Singh College of Commerce (SGGSCC), University of Delhi**.
+### BRAND IDENTITY & SOCIAL INSPIRATION
+Incorporate initiatives and visual tone from verified society socials:
+- **LinkedIn**: https://www.linkedin.com/company/infinitysggscc (academic credibility, faculty mentorship, webinars, corporate sponsorships)
+- **Instagram**: https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1 (tech culture, Cognition 90-min AI Hackathon, Pass The Pixel design relay, member recruitment)
 
-### SOCIAL MEDIA BRANDING & INSPIRATION
-Incorporate the identity, tone, initiatives, and visual aesthetics from the official social handles:
-- **LinkedIn**: https://www.linkedin.com/company/infinitysggscc
-  (Focus: Academic credibility, faculty governance, placement achievements, corporate sponsorships, alumni networks, webinars)
-- **Instagram**: https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1
-  (Focus: Collegiate tech culture, TechTonics '26 flagship festival announcements, Cognition 90-min AI Hackathon, Pass The Pixel design relay, member recruitment drives, byte-sized technology insights)
+### DESIGN SYSTEM & ACCESSIBILITY
+- High-contrast dark technical interface with radiant glassmorphic container accents, micro-glow borders, and sharp typographic hierarchy.
+- Self-hosted typography (Space Grotesk & JetBrains Mono) with full offline independence (zero runtime CDN compilers).
+- WAI-ARIA compliance: role="dialog", aria-modal="true", focus trapping, Escape closing, responsive mobile navigation, and @media (prefers-reduced-motion: reduce).
 
-### CORE THEME & DESIGN SYSTEM
-- **Design Philosophy**: High-contrast, dark technical aesthetic with glassmorphic depth, refined luminous container accents, and high-readability typography hierarchy. Prioritize clean layout structure, clear separation of containers, and subtle ambient glows.
-- **Typography & Accessibility**: Clean geometric display and monospace typography (Space Grotesk and JetBrains Mono), full WAI-ARIA compliance (role="dialog", aria-modal="true", focus trapping, Escape key closing), and strict support for @media (prefers-reduced-motion: reduce).
-- **Self-Sufficiency**: Self-hosted fonts, compiled stylesheets, and native ES6 modular architecture without requiring fragile runtime CDN compilers so the application functions flawlessly offline.
-
-### KEY FUNCTIONAL MODULES TO DELIVER
-1. **Interactive 3D WebGL Hero Canvas**: Native 3D geometric Torus Knot (Infinite Loop) rendered via WebGL/Three.js with perspective projection and real-time mouse coordinate tracking.
-2. **Top Navigation & Audio HUD**: Built-in Web Audio API tone synthesizer (toggleable, persists state), theme switcher operating via data-theme attribute, and CLI launcher.
-3. **Command Center Hero Section**: Fixed deterministic countdown clock targeting TechTonics '26 Grand Sprint (2026-11-28T09:30:00+05:30), dynamic typewriter, and transparent demonstration metrics.
-4. **TechTonics '26 & Cognition AI Hackathon Hub**: Spotlight on Cognition '26 (90-min rapid prototype sprint), Pass The Pixel, CodeSprint, and 4 spot-reveal problem tracks.
-5. **Interactive AI Prompt Studio**: Live prompt playground supporting both an intelligent multi-intent dynamic compiler and real Google Gemini API calls (via user-provided API key). Covers REST APIs, Python concurrency memory leaks, Posture AI, accessible design tokens, and arbitrary custom prompts.
-6. **True Multi-Step Registration Wizard & Attendee Registry**: 3-step wizard with real asynchronous API call simulation, persistent localStorage database, duplicate checking, JSON export, and personalized Delegate Pass generation.
-7. **Security-Hardened Developer Terminal (infinity-cli)**: Accessible via Ctrl+~ with textContent-based safe rendering, eliminating Self-XSS vulnerabilities.
-8. **Past Hackathon Project Showcases**: Case study modals for CogniFlow AI, PixelCraft 2.0, and DU Transit AI.
-9. **Curated Social Media Feedwall**: Interactive post cards mirroring Instagram (@infinity.sggscc) and LinkedIn (/company/infinitysggscc) with inspection modals.
-10. **Canonical Primary Prompt Modal & One-Click Export**: Single source of truth for prompt specifications with verified copy and download.</pre>
+### DELIVERABLES & CORE MODULES
+1. **Interactive 3D WebGL Torus Knot**: Authentic Three.js WebGL infinity knot reacting to cursor coordinates with motion-preference respect.
+2. **Top Telemetry HUD & Audio Synthesizer**: Web Audio API tone generator, safe data-theme switching, mobile drawer, and CLI terminal launcher.
+3. **Command Hero & Deterministic Countdown**: Fixed ISO timer targeting TechTonics sprint finale (2026-11-28T09:30:00+05:30), live typewriter, and community benchmarks.
+4. **TechTonics & Cognition AI Hackathon Hub**: Spotlight on Cognition 90-min prototype sprint, Pass The Pixel (UI/UX), CodeSprint (DSA), and 4 problem tracks.
+5. **AI Prompt Studio**: Dual-mode engine supporting live Google Gemini API calls and local multi-intent compilation (REST API routing, Python memory leak profiling, MediaPipe posture detection, WCAG tokens, and custom prompts) with dynamic model attribution.
+6. **3-Step Registration Wizard & Live Registry**: Asynchronous submission, duplicate verification, persistent localStorage database, JSON export, and virtual delegate pass ticket generation.
+7. **Hardened CLI Terminal (infinity-cli)**: Keyboard-driven shell (Ctrl+~) using safe textContent DOM manipulation against Self-XSS.
+8. **Curated Showcase Modals**: Interactive case studies for past winners (CogniFlow, PixelCraft, DU Transit) and social feedwall modals.</pre>
         </div>
       </div>
     </div>
