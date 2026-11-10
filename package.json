@@ -1,0 +1,21 @@
+{
+  "name": "fronted_infinity",
+  "version": "1.0.0",
+  "description": "Functional Frontend for INFINITY — The Tech Society of SGGSCC, DU with Cognition AI Hackathon Hub and Primary Prompt Documentation",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "serve": "npx serve ."
+  },
+  "keywords": [
+    "infinity",
+    "sggscc",
+    "cognition",
+    "techtonics",
+    "hackathon",
+    "ai",
+    "frontend"
+  ],
+  "author": "Cognition Hackathon Submission Team",
+  "license": "MIT"
+}
