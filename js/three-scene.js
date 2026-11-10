@@ -145,3 +145,4 @@ export function init3DHeroScene(containerId = 'three-canvas-container') {
     window.removeEventListener('resize', resizeHandler);
   };
 }
+

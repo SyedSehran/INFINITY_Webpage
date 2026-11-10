@@ -220,3 +220,4 @@ export function saveAudioState(enabled) {
     localStorage.setItem(STORAGE_KEY_AUDIO, String(enabled));
   } catch (e) {}
 }
+

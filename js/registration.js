@@ -280,3 +280,4 @@ function escapeHTML(str) {
   p.textContent = str;
   return p.innerHTML;
 }
+

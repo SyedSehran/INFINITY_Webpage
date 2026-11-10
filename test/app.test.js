@@ -52,3 +52,4 @@ test('Prompt Studio Preset Definitions', async () => {
   assert.equal(PROMPT_PRESETS['python-leak'].category, 'python-debug');
   assert.equal(PROMPT_PRESETS['posture-app'].category, 'computer-vision');
 });
+
