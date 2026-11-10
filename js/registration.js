@@ -33,7 +33,23 @@ export function initRegistration() {
 
   // Real-time live attendee table updates
   renderAttendeeTable();
-  window.addEventListener('infinity:attendees-updated', renderAttendeeTable);
+  window.addEventListener('infinity:attendees-updated', () => renderAttendeeTable());
+
+  // Search filter input
+  const searchInput = document.getElementById('search-attendees-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      renderAttendeeTable(e.target.value.trim().toLowerCase());
+    });
+  }
+
+  // Print Pass Handler
+  const printPassBtn = document.getElementById('print-pass-btn');
+  if (printPassBtn) {
+    printPassBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
 
   // Next Step Handler
   nextBtn.addEventListener('click', () => {
@@ -217,16 +233,33 @@ function renderPass(attendee) {
   });
 }
 
-function renderAttendeeTable() {
+function renderAttendeeTable(query = '') {
   const tableBody = document.getElementById('attendees-table-body');
   const countBadge = document.getElementById('live-attendees-counter');
   if (!tableBody) return;
 
-  const attendees = getAttendees();
-  if (countBadge) countBadge.textContent = `${attendees.length} Registered`;
+  const allAttendees = getAttendees();
+  const attendees = query
+    ? allAttendees.filter(
+        (a) =>
+          a.name.toLowerCase().includes(query) ||
+          a.college.toLowerCase().includes(query) ||
+          a.track.toLowerCase().includes(query) ||
+          a.id.toLowerCase().includes(query)
+      )
+    : allAttendees;
+
+  if (countBadge) countBadge.textContent = `${allAttendees.length} Registered`;
 
   tableBody.innerHTML = '';
-  attendees.slice(0, 10).forEach((a) => {
+  if (attendees.length === 0) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td colspan="5" class="p-4 text-center text-muted font-mono text-xs">No matching delegate records found for "${escapeHTML(query)}".</td>`;
+    tableBody.appendChild(tr);
+    return;
+  }
+
+  attendees.slice(0, 15).forEach((a) => {
     const tr = document.createElement('tr');
     tr.className = 'border-b border-subtle text-xs hover:bg-zinc-900/60';
     tr.innerHTML = `
