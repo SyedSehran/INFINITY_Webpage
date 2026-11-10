@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="black" class="scroll-smooth bg-[#050507] text-white" style="background-color: #050507; color: #f8fafc;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>INFINITY // The Tech Society of SGGSCC (University of Delhi)</title>
+  <meta name="description" content="Official platform of INFINITY — The Tech Society of Sri Guru Gobind Singh College of Commerce, University of Delhi. Host of TechTonics '26 and Cognition AI Hackathon." />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <!-- Open Graph & Social Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://github.com/SyedSehran/INFINITY_Webpage" />
+  <meta property="og:title" content="INFINITY // The Tech Society of SGGSCC (University of Delhi)" />
+  <meta property="og:description" content="Collegiate tech nexus at SGGSCC, DU. Hosting TechTonics '26, Cognition 90-min AI Hackathon, Pass The Pixel, and AI Prompt Studio." />
+  <meta property="og:image" content="https://github.com/SyedSehran/INFINITY_Webpage/raw/main/favicon.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="INFINITY // The Tech Society of SGGSCC" />
+  <meta name="twitter:description" content="Official platform of Infinity SGGSCC. Engineering AI, web systems, and competitive design." />
+
+  <!-- Self-Contained Standalone Production Stylesheet (Zero CDN Dependencies) -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-[#050507] text-white min-h-screen bg-carbon-grid" style="background-color: #050507; color: #f8fafc;">
+
+  <!-- ==========================================================
+       TOP HUD ANNOUNCEMENT BAR (Vibrant Interactive Telemetry)
+       ========================================================== -->
+  <div class="border-b border-cyan-500/30 bg-[#060812] text-xs font-mono py-2 px-3 sm:px-4 relative z-40 shadow-[0_2px_15px_rgba(0,0,0,0.7)]">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-3">
+      
+      <div class="flex items-center gap-2 min-w-0 shrink">
+        <span class="badge badge-emerald shrink-0 text-[10px] animate-pulse shadow-[0_0_12px_rgba(16,185,129,0.4)]">LIVE</span>
+        <span class="text-secondary truncate text-[11px] sm:text-xs">
+          <strong class="text-white">TechTonics '26</strong><span class="hidden sm:inline"> &bull; Cognition 90-Min AI Hackathon Registrations Open</span>
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Audio Synth Toggle Box -->
+        <button id="sound-toggle-btn" class="hud-control-box hud-sound-box cursor-pointer group" aria-pressed="false" title="Toggle Synthesizer Audio Effects">
+          <svg class="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          <span id="sound-status-label" class="font-bold text-[10px] text-emerald-400 font-mono tracking-wider">FX OFF</span>
+        </button>
+
+        <!-- Vibrant Theme Options Box -->
+        <div class="hud-control-box hud-theme-box items-center gap-2 flex">
+          <span class="text-[9px] text-purple-300 font-bold uppercase tracking-wider hidden xs:inline">THEME</span>
+          <div class="flex items-center gap-1.5">
+            <button data-theme-btn="black" class="theme-pill-option bg-black border border-cyan-400/80 shadow-[0_0_8px_rgba(56,189,248,0.4)]" title="Obsidian Black"></button>
+            <button data-theme-btn="silver" class="theme-pill-option bg-slate-200 border border-white shadow-[0_0_8px_rgba(255,255,255,0.4)]" title="Monochrome Silver"></button>
+            <button data-theme-btn="emerald" class="theme-pill-option bg-emerald-500 border border-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.6)]" title="Terminal Emerald"></button>
+            <button data-theme-btn="amber" class="theme-pill-option bg-amber-500 border border-amber-300 shadow-[0_0_10px_rgba(245,158,11,0.6)]" title="Solar Amber"></button>
+          </div>
+        </div>
+
+        <!-- Terminal Launcher Box -->
+        <button id="open-terminal-btn" class="hud-control-box hud-cli-box cursor-pointer group flex items-center gap-1.5" title="Launch Developer Terminal (Ctrl+~)">
+          <span class="text-amber-400 font-bold font-mono text-[11px] group-hover:text-white">&gt;_ CLI</span>
+          <span class="text-[9px] px-1 py-0.2 rounded bg-amber-950/80 border border-amber-500/40 text-amber-300 font-mono hidden sm:inline">Ctrl+~</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MAIN NAVIGATION BAR & ACCESSIBLE MOBILE DRAWER
+       ========================================================== -->
+  <header class="sticky top-0 z-30 bg-[#050507]/95 backdrop-blur-md border-b border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+      
+      <!-- Logo Branding -->
+      <a href="#" class="flex items-center gap-2.5 text-decoration-none group min-w-0 shrink">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-cyan-950 to-zinc-900 border border-cyan-500/40 flex items-center justify-center text-cyan-400 font-mono text-xl font-bold group-hover:border-cyan-300 transition shadow-[0_0_15px_rgba(56,189,248,0.2)] shrink-0">
+          &infin;
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-sm sm:text-base tracking-wider text-white">INFINITY</span>
+            <span class="badge badge-emerald text-[9px] px-1.5 py-0.5">SGGSCC</span>
+          </div>
+          <p class="text-[10px] text-muted truncate hidden sm:block">The Tech Society &bull; University of Delhi</p>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium text-secondary">
+        <a href="#about" class="hover:text-white transition">About</a>
+        <a href="#techtonics" class="hover:text-white transition flex items-center gap-1.5">
+          <span>TechTonics '26</span>
+          <span class="badge badge-emerald text-[9px]">FEST</span>
+        </a>
+        <a href="#ai-studio" class="hover:text-white transition">AI Studio</a>
+        <a href="#projects" class="hover:text-white transition">Projects</a>
+        <a href="#domains" class="hover:text-white transition">Domains</a>
+        <a href="#social-feed" class="hover:text-white transition">Socials</a>
+        <a href="#council" class="hover:text-white transition">Council</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <button id="open-prompt-modal-nav-btn" class="btn-secondary text-xs font-mono inline-flex border-cyan-500/30 text-cyan-300 hover:border-cyan-400">
+          Primary Prompt
+        </button>
+
+        <button id="open-register-modal-nav-btn" class="btn-primary text-xs font-mono px-3 sm:px-4 py-2 shrink-0">
+          <span>Register</span>
+          <span class="hidden sm:inline">Pass &rarr;</span>
+        </button>
+
+        <!-- Accessible Mobile Menu Toggle Button -->
+        <button id="mobile-menu-toggle-btn" class="md:hidden p-2 rounded-lg bg-zinc-900 border border-subtle text-secondary hover:text-white hover:border-active transition shrink-0" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Slide-Down Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="md:hidden hidden bg-[#080b14]/98 border-b border-cyan-500/30 backdrop-blur-xl px-4 py-5 space-y-3 shadow-2xl transition-all" aria-hidden="true">
+      <nav class="flex flex-col space-y-2.5 font-medium text-sm">
+        <a href="#about" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>About Society</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#techtonics" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <span>TechTonics '26</span>
+            <span class="badge badge-emerald text-[9px]">FEST</span>
+          </span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#ai-studio" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>AI Prompt Studio</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#projects" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Past Projects</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#domains" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Society Wings</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#social-feed" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Social Feedwall</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+        <a href="#council" class="mobile-nav-link text-secondary hover:text-cyan-300 transition py-1.5 border-b border-white/5 flex items-center justify-between">
+          <span>Council &amp; Advisory</span>
+          <span class="text-xs text-muted font-mono">&rarr;</span>
+        </a>
+      </nav>
+
+      <div class="pt-2 flex flex-col gap-2">
+        <button class="open-prompt-trigger btn-secondary text-xs font-mono w-full justify-center py-2.5 border-cyan-500/40 text-cyan-300 hover:bg-cyan-950/40">
+          ⚡ View Primary Prompt Spec
+        </button>
+        <button id="mobile-open-terminal-btn" class="w-full justify-center flex items-center gap-2 px-3 py-2.5 rounded-lg bg-zinc-900/90 border border-subtle text-secondary hover:text-white text-xs font-mono transition">
+          <span>&gt;_ Launch Developer Terminal</span>
+          <span class="badge text-[9px]">Ctrl+~</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- ==========================================================
+         HERO SECTION (COMMAND CENTER & 3D CANVAS)
+         ========================================================== -->
+    <section class="relative pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden border-b border-subtle bg-[#050507]" style="background-color: #050507;">
+      <!-- 3D WebGL Torus Knot Canvas Container -->
+      <div id="three-canvas-container"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Hero Text -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-subtle text-xs font-mono text-secondary">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>COGNITION AI HACKATHON &bull; OFFICIAL PLATFORM</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.08]">
+              <span class="heading-punchy-cyan">ENGINEERING LOGIC.</span> <br />
+              <span class="heading-punchy-emerald">ARCHITECTING INFINITY.</span>
+            </h1>
+
+            <div class="h-8 flex items-center text-sm font-mono text-emerald-400">
+              <span class="text-white mr-2 font-bold">&gt;</span>
+              <span id="hero-typewriter" class="text-emerald-400 font-bold"></span>
+            </div>
+
+            <p class="text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed">
+              Official digital headquarters of <strong class="text-white">Infinity – The Tech Society of Sri Guru Gobind Singh College of Commerce (SGGSCC), University of Delhi</strong>. 
+              Bridging academic theory with industry-grade software, AI prompt architectures, and collegiate hackathons.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button id="hero-register-btn" class="btn-primary text-black font-bold">
+                Register For TechTonics '26 &rarr;
+              </button>
+              <a href="#ai-studio" class="btn-secondary">
+                Launch AI Prompt Studio
+              </a>
+              <button id="hero-prompt-btn" class="btn-secondary font-mono text-xs">
+                View Primary Prompt
+              </button>
+            </div>
+
+            <!-- Verified Social Links -->
+            <div class="pt-4 flex flex-wrap items-center gap-6 text-xs text-slate-300 font-mono">
+              <span class="text-white font-bold uppercase tracking-wider text-[10px]">VERIFIED SOCIALS:</span>
+              <a href="https://www.linkedin.com/company/infinitysggscc" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white transition">
+                LinkedIn: /company/infinitysggscc
+              </a>
+              <a href="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white transition">
+                Instagram: @infinity.sggscc
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Deterministic Countdown & Quick Widget (Right) -->
+          <div class="lg:col-span-5 flex flex-col gap-4">
+            
+            <div class="countdown-box p-6 tilt-card">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-subtle">
+                <span class="badge badge-emerald">DETERMINISTIC SCHEDULE</span>
+                <span class="text-xs font-mono text-cyan-400 font-bold">NOV 28, 2026</span>
+              </div>
+
+              <p class="text-xs font-mono text-muted uppercase tracking-wider text-center mb-3">
+                COUNTDOWN TO TECHTONICS '26 SPRINT FINALE
+              </p>
+
+              <!-- Fixed Deterministic Countdown Clock -->
+              <div class="grid grid-cols-4 gap-2 text-center font-mono">
+                <div class="cd-digit-card p-3">
+                  <span id="cd-days" class="text-2xl sm:text-3xl font-bold text-white block">00</span>
+                  <span class="text-[9px] text-muted uppercase tracking-wider">DAYS</span>
+                </div>
+                <div class="cd-digit-card p-3">
+                  <span id="cd-hours" class="text-2xl sm:text-3xl font-bold text-white block">00</span>
+                  <span class="text-[9px] text-muted uppercase tracking-wider">HOURS</span>
+                </div>
+                <div class="cd-digit-card p-3">
+                  <span id="cd-mins" class="text-2xl sm:text-3xl font-bold text-white block">00</span>
+                  <span class="text-[9px] text-muted uppercase tracking-wider">MINS</span>
+                </div>
+                <div class="cd-digit-card p-3">
+                  <span id="cd-secs" class="text-2xl sm:text-3xl font-bold text-emerald-400 block">00</span>
+                  <span class="text-[9px] text-emerald-500 uppercase tracking-wider font-bold">SECS</span>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-subtle text-xs text-secondary flex items-center justify-between font-mono">
+                <span>📍 Auditorium &amp; Labs, SGGSCC</span>
+                <span class="text-white font-bold">₹2,50,000+ POOL</span>
+              </div>
+            </div>
+
+            <!-- Quick Attendees Callout -->
+            <div class="surface-card p-4 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-emerald-950/70 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold font-mono text-xs">
+                  ✓
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-white">Live Attendee Registry Active</p>
+                  <p class="text-[11px] text-muted">Persisted in local database</p>
+                </div>
+              </div>
+              <a href="#attendees-registry" class="text-xs font-mono text-emerald-400 hover:underline">View Registry &rarr;</a>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Verified Key Metrics & Data Provenance (Punchy Telemetry Boxes) -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="stat-box-card stat-box-cyan text-center">
+            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-cyan-400 drop-shadow-[0_0_12px_rgba(56,189,248,0.4)]">500+</p>
+            <p class="text-[11px] text-slate-300 uppercase tracking-wider font-semibold mt-2">Active Tech Members</p>
+          </div>
+          <div class="stat-box-card stat-box-emerald text-center">
+            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-emerald-400 drop-shadow-[0_0_12px_rgba(16,185,129,0.4)]">35+</p>
+            <p class="text-[11px] text-slate-300 uppercase tracking-wider font-semibold mt-2">Workshops &amp; Sprints</p>
+          </div>
+          <div class="stat-box-card stat-box-amber text-center">
+            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-amber-400 drop-shadow-[0_0_12px_rgba(245,158,11,0.4)]">₹2.5L+</p>
+            <p class="text-[11px] text-slate-300 uppercase tracking-wider font-semibold mt-2">Annual Fest Grants</p>
+          </div>
+          <div class="stat-box-card stat-box-violet text-center">
+            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.4)]">12,000+</p>
+            <p class="text-[11px] text-slate-300 uppercase tracking-wider font-semibold mt-2">DU Student Outreach</p>
+          </div>
+        </div>
+
+        <div class="mt-3 text-right">
+          <button id="view-provenance-btn" class="text-xs font-mono text-muted hover:text-white underline">
+            [i] View Data Provenance &amp; Verification Sources
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         ABOUT SOCIETY & SGGSCC HERITAGE
+         ========================================================== -->
+    <section id="about" class="py-20 border-b border-subtle bg-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+          <span class="badge">SOCIETY GOVERNANCE</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">WHERE RIGOR MEETS INNOVATION</h2>
+          <p class="text-secondary text-sm">
+            Operating under the Department of Computer Science at Sri Guru Gobind Singh College of Commerce, University of Delhi.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted block mb-2">01 // CODE</span>
+            <h3 class="text-base font-bold text-white mb-2">Technical Mastery</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Fullstack web architectures, distributed systems, autonomous agents, and competitive programming pipelines.
+            </p>
+          </div>
+
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted block mb-2">02 // DESIGN</span>
+            <h3 class="text-base font-bold text-white mb-2">Pass The Pixel</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Advancing accessible UI/UX design systems, WCAG compliance, micro-interactions, and visual design relays.
+            </p>
+          </div>
+
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted block mb-2">03 // AI</span>
+            <h3 class="text-base font-bold text-white mb-2">Cognition Hackathons</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              90-minute time-boxed rapid development sprints challenging students to synthesize AI tools into working products.
+            </p>
+          </div>
+
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted block mb-2">04 // NETWORK</span>
+            <h3 class="text-base font-bold text-white mb-2">Corporate &amp; Alumni</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Direct engagements with tier-1 alumni founders, Google/Microsoft engineers, and hiring recruiters.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         TECHTONICS '26 & COGNITION AI HACKATHON HUB
+         ========================================================== -->
+    <section id="techtonics" class="py-20 border-b border-subtle bg-[#050507]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <span class="badge badge-emerald mb-2">FLAGSHIP FESTIVAL</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold">
+              <span class="heading-punchy-cyan">TECHTONICS '26</span> <span class="heading-punchy-emerald">// ANNUAL TECH FEST</span>
+            </h2>
+            <p class="text-secondary text-sm mt-1 max-w-xl">
+              Delhi University’s premier collegiate technology festival. Featuring Cognition '26, Pass The Pixel, and CodeSprint.
+            </p>
+          </div>
+          <button id="open-register-modal-fest-btn" class="btn-primary self-start md:self-auto">
+            Register Delegate Pass &rarr;
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Cognition '26 Spotlight -->
+          <div class="lg:col-span-2 surface-glass p-8 relative overflow-hidden">
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="badge badge-emerald">⚡ FLAGSHIP AI HACKATHON</span>
+              <span class="text-xs font-mono text-white font-bold">CASH BOUNTY: ₹75,000+</span>
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+              COGNITION '26 <span class="text-muted font-mono text-xl">// AI Sprint</span>
+            </h3>
+
+            <p class="text-secondary text-sm leading-relaxed mb-6">
+              A high-stakes 90-minute rapid prototyping hackathon. Teams receive spot-revealed problem statements and utilize prompt engineering, modern web frameworks, and AI toolkits to architect and deploy a working solution.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+              <div class="p-3 bg-black rounded border border-subtle">
+                <span class="text-[10px] font-mono text-muted uppercase">SPRINT FORMAT</span>
+                <p class="text-xs font-bold text-white mt-0.5">90 Mins Offline</p>
+              </div>
+              <div class="p-3 bg-black rounded border border-subtle">
+                <span class="text-[10px] font-mono text-muted uppercase">TEAM SIZE</span>
+                <p class="text-xs font-bold text-white mt-0.5">2 – 4 Members</p>
+              </div>
+              <div class="p-3 bg-black rounded border border-subtle">
+                <span class="text-[10px] font-mono text-muted uppercase">TOOLSETS</span>
+                <p class="text-xs font-bold text-white mt-0.5">AI Tools Permitted</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3">
+              <button class="open-reg-trigger btn-primary text-xs font-mono">Register Team For Cognition</button>
+              <button class="open-prompt-trigger btn-secondary text-xs font-mono">View Evaluation Rubric</button>
+            </div>
+          </div>
+
+          <!-- Pass The Pixel -->
+          <div class="surface-glass p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="badge">🎨 DESIGN RELAY</span>
+                <span class="text-xs font-mono text-muted">₹35,000 POOL</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">PASS THE PIXEL '26</h3>
+              <p class="text-muted text-xs leading-relaxed mb-4">
+                A speed UI/UX relay battle testing design system consistency, accessible token hierarchies, and interactive prototyping in Figma.
+              </p>
+              <div class="space-y-1.5 text-xs text-secondary font-mono mb-6">
+                <div>• Figma Design System Synchronization</div>
+                <div>• WCAG AAA Accessibility Standards</div>
+                <div>• Rapid Prototyping Under Constraint</div>
+              </div>
+            </div>
+            <button class="open-reg-trigger btn-secondary w-full text-xs font-mono">Register For Designathon</button>
+          </div>
+
+        </div>
+
+        <!-- Problem Statement Tracks -->
+        <div class="mt-12 surface-card p-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
+            <div>
+              <span class="badge badge-emerald">CHALLENGE DOMAINS</span>
+              <h3 class="text-lg font-bold text-white mt-1">Cognition '26 Problem Statement Tracks</h3>
+            </div>
+            <span class="text-xs font-mono text-muted">Spot-Reveal Preparedness</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="p-4 bg-black rounded border border-subtle flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-mono text-muted">TRACK 01</span>
+                <h4 class="text-sm font-bold text-white mt-1">Autonomous Campus AI</h4>
+                <p class="text-[11px] text-muted mt-1 leading-relaxed">
+                  Natural language assistant for Delhi University academic regulations, attendance, and syllabus schedules.
+                </p>
+              </div>
+              <a href="#ai-studio" class="text-xs font-mono text-white mt-3 hover:underline" data-preset="cognition">Load In Studio &rarr;</a>
+            </div>
+
+            <div class="p-4 bg-black rounded border border-subtle flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-mono text-muted">TRACK 02</span>
+                <h4 class="text-sm font-bold text-white mt-1">Ergonomics &amp; Vision AI</h4>
+                <p class="text-[11px] text-muted mt-1 leading-relaxed">
+                  Real-time posture detection and spinal health monitoring for students during extended coding sessions.
+                </p>
+              </div>
+              <a href="#ai-studio" class="text-xs font-mono text-white mt-3 hover:underline" data-preset="posture-app">Load In Studio &rarr;</a>
+            </div>
+
+            <div class="p-4 bg-black rounded border border-subtle flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-mono text-muted">TRACK 03</span>
+                <h4 class="text-sm font-bold text-white mt-1">High-Concurrency Profiling</h4>
+                <p class="text-[11px] text-muted mt-1 leading-relaxed">
+                  Automated memory leak and asynchronous bottleneck isolation in collegiate web portals.
+                </p>
+              </div>
+              <a href="#ai-studio" class="text-xs font-mono text-white mt-3 hover:underline" data-preset="python-leak">Load In Studio &rarr;</a>
+            </div>
+
+            <div class="p-4 bg-black rounded border border-subtle flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-mono text-muted">TRACK 04</span>
+                <h4 class="text-sm font-bold text-white mt-1">Accessible Design Tokens</h4>
+                <p class="text-[11px] text-muted mt-1 leading-relaxed">
+                  High-contrast monochrome token systems compliant with WCAG AAA for collegiate applications.
+                </p>
+              </div>
+              <a href="#ai-studio" class="text-xs font-mono text-white mt-3 hover:underline" data-preset="pixel-spec">Load In Studio &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         INTERACTIVE AI PROMPT STUDIO (COGNITION SIMULATOR)
+         ========================================================== -->
+    <section id="ai-studio" class="py-20 border-b border-subtle bg-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14 space-y-2">
+          <span class="badge badge-emerald">INTERACTIVE HACKATHON SANDBOX</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold">
+            <span class="heading-punchy-cyan">AI PROMPT STUDIO</span> <span class="heading-punchy-emerald">// COGNITION GATEWAY</span>
+          </h2>
+          <p class="text-secondary text-sm">
+            Experience the core of prompt engineering. Synthesize custom specifications or provide an optional Gemini API Key for real live model execution.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- Controls Panel (Left) -->
+          <div class="lg:col-span-5 surface-card p-6 space-y-4">
+            
+            <div class="flex items-center justify-between pb-3 border-b border-subtle">
+              <span class="text-xs font-mono font-bold text-white uppercase">Prompt Architect</span>
+              <span class="text-[10px] font-mono text-muted">v3.0</span>
+            </div>
+
+            <!-- Presets -->
+            <div>
+              <label class="block text-xs font-mono text-muted uppercase mb-1.5">Challenge Presets:</label>
+              <div class="grid grid-cols-2 gap-2">
+                <button data-preset="cognition" class="p-2 bg-black rounded border border-subtle text-left text-xs hover:border-active transition">
+                  <span class="font-bold text-white block">Cognition '26</span>
+                  <span class="text-[10px] text-muted">Hackathon Dashboard</span>
+                </button>
+                <button data-preset="python-leak" class="p-2 bg-black rounded border border-subtle text-left text-xs hover:border-active transition">
+                  <span class="font-bold text-white block">Python Leak</span>
+                  <span class="text-[10px] text-muted">Tracemalloc Diff</span>
+                </button>
+                <button data-preset="posture-app" class="p-2 bg-black rounded border border-subtle text-left text-xs hover:border-active transition">
+                  <span class="font-bold text-white block">Posture AI</span>
+                  <span class="text-[10px] text-muted">MediaPipe Sentinel</span>
+                </button>
+                <button data-preset="pixel-spec" class="p-2 bg-black rounded border border-subtle text-left text-xs hover:border-active transition">
+                  <span class="font-bold text-white block">Pixel Tokens</span>
+                  <span class="text-[10px] text-muted">WCAG AAA Spec</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Model Selection -->
+            <div>
+              <label class="block text-xs font-mono text-muted uppercase mb-1">Target Engine:</label>
+              <select id="ai-model-select" class="form-select text-xs font-mono">
+                <option value="Gemini 2.5 Flash">Gemini 2.5 Flash (Speed &amp; Reasoning)</option>
+                <option value="Claude 3.7 Sonnet">Claude 3.7 Sonnet (Hybrid Coding)</option>
+                <option value="GPT-4o">GPT-4o (Omni Architecture)</option>
+              </select>
+            </div>
+
+            <!-- Prompt Input -->
+            <div>
+              <label class="block text-xs font-mono text-muted uppercase mb-1">Prompt Statement:</label>
+              <textarea id="ai-prompt-input" rows="4" class="form-textarea text-xs font-mono" placeholder="Type any engineering prompt statement (e.g. Debug a Python memory leak, posture app, landing page)..."></textarea>
+            </div>
+
+            <!-- Optional Gemini API Key -->
+            <div class="pt-2 border-t border-subtle">
+              <label class="block text-[11px] font-mono text-muted uppercase mb-1">Optional Live Gemini API Key:</label>
+              <div class="flex gap-2">
+                <input type="password" id="gemini-api-key-input" class="form-input text-xs font-mono" placeholder="AIzaSy... (persisted locally)" />
+                <button id="save-api-key-btn" class="btn-secondary text-xs font-mono px-3">Save</button>
+              </div>
+              <p class="text-[10px] text-muted mt-1">If provided, real network calls execute against Google's API.</p>
+            </div>
+
+            <!-- Synthesize Button -->
+            <button id="run-prompt-btn" class="btn-primary w-full text-xs font-mono uppercase">
+              Synthesize Prompt
+            </button>
+
+            <div id="prompt-status-indicator" class="text-center text-xs font-mono text-muted">
+              Ready for inference compilation.
+            </div>
+
+          </div>
+
+          <!-- Output Panel (Right) -->
+          <div class="lg:col-span-7 surface-card p-6 space-y-4">
+            
+            <div class="flex items-center justify-between pb-3 border-b border-subtle">
+              <div class="flex gap-2 font-mono text-xs">
+                <button data-studio-tab="preview" class="px-3 py-1 bg-zinc-900 border border-active text-white rounded font-bold cursor-pointer is-active">
+                  Interactive Preview
+                </button>
+                <button data-studio-tab="code" class="px-3 py-1 bg-zinc-900 border border-subtle text-secondary rounded cursor-pointer">
+                  Generated Code
+                </button>
+              </div>
+              <span class="badge text-[10px]">TELEMETRY VERIFIED</span>
+            </div>
+
+            <div id="prompt-output-preview" class="min-h-[280px]">
+              <div class="surface-card p-6 text-left">
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-subtle">
+                  <span class="badge badge-emerald">COGNITION AI PROTOCOL</span>
+                  <span class="text-xs font-mono text-muted">STATUS: READY</span>
+                </div>
+                <p class="text-sm text-secondary">
+                  Click <strong>"Synthesize Prompt"</strong> or select one of the challenge presets on the left to stream intelligent contextual specifications.
+                </p>
+              </div>
+            </div>
+
+            <div style="display: none;" class="min-h-[280px] bg-black p-4 rounded border border-subtle font-mono text-xs text-secondary overflow-x-auto">
+              <pre><code id="prompt-output-code">// Synthesized code output will appear here...</code></pre>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         PAST PROJECTS & ARCHIVES
+         ========================================================== -->
+    <section id="projects" class="py-20 border-b border-subtle bg-[#050507]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <span class="badge">LEGACY &amp; EXCELLENCE</span>
+            <h2 class="text-3xl font-extrabold text-white mt-1">PAST HACKATHON WINNERS</h2>
+            <p class="text-secondary text-sm mt-1">Award-winning solutions architected during previous Cognition and TechTonics editions.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="surface-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="badge badge-emerald text-[10px] mb-2">1ST PLACE &bull; COGNITION '25</span>
+              <h3 class="text-lg font-bold text-white mb-2">CogniFlow AI</h3>
+              <p class="text-xs text-muted leading-relaxed mb-4">
+                Autonomous multi-agent grading pipeline for collegiate faculty with provenance audit tracking.
+              </p>
+              <div class="text-[11px] font-mono text-secondary mb-4">FastAPI &bull; LangChain &bull; React &bull; ChromaDB</div>
+            </div>
+            <button class="btn-secondary w-full text-xs font-mono" data-project-key="cogniflow">View Case Study &rarr;</button>
+          </div>
+
+          <div class="surface-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="badge badge-white text-[10px] mb-2">WINNER &bull; PASS THE PIXEL '25</span>
+              <h3 class="text-lg font-bold text-white mb-2">PixelCraft 2.0</h3>
+              <p class="text-xs text-muted leading-relaxed mb-4">
+                Automated WCAG AAA accessibility scanner validating contrast hierarchies across collegiate designs in real-time.
+              </p>
+              <div class="text-[11px] font-mono text-secondary mb-4">TypeScript &bull; Canvas &bull; Figma API</div>
+            </div>
+            <button class="btn-secondary w-full text-xs font-mono" data-project-key="pixelcraft">View Case Study &rarr;</button>
+          </div>
+
+          <div class="surface-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="badge text-[10px] mb-2">GREENTECH INNOVATION '25</span>
+              <h3 class="text-lg font-bold text-white mb-2">DU Transit AI</h3>
+              <p class="text-xs text-muted leading-relaxed mb-4">
+                Crowdsourced shuttle routing minimizing carbon footprints for 15,000+ daily Delhi University commuters.
+              </p>
+              <div class="text-[11px] font-mono text-secondary mb-4">React Native &bull; Python &bull; Graphhopper</div>
+            </div>
+            <button class="btn-secondary w-full text-xs font-mono" data-project-key="dutransit">View Case Study &rarr;</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         LIVE ATTENDEE REGISTRY (REAL PERSISTENT DATABASE)
+         ========================================================== -->
+    <section id="attendees-registry" class="py-20 border-b border-subtle bg-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <span class="badge badge-emerald">LOCAL DATABASE PERSISTENCE</span>
+            <h2 class="text-3xl font-extrabold text-white mt-1"><span class="heading-punchy-cyan">COMMUNITY ATTENDEE REGISTRY</span></h2>
+            <p class="text-secondary text-sm mt-1">
+              Real-time records saved to browser storage via asynchronous registration API calls (including demo seed delegates).
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span id="live-attendees-counter" class="badge badge-white text-xs font-mono">0 Registered</span>
+            <button id="export-attendees-btn" class="btn-secondary text-xs font-mono">
+              &darr; Export JSON
+            </button>
+            <button class="open-reg-trigger btn-primary text-xs font-mono">
+              + Register Attendee
+            </button>
+          </div>
+        </div>
+
+        <!-- Real-Time Attendee Search Filter -->
+        <div class="mb-4">
+          <input type="text" id="search-attendees-input" class="form-input text-xs font-mono" placeholder="🔍 Search registered attendees by name, institution, track, or Pass ID (e.g. INF-782104)..." />
+        </div>
+
+        <div class="surface-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-subtle bg-zinc-900/80 text-xs font-mono text-muted uppercase">
+                  <th class="p-3">Pass ID</th>
+                  <th class="p-3">Delegate Name</th>
+                  <th class="p-3">Institution</th>
+                  <th class="p-3">Confirmed Track</th>
+                  <th class="p-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="attendees-table-body">
+                <!-- Dynamically populated from state.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SOCIETY DOMAINS & WINGS
+         ========================================================== -->
+    <section id="domains" class="py-20 border-b border-subtle bg-[#050507]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+          <span class="badge">SPECIALIZED WINGS</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">DEPARTMENTS OF INFINITY</h2>
+          <p class="text-secondary text-sm">Undergraduate students leading cross-functional technological operations.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">01 // ENGINEERING</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">Technical &amp; AI Development</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Fullstack web systems, generative prompt pipelines, autonomous agents, and algorithmic problem-solving.
+            </p>
+          </div>
+
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">02 // DESIGN</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">UI/UX &amp; Visual Design</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Design systems, typography tokens, Figma component architecture, and the Pass The Pixel design relay.
+            </p>
+          </div>
+
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">03 // GROWTH</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">Public Relations &amp; Socials</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Curating community narratives across Instagram (@infinity.sggscc) and LinkedIn for 12,000+ students.
+            </p>
+          </div>
+
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">04 // OUTREACH</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">Corporate Relations</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Partnering with technology organizations, student developer grants, and managing fest prize pools.
+            </p>
+          </div>
+
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">05 // EDITORIAL</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">Research &amp; Tech Gazette</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Whitepapers, prompt engineering technical documentation, and collegiate tech market audits.
+            </p>
+          </div>
+
+          <div class="surface-card p-6">
+            <span class="text-xs font-mono text-muted">06 // OPERATIONS</span>
+            <h3 class="text-base font-bold text-white mt-1 mb-2">Event Operations &amp; Logistics</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Orchestrating smooth venue management, hardware resources, and judging panels at SGGSCC.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         COMMUNITY SOCIAL FEED (INSTAGRAM & LINKEDIN INSPIRED)
+         ========================================================== -->
+    <section id="social-feed" class="py-20 border-b border-subtle bg-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <span class="badge">OFFICIAL SOCIAL CHANNELS</span>
+            <h2 class="text-3xl font-extrabold text-white mt-1">COMMUNITY PULSE</h2>
+            <p class="text-secondary text-sm mt-1">Click any card to inspect full post caption, metrics, and details.</p>
+          </div>
+          <div class="flex gap-3">
+            <a href="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono">
+              @infinity.sggscc &rarr;
+            </a>
+            <a href="https://www.linkedin.com/company/infinitysggscc" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono">
+              /company/infinitysggscc &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Post 1: Instagram TechTonics Reveal -->
+          <div class="surface-card p-5 cursor-pointer hover:border-active transition"
+               data-social-card
+               data-platform="Instagram"
+               data-handle="@infinity.sggscc"
+               data-headline="TECHTONICS '26 GRAND REVEAL"
+               data-caption="The wait is over! TechTonics '26 brings the fiercest minds together for Cognition '26 (AI Hackathon), Pass The Pixel (UI/UX), and ₹2,50,000+ in prizes. Delegate passes are officially open!"
+               data-stats="842 Likes • 64 Comments"
+               data-url="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-subtle">
+              <span class="text-xs font-bold text-white font-mono">@infinity.sggscc</span>
+              <span class="badge text-[10px]">INSTAGRAM</span>
+            </div>
+            <div class="h-32 bg-zinc-900 rounded p-4 flex flex-col justify-between mb-3 border border-subtle">
+              <span class="text-[10px] font-mono text-muted">FLAGSHIP ANNOUNCEMENT</span>
+              <p class="text-lg font-bold text-white">TECHTONICS '26</p>
+            </div>
+            <p class="text-xs text-secondary leading-relaxed line-clamp-2">
+              The wait is over! TechTonics '26 brings the fiercest minds together for Cognition '26...
+            </p>
+            <div class="mt-3 pt-3 border-t border-subtle flex justify-between text-[11px] font-mono text-muted">
+              <span>❤️ 842 Likes</span>
+              <span>💬 64 Comments</span>
+            </div>
+          </div>
+
+          <!-- Post 2: LinkedIn Professional Leadership -->
+          <div class="surface-card p-5 cursor-pointer hover:border-active transition"
+               data-social-card
+               data-platform="LinkedIn"
+               data-handle="Infinity - The Tech Society, SGGSCC"
+               data-headline="PROMPT ENGINEERING & AI ARCHITECTURE MASTERCLASS"
+               data-caption="Bridging academic curriculum with bleeding-edge generative AI. Over 300+ undergraduates attended our weekend hands-on prompt optimization masterclass with senior industry engineers."
+               data-stats="512 Endorsements • 38 Reposts"
+               data-url="https://www.linkedin.com/company/infinitysggscc">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-subtle">
+              <span class="text-xs font-bold text-white font-mono">/company/infinitysggscc</span>
+              <span class="badge text-[10px]">LINKEDIN</span>
+            </div>
+            <div class="h-32 bg-zinc-900 rounded p-4 flex flex-col justify-between mb-3 border border-subtle">
+              <span class="text-[10px] font-mono text-muted">CAREER &amp; WEBINAR</span>
+              <p class="text-base font-bold text-white">Prompt Engineering &amp; AI Agents</p>
+            </div>
+            <p class="text-xs text-secondary leading-relaxed line-clamp-2">
+              Bridging academic curriculum with bleeding-edge generative AI. Over 300+ undergraduates attended...
+            </p>
+            <div class="mt-3 pt-3 border-t border-subtle flex justify-between text-[11px] font-mono text-muted">
+              <span>👍 512 Endorsements</span>
+              <span>1,920+ Followers</span>
+            </div>
+          </div>
+
+          <!-- Post 3: Instagram Pass The Pixel Spotlight -->
+          <div class="surface-card p-5 cursor-pointer hover:border-active transition"
+               data-social-card
+               data-platform="Instagram"
+               data-handle="@infinity.sggscc"
+               data-headline="PASS THE PIXEL DESIGN RELAY"
+               data-caption="Can your design team pass the visual baton without dropping a single design token? Pass The Pixel registrations are live for UI/UX creators across Delhi University!"
+               data-stats="628 Likes • 42 Comments"
+               data-url="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-subtle">
+              <span class="text-xs font-bold text-white font-mono">@infinity.sggscc</span>
+              <span class="badge text-[10px]">INSTAGRAM</span>
+            </div>
+            <div class="h-32 bg-zinc-900 rounded p-4 flex flex-col justify-between mb-3 border border-subtle">
+              <span class="text-[10px] font-mono text-muted">DESIGN CHALLENGE</span>
+              <p class="text-lg font-bold text-white">PASS THE PIXEL</p>
+            </div>
+            <p class="text-xs text-secondary leading-relaxed line-clamp-2">
+              Can your design team pass the visual baton without dropping a single design token?
+            </p>
+            <div class="mt-3 pt-3 border-t border-subtle flex justify-between text-[11px] font-mono text-muted">
+              <span>❤️ 628 Likes</span>
+              <span>🎨 UI/UX Focus</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         COUNCIL & FACULTY ADVISORY
+         ========================================================== -->
+    <section id="council" class="py-20 border-b border-subtle bg-[#050507]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+          <span class="badge">LEADERSHIP</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">COUNCIL &amp; ADVISORY</h2>
+          <p class="text-secondary text-sm">Mentoring and governing the technology initiatives of SGGSCC.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="surface-card p-6 text-center">
+            <div class="w-16 h-16 rounded-full bg-zinc-900 border border-subtle mx-auto mb-3 flex items-center justify-center font-bold font-mono text-white text-lg">
+              DR
+            </div>
+            <h4 class="text-sm font-bold text-white">Dr. Jatinder Bir Singh</h4>
+            <p class="text-xs font-mono text-muted mt-0.5">Principal Patron</p>
+            <p class="text-[11px] text-muted mt-2">SGGSCC, University of Delhi</p>
+          </div>
+
+          <div class="surface-card p-6 text-center">
+            <div class="w-16 h-16 rounded-full bg-zinc-900 border border-subtle mx-auto mb-3 flex items-center justify-center font-bold font-mono text-white text-lg">
+              FC
+            </div>
+            <h4 class="text-sm font-bold text-white">Faculty Convener</h4>
+            <p class="text-xs font-mono text-muted mt-0.5">Department of Computer Science</p>
+            <p class="text-[11px] text-muted mt-2">Academic rigor &amp; compliance</p>
+          </div>
+
+          <div class="surface-card p-6 text-center">
+            <div class="w-16 h-16 rounded-full bg-zinc-900 border border-subtle mx-auto mb-3 flex items-center justify-center font-bold font-mono text-white text-lg">
+              PR
+            </div>
+            <h4 class="text-sm font-bold text-white">Student President</h4>
+            <p class="text-xs font-mono text-muted mt-0.5">Executive Lead</p>
+            <p class="text-[11px] text-muted mt-2">Orchestrating TechTonics '26</p>
+          </div>
+
+          <div class="surface-card p-6 text-center">
+            <div class="w-16 h-16 rounded-full bg-zinc-900 border border-subtle mx-auto mb-3 flex items-center justify-center font-bold font-mono text-white text-lg">
+              TC
+            </div>
+            <h4 class="text-sm font-bold text-white">Technical Head</h4>
+            <p class="text-xs font-mono text-muted mt-0.5">Cognition Hackathon Lead</p>
+            <p class="text-[11px] text-muted mt-2">Architecture &amp; Cloud Infra</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="bg-black py-12 text-xs font-mono text-muted border-t border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-subtle">
+        
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl font-bold text-white font-mono">&infin;</span>
+            <span class="text-base font-bold text-white">INFINITY</span>
+            <span class="badge text-[10px]">SGGSCC</span>
+          </div>
+          <p class="text-secondary text-xs leading-relaxed max-w-sm">
+            The Official Technology Society of Sri Guru Gobind Singh College of Commerce, University of Delhi. 
+            Empowering students with real-world software architecture, AI prompt engineering, and collegiate hackathons.
+          </p>
+          <p class="text-[11px]">📍 Pitampura, New Delhi, Delhi 110034</p>
+        </div>
+
+        <div class="md:col-span-3 space-y-2">
+          <p class="text-white font-bold uppercase">Navigation</p>
+          <ul class="space-y-1.5 text-secondary">
+            <li><a href="#about" class="hover:text-white transition">&gt; About Society</a></li>
+            <li><a href="#techtonics" class="hover:text-white transition">&gt; TechTonics '26 Hub</a></li>
+            <li><a href="#ai-studio" class="hover:text-white transition">&gt; AI Prompt Studio</a></li>
+            <li><a href="#projects" class="hover:text-white transition">&gt; Past Winners</a></li>
+            <li><a href="#attendees-registry" class="hover:text-white transition">&gt; Attendee Registry</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 space-y-2">
+          <p class="text-white font-bold uppercase">Official Socials</p>
+          <div class="space-y-1.5">
+            <a href="https://www.linkedin.com/company/infinitysggscc" target="_blank" rel="noopener noreferrer" class="block text-secondary hover:text-white transition">
+              • LinkedIn: /company/infinitysggscc
+            </a>
+            <a href="https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1" target="_blank" rel="noopener noreferrer" class="block text-secondary hover:text-white transition">
+              • Instagram: @infinity.sggscc
+            </a>
+          </div>
+
+          <div class="pt-3">
+            <button class="open-prompt-trigger btn-secondary text-xs font-mono">
+              View Canonical Primary Prompt Spec
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+        <p>&copy; 2026 INFINITY (SGGSCC, University of Delhi). Cognition AI Hackathon Submission.</p>
+        <div class="flex items-center gap-3">
+          <span class="text-emerald-400">ORIGINAL &bull; ZERO PLAGIARISM</span>
+          <span>&bull;</span>
+          <span>PUBLICLY ACCESSIBLE</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================
+       MODAL 1: CANONICAL PRIMARY PROMPT SPECIFICATION
+       ========================================================== -->
+  <div id="prompt-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="prompt-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3 id="prompt-modal-title" class="text-sm font-bold text-white font-mono">PRIMARY PROMPT SPECIFICATION</h3>
+          <p class="text-xs text-muted font-mono">Canonical Specification for Cognition AI Hackathon</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="copy-prompt-btn" class="btn-secondary text-xs font-mono">Copy Prompt</button>
+          <button id="download-prompt-btn" class="btn-secondary text-xs font-mono">&darr; Download</button>
+          <button data-close-modal class="text-muted hover:text-white p-1" aria-label="Close modal">&times;</button>
+        </div>
+      </div>
+      <div class="modal-body font-mono text-xs text-secondary">
+        <div class="p-4 bg-black rounded border border-subtle overflow-y-auto max-h-[60vh]">
+          <pre id="prompt-text-block" class="whitespace-pre-wrap leading-relaxed select-all"># PRIMARY PROMPT — INFINITY // THE TECH SOCIETY OF SGGSCC (UNIVERSITY OF DELHI)
+
+### ARCHITECTURAL OBJECTIVE
+Build a high-performance, accessible, production-ready frontend web application for **INFINITY — The Tech Society of Sri Guru Gobind Singh College of Commerce (SGGSCC), University of Delhi** for the **Cognition AI Hackathon (TechTonics '26)**.
+
+### BRAND IDENTITY & SOCIAL INSPIRATION
+Incorporate initiatives and visual tone from verified society socials:
+- **LinkedIn**: https://www.linkedin.com/company/infinitysggscc (academic credibility, faculty mentorship, webinars, corporate sponsorships)
+- **Instagram**: https://www.instagram.com/infinity.sggscc?mdxt=Z3RmejZ5NWM4NzR1 (tech culture, Cognition 90-min AI Hackathon, Pass The Pixel design relay, member recruitment)
+
+### DESIGN SYSTEM & ACCESSIBILITY
+- High-contrast dark technical interface with radiant glassmorphic container accents, micro-glow borders, and sharp typographic hierarchy.
+- Self-hosted typography (Space Grotesk & JetBrains Mono) with full offline independence (zero runtime CDN compilers).
+- WAI-ARIA compliance: role="dialog", aria-modal="true", focus trapping, Escape closing, responsive mobile navigation, and @media (prefers-reduced-motion: reduce).
+
+### DELIVERABLES & CORE MODULES
+1. **Interactive 3D WebGL Torus Knot**: Authentic Three.js WebGL infinity knot reacting to cursor coordinates with motion-preference respect.
+2. **Top Telemetry HUD & Audio Synthesizer**: Web Audio API tone generator, safe data-theme switching, mobile drawer, and CLI terminal launcher.
+3. **Command Hero & Deterministic Countdown**: Fixed ISO timer targeting TechTonics sprint finale (2026-11-28T09:30:00+05:30), live typewriter, and community benchmarks.
+4. **TechTonics & Cognition AI Hackathon Hub**: Spotlight on Cognition 90-min prototype sprint, Pass The Pixel (UI/UX), CodeSprint (DSA), and 4 problem tracks.
+5. **AI Prompt Studio**: Dual-mode engine supporting live Google Gemini API calls and local multi-intent compilation (REST API routing, Python memory leak profiling, MediaPipe posture detection, WCAG tokens, and custom prompts) with dynamic model attribution.
+6. **3-Step Registration Wizard & Live Registry**: Asynchronous submission, duplicate verification, persistent localStorage database, JSON export, and virtual delegate pass ticket generation.
+7. **Hardened CLI Terminal (infinity-cli)**: Keyboard-driven shell (Ctrl+~) using safe textContent DOM manipulation against Self-XSS.
+8. **Curated Showcase Modals**: Interactive case studies for past winners (CogniFlow, PixelCraft, DU Transit) and social feedwall modals.</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODAL 2: 3-STEP REGISTRATION WIZARD
+       ========================================================== -->
+  <div id="register-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="register-modal-title" aria-hidden="true">
+    <div class="modal-dialog max-w-lg">
+      <div class="modal-header">
+        <div>
+          <h3 id="register-modal-title" class="text-sm font-bold text-white font-mono">DELEGATE REGISTRATION WIZARD</h3>
+          <p class="text-xs text-muted font-mono">TechTonics '26 &bull; Verified Entry Pass</p>
+        </div>
+        <button data-close-modal class="text-muted hover:text-white p-1" aria-label="Close modal">&times;</button>
+      </div>
+
+      <!-- Form View -->
+      <div id="registration-form-view" class="modal-body">
+        
+        <!-- Wizard Progress Bar -->
+        <div class="wizard-progress">
+          <div class="wizard-step is-active" id="step-indicator-1">
+            <div class="step-node" id="step-node-1">1</div>
+            <span class="step-label">Identity</span>
+          </div>
+          <div class="wizard-step" id="step-indicator-2">
+            <div class="step-node" id="step-node-2">2</div>
+            <span class="step-label">Track</span>
+          </div>
+          <div class="wizard-step" id="step-indicator-3">
+            <div class="step-node" id="step-node-3">3</div>
+            <span class="step-label">Pitch</span>
+          </div>
+        </div>
+
+        <form id="wizard-form" novalidate>
+          
+          <!-- Step 1: Delegate Identity -->
+          <div id="step-pane-1">
+            <div class="form-group">
+              <label for="reg-name" class="form-label">Full Name *</label>
+              <input type="text" id="reg-name" class="form-input" placeholder="e.g. Aryan Sharma" required />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-college" class="form-label">College / Institution *</label>
+              <input type="text" id="reg-college" class="form-input" placeholder="e.g. Sri Guru Gobind Singh College of Commerce" required />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-university" class="form-label">University / Board</label>
+              <input type="text" id="reg-university" class="form-input" value="University of Delhi" />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-email" class="form-label">Contact Email Address *</label>
+              <input type="email" id="reg-email" class="form-input" placeholder="e.g. aryan.sharma@sggscc.ac.in" required />
+              <div class="form-error"></div>
+            </div>
+          </div>
+
+          <!-- Step 2: Track Selection & Team Composition -->
+          <div id="step-pane-2" style="display: none;">
+            <div class="form-group">
+              <label for="reg-track" class="form-label">Select Competition Track *</label>
+              <select id="reg-track" class="form-select">
+                <option value="Cognition AI Hackathon">Cognition: 90-Min AI &amp; Prompt Hackathon</option>
+                <option value="Pass The Pixel (UI/UX)">Pass The Pixel: UI/UX Design Relay</option>
+                <option value="CodeSprint DSA Arena">CodeSprint: Rapid Algorithmic Arena</option>
+                <option value="Infinity Society Recruitment">General Society Recruitment (All Wings)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-team-size" class="form-label">Team Size *</label>
+              <select id="reg-team-size" class="form-select">
+                <option value="1">1 Member (Solo Delegate)</option>
+                <option value="2">2 Members</option>
+                <option value="3" selected>3 Members</option>
+                <option value="4">4 Members (Maximum)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-members" class="form-label">Team Members Names &amp; Roll Numbers</label>
+              <input type="text" id="reg-members" class="form-input" placeholder="e.g. Aryan S. (2401), Priya M. (2409)" />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-github" class="form-label">GitHub / Portfolio URL (Optional)</label>
+              <input type="url" id="reg-github" class="form-input" placeholder="https://github.com/yourhandle" />
+            </div>
+          </div>
+
+          <!-- Step 3: Motivation Statement & Technical Pitch -->
+          <div id="step-pane-3" style="display: none;">
+            <div class="form-group">
+              <label for="reg-motivation" class="form-label">Motivation Statement / Project Pitch *</label>
+              <textarea id="reg-motivation" rows="3" class="form-textarea" placeholder="Briefly explain your proposed idea, tooling choice, and why your team wants to compete in Cognition '26..."></textarea>
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group" id="reg-consent-wrapper">
+              <label class="flex items-start gap-2 text-xs text-secondary cursor-pointer">
+                <input type="checkbox" id="reg-consent" class="mt-0.5" />
+                <span>I confirm that all submissions will be original, free from plagiarism, and comply with SGGSCC academic integrity guidelines. *</span>
+              </label>
+              <div class="form-error"></div>
+            </div>
+          </div>
+
+          <!-- Wizard Footer Controls -->
+          <div class="modal-footer px-0 pb-0 pt-4">
+            <button type="button" id="wizard-prev-btn" class="btn-secondary text-xs font-mono" style="display: none;">&larr; Back</button>
+            <button type="button" id="wizard-next-btn" class="btn-primary text-xs font-mono">Next Step &rarr;</button>
+            <button type="submit" id="wizard-submit-btn" class="btn-emerald text-xs font-mono" style="display: none;">Submit Registration &amp; Generate Pass</button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Pass View (Shown on Successful Submission) -->
+      <div id="registration-pass-view" class="modal-body" style="display: none;">
+        <div class="attendee-pass">
+          <div class="flex justify-between items-center pb-2 mb-3 border-b border-subtle">
+            <span class="badge badge-emerald">DEMO PARTICIPANT PASS</span>
+            <span id="pass-id" class="text-xs font-mono text-white font-bold">DEMO-000000</span>
+          </div>
+
+          <div class="space-y-1 mb-3">
+            <span class="text-[10px] font-mono text-muted uppercase">DELEGATE NAME</span>
+            <h4 id="pass-name" class="text-xl font-bold text-white">Aryan Sharma</h4>
+            <p id="pass-college" class="text-xs text-secondary font-mono">SGGSCC (University of Delhi)</p>
+          </div>
+
+          <div class="p-3 bg-black rounded border border-subtle space-y-1 mb-3 text-xs font-mono">
+            <div><span class="text-muted">Track:</span> <strong id="pass-track" class="text-white">Cognition AI Hackathon</strong></div>
+            <div><span class="text-muted">Team:</span> <span id="pass-team" class="text-secondary"></span></div>
+            <div><span class="text-muted">Pitch:</span> <span id="pass-motivation" class="text-secondary italic"></span></div>
+          </div>
+
+          <div class="flex justify-between items-center text-[10px] font-mono text-muted pt-2 border-t border-subtle">
+            <span>ISSUED: <span id="pass-timestamp" class="text-secondary"></span></span>
+            <span class="text-emerald-400 font-bold">DEMO PASS ISSUED ✓</span>
+          </div>
+        </div>
+
+        <div class="mt-4 flex items-center justify-center gap-3">
+          <button id="print-pass-btn" class="btn-primary text-xs font-mono">
+            🖨️ Print / Save Pass
+          </button>
+          <button id="register-another-btn" class="btn-secondary text-xs font-mono">
+            + Register Another Delegate
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODAL 3: DEVELOPER CLI TERMINAL (`infinity-cli`)
+       ========================================================== -->
+  <div id="terminal-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="terminal-title" aria-hidden="true">
+    <div class="modal-dialog max-w-2xl">
+      <div class="terminal-container">
+        
+        <div class="terminal-top-bar">
+          <div class="flex items-center gap-2">
+            <div class="terminal-dots">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+            </div>
+            <span id="terminal-title" class="text-xs text-muted font-mono ml-2">guest@infinity-sggscc:~ (bash)</span>
+          </div>
+          <button data-close-modal class="text-xs text-muted hover:text-white font-mono" aria-label="Close terminal">[ESC / CLOSE]</button>
+        </div>
+
+        <div id="terminal-screen" class="terminal-screen">
+          <div class="text-white font-bold mb-1">INFINITY CLI v3.0 // The Tech Society of SGGSCC</div>
+          <div class="text-muted mb-2">Type '<strong class="text-white">help</strong>' or '<strong class="text-white">events</strong>' for interactive manual.</div>
+        </div>
+
+        <div class="terminal-input-row">
+          <span class="terminal-prompt">guest@infinity-sggscc:~$</span>
+          <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" placeholder="type command (help, events, cognition, socials)..." aria-label="Terminal command input" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODAL 4: SOCIAL POST INSPECTION MODAL
+       ========================================================== -->
+  <div id="social-post-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="social-modal-handle" aria-hidden="true">
+    <div class="modal-dialog max-w-lg">
+      <div class="modal-header">
+        <div class="flex items-center gap-2">
+          <span id="social-modal-platform" class="badge">PLATFORM</span>
+          <h3 id="social-modal-handle" class="text-xs font-bold text-white font-mono">@handle</h3>
+        </div>
+        <button data-close-modal class="text-muted hover:text-white p-1" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body space-y-4">
+        <div id="social-modal-banner" class="h-32 bg-zinc-900 rounded border border-subtle p-4 flex items-center justify-center text-center font-bold font-mono text-white text-sm">
+          POST BANNER
+        </div>
+
+        <p id="social-modal-caption" class="text-xs text-secondary leading-relaxed"></p>
+
+        <div class="p-3 bg-black rounded border border-subtle flex justify-between items-center text-xs font-mono text-muted">
+          <span id="social-modal-stats">Metrics</span>
+          <a id="social-modal-link" href="#" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">
+            Open on Official Channel &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODAL 5: PAST PROJECT CASE STUDY MODAL
+       ========================================================== -->
+  <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-hidden="true">
+    <div class="modal-dialog max-w-lg">
+      <div class="modal-header">
+        <div>
+          <span id="project-modal-award" class="badge badge-emerald text-[10px] mb-1">AWARD</span>
+          <h3 id="project-modal-title" class="text-sm font-bold text-white">Project Title</h3>
+        </div>
+        <button data-close-modal class="text-muted hover:text-white p-1" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body space-y-3 text-xs">
+        <p id="project-modal-team" class="font-mono text-secondary"></p>
+        <p id="project-modal-tech" class="font-mono text-muted"></p>
+        <div class="p-3 bg-black rounded border border-subtle">
+          <p id="project-modal-desc" class="text-secondary leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODAL 6: DATA PROVENANCE & AUDIT SOURCES
+       ========================================================== -->
+  <div id="provenance-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="prov-modal-title" aria-hidden="true">
+    <div class="modal-dialog max-w-lg">
+      <div class="modal-header">
+        <div>
+          <h3 id="prov-modal-title" class="text-sm font-bold text-white font-mono">DATA PROVENANCE &amp; SOURCES</h3>
+          <p class="text-xs text-muted font-mono">Transparency &amp; Verification Audit</p>
+        </div>
+        <button data-close-modal class="text-muted hover:text-white p-1" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body space-y-2" id="provenance-list">
+        <!-- Dynamically rendered from state.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Shelf for Toast Notifications -->
+  <div id="toast-shelf" aria-live="polite"></div>
+
+  <!-- Modular ES6 JavaScript Bootstrap -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
